@@ -1,0 +1,133 @@
+[
+  {
+    "name": "JBL VRX932LA-1 Loudspeaker",
+    "type": "audiovisual",
+    "img": "https://i.ibb.co/TRf6t6F/280x150-Audiovisual-CBD-Eve.jpg",
+    "price": 5000,
+    "min_order": 4,
+    "description": "The JBL VRX-932LA-1 (Black) is a lightweight, compact, passive and bi-ampable two-way line array speaker system, with an 800-watt continuous passive program power handling capacity, designed for use in arrays of up to six units.",
+    "features": [
+      "2-way passive or bi-ampable 800-watt line array P.A. speaker system for smaller venues with up to 6-unit array capacity",
+      "12 inch Neodymium magnet Differential Drive(TM) woofer for high-power capacity and light-weight",
+      "Three 1.5 inch Neodymium Annular Ring Diaphragm technology drivers for high power capacity, high-frequency extension and directivity",
+      "Constant Curvature waveguide technology for reliable array coherence",
+      "Array Configuration Selector switch - permits array in passive mode, allows for precise directivity and level attenuation",
+      "Tripod or subwoofer mounting of up to 2 speakers for multi-range floor placement"
+    ]
+  },
+  {
+    "name": "QSC K12 Active Loudspeaker",
+    "type": "audiovisual",
+    "img": "https://i.ibb.co/TRf6t6F/280x150-Audiovisual-CBD-Eve.jpg",
+    "price": 5000,
+    "min_order": 4,
+    "description": "The QSC K12 offers the familiar voicing, elegant style, and rugged reliability that the K Series is known for, plus double the power, increased SPL, and greater bass extension. Improved DSP management exhibits unprecedented clarity.",
+    "features": [
+      "12” Woofer; 1.75” diaphragm compression driver",
+      "75° conical DMT coverage",
+      "Maximum SPL 131 dB peak",
+      "Attractive and professional appearance",
+      "Rugged ABS enclosures",
+      "16-gauge powder coated steel grille",
+      "1000-watt,continuous Class D power modules in all models",
+      "Comfortable ergonomic handles",
+      "35 mm pole sockets with Tilt-Direct™",
+      "Eyebolt and yoke mount accessories available"
+    ]
+  },
+  {
+    "name": "Shure SM58 Dynamic Microphone (With On/Off Switch)",
+    "type": "audiovisual",
+    "img": "https://i.ibb.co/TRf6t6F/280x150-Audiovisual-CBD-Eve.jpg",
+    "price": 2000,
+    "min_order": 2,
+    "description": "The Shure SM58S Vocal Microphone features a unidirectional (cardioid) dynamic vocal design, well suited for professional vocal use in live performances, sound reinforcement, and studio recording.",
+    "features": [
+      "Frequency response tailored for vocals, with brightened midrange and bass roll-off",
+      "Uniform cardioid pickup pattern isolates the main sound source and minimizes background noise",
+      "Pneumatic shockmount system cuts down handling noise",
+      "Effective, built-in spherical wind and pop filter",
+      "Supplied with break- resistant microphone clip that rotates 180 degrees",
+      "High quality, rugged and reliable",
+      "Frequency response: 50 Hz to 15 kHz"
+    ]
+  },
+  {
+    "name": "ULXP Wireless Receiver",
+    "type": "audiovisual",
+    "img": "https://i.ibb.co/TRf6t6F/280x150-Audiovisual-CBD-Eve.jpg",
+    "price": 4000,
+    "min_order": 2,
+    "description": "The Shure ULXP4 professional wireless receiver offers an exceptional value in both performance and price, for both working musicians and sound installers.",
+    "features": [
+      "Use of wireless handheld microphone or lapel microphone with each receiver.",
+      "Automatic Frequency Selection with group scan function",
+      "Over 1400 selectable frequencies",
+      "Predictive Diversity",
+      "5-segment transmitted audio signal strength meter",
+      "5-segment RF meter",
+      "3-segment transmitter battery fuel gauge",
+      "Advanced multi-function LCD displays group and channel",
+      "Mic/Line switch",
+      "Remotable 1/2-wave antenna"
+    ]
+  },
+  {
+    "name": "Pioneer DJM 900XS2 Mixer",
+    "type": "audiovisual",
+    "img": "https://i.ibb.co/TRf6t6F/280x150-Audiovisual-CBD-Eve.jpg",
+    "price": 20000,
+    "min_order": 1,
+    "description": "Take your performance to new heights with the DJM-900NXS2, which features our first ever 64-bit mixing processor for a warmer, more nuanced sound. We’ve fine-tuned the EQ and fader curves and enhanced the FX controls to give you even more creative choice.",
+    "features": [
+      "Professional Sound and Design",
+      "6 studio-quality sound FX - Sweep, Filter, Crush, Dub Echo, Noise and Space",
+      "Use the large X-Pad to engage 14 different types of Beat FX and adjust the parameters with just one finger",
+      "Choose which frequency range you want to apply FX to. You can add echo to the vocals, for example, or double the rhythm of hi-hat with the touch of a button",
+      "Use built-in FX and an external FX unit at the same time. Simply connect external hardware via Aux or your iPhone/iPad via USB to engage instrument and FX apps - try it with the RMX-1000 for iPad, or DJM-REC",
+      "A built-in USB sound card allows simultaneous input/output of stereo signals from 4 ins and 5 outs"
+    ]
+  },
+  {
+    "name": "Mackie 1402 VLZ3 Mixer",
+    "type": "audiovisual",
+    "img": "https://i.ibb.co/TRf6t6F/280x150-Audiovisual-CBD-Eve.jpg",
+    "price": 18000,
+    "min_order": 1,
+    "description": "The Mackie 1402-VLZ3 Premium 14-Channel Compact Mixer builds on the legacy of the extremely popular 1402-VLZ Pro, offering the same great feature set, plus greatly enhanced sound quality, and Tracktion 3 music production software.",
+    "features": [
+      "Ultra-wide 60dB gain range",
+      "130dB dynamic range",
+      "+22dBu line input handling",
+      "Extended low frequency response",
+      "Distortion under 0.0007% (20Hz_20kHz)",
+      "Phantom power for studio condenser mics",
+      "14 high-headroom line inputs",
+      "Advanced DC pulse transformer RF rejection",
+      "60mm long-wearing log-taper faders",
+      "2 Aux sends, level, pan and PFL solo on each channel",
+      "2 stereo Aux returns + EFX to Monitor",
+      "3-band Active EQ (80Hz, 2.5kHz, 12kHz)"
+    ]
+  },
+  {
+    "name": "Sony PMW-320K XDCAM EX HD Camcorder",
+    "type": "audiovisual",
+    "img": "https://i.ibb.co/KGsPpP0/280x150-Speakers-CBD-Events.jpg",
+    "price": 8000,
+    "min_order": 2,
+    "description": "The Sony XDCAM EX lineup continues to expand and improve with the PMW-320K Full HD Camcorder.",
+    "features": [
+      "3 1/2 inch Exmor CMOS Sensors",
+      "Fujinon 1/2 inch HD Lens",
+      "Full HD 1920 x 1080",
+      "23.98P Native Recording",
+      "HD/SD/DVCAM",
+      "1080/720, Interlace/Progressive",
+      "XDCAM EX Solid State Workflow",
+      "Uses SxS Memory Cards",
+      "NTSC/PAL",
+      "4-channel Audio"
+    ]
+  }
+]

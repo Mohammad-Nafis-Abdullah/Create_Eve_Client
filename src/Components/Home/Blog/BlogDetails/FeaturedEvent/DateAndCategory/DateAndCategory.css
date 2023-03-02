@@ -1,0 +1,17 @@
+.DateAndTime {
+  width: 52.9%;
+  height: 100px;
+  padding: 25px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+}
+@media screen and (max-width: 576px) {
+  .DateAndTime {
+    width: 100%;
+    padding: 25px 20px;
+    margin-right: 5px;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+  }
+}

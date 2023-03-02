@@ -1,0 +1,91 @@
+[
+  {
+    "name": "Chauvet Ovation E-260WW",
+    "type": "lighting",
+    "img": "https://i.ibb.co/VqfP9pt/280x150-Lighting-Deor-CBD-E1.jpg",
+    "price": 3000,
+    "min_order": 10,
+    "description": "Ovation E-260WW is powered by a single source 230 W LED that exceeds the output of a 750 W tungsten light source.",
+    "features": [
+      "Warm or cool white ERS style fixture with output exceeding a tungsten 750 W source",
+      "Ultra smooth 16-bit dimming, and 8-bit dimming curves to complement any lighting scheme",
+      "Flat, even field of light for superior gobo projection",
+      "RDM (Remote Device Management) for added flexibility",
+      "Adjustable PWM (Pulse Width Modulation) to avoid flickering on camera",
+      "Virtually silent operation for use in studio and theatre applications",
+      "Works perfectly with industry standard lens tubes and accessories"
+    ]
+  },
+  {
+    "name": "Chauvet Ovation ED-190WW",
+    "type": "lighting",
+    "img": "https://i.ibb.co/VqfP9pt/280x150-Lighting-Deor-CBD-E1.jpg",
+    "price": 2500,
+    "min_order": 10,
+    "description": "Ovation ED-190WW ellipsoidal spot is a trailblazer; the first high-power LED based fixture that makes it possible to replace lamp-based ellipsoidals with LED fixtures that respond to traditional dimming systems.",
+    "features": [
+      "Works perfectly on conventional dimmers or constant power with DMX",
+      "Auto-senses what kind of system (conventional dimmers or constant power with DMX) and responds appropriately",
+      "Auto-senses what kind of system (conventional dimmers or constant power with DMX) and responds appropriately",
+      "Perfect fixture for the retrofit market, utilizes existing infrastructure flawlessly",
+      "Accessory slot for motorized gobo devices and iris units",
+      "16-bit dimming resolution (DMX mode) for smooth fades",
+      "Flat, even field of light"
+    ]
+  },
+  {
+    "name": "600W LED Photo/Video Studio Panel Lighting",
+    "type": "lighting",
+    "img": "https://i.ibb.co/VqfP9pt/280x150-Lighting-Deor-CBD-E1.jpg",
+    "price": 10000,
+    "min_order": 2,
+    "description": "These 600 LED video panel has high output, stable color temperature, long service life and outstanding heat dissipation. Easy carrying and simple assembly, comprise a standalone cable dimmer to help easier dimming, suitable for lighting in Video and outdoor image capture.",
+    "features": []
+  },
+  {
+    "name": "Elation SIXPAR 100",
+    "type": "lighting",
+    "img": "https://i.ibb.co/VqfP9pt/280x150-Lighting-Deor-CBD-E1.jpg",
+    "price": 2500,
+    "min_order": 5,
+    "description": "The indoor version Elation SIXPAR 100™ features (7) 12W 6-IN-1 RGBAW+UV LEDs, 15° beam and 25° field angles, electronic strobe and dimming (0-100%), 5 variable dimming curve modes, dual yoke / floor stand, multiple unit power linking, RDM (remote device management), rugged die-cast aluminum exterior, flicker free operation for TV and FILM, and a multi-voltage universal auto switching power supply (110-250v).",
+    "features": []
+  },
+  {
+    "name": "Chroma-Q | Space Force Octo LED Fixture",
+    "type": "lighting",
+    "img": "https://i.ibb.co/VqfP9pt/280x150-Lighting-Deor-CBD-E1.jpg",
+    "price": 2000,
+    "min_order": 10,
+    "description": "Introducing the new Chroma-Q® Space Force™ octo LED fixture – the next frontier in space lighting. The Space Force™ octo is a cutting-edge variable white LED Space Light that is a modern replacement for conventional space lights or soft light sources commonly used in film and TV studios around the world.",
+    "features": [
+      "Up to 26,700 lumens",
+      "Variable white – 2,800K to 6,000K",
+      "Only 8kg / 17.6lb",
+      "No fans, no noise",
+      "Smooth, soft uniform beam",
+      "Variable PWM flicker-free operation",
+      "Multiple hanging options",
+      "Wireless DMX / RDM",
+      "Superior unit-to-unit consistency",
+      "Chroma-Q's proven LED performance"
+    ]
+  },
+  {
+    "name": "ROE Black Pearl 2.8mm LED Panel",
+    "type": "lighting",
+    "img": "https://i.ibb.co/VqfP9pt/280x150-Lighting-Deor-CBD-E1.jpg",
+    "price": 5000,
+    "min_order": 5,
+    "description": "The Roe Black Pearl 2.8mm LED Panel is a high-performance, broadcast-grade, HD-LED display for indoor applications. It has won many prestigious design awards, including the IDEA Gold Award and the Red Dot Award.",
+    "features": [
+      "Lightweight & Strong tile made by magnesium alloy and revolutionary design.",
+      "Fast and Simple Setup by magnet system and smart lock.",
+      "Intelligent Module stores calibrating and operating parameters separately.",
+      "High Protection of LEDs by edge-care tile design and packing design.",
+      "Superb Visual effect with high refresh rate, outstanding color processing and great contrast ratio.",
+      "High Efficient power supply (90%) and heat sink inside.",
+      "Easy Maintenance with push-out module and all the modules are the same design."
+    ]
+  }
+]

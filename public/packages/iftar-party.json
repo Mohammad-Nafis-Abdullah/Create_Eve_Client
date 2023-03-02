@@ -1,0 +1,57 @@
+[
+  {
+    "coverPhoto": "https://www.theveiledexplorer.com/wp-content/uploads/2021/04/Feature-Image-2-1170x600.jpg",
+    "name": "Iftar Silver",
+    "price": 25000,
+    "services": [
+      "Hall Usage: 3 Hours",
+      "Carpet/PVC",
+      "Deco Carpet",
+      "Entry Gate",
+      "Chair Bow (30 Pieces)",
+      "Welcome Banner",
+      "Decoration Lighting"
+    ],
+    "catering": ["Chola Package/Rice Dish", "Dessert", "Cordial Drinks"]
+  },
+  {
+    "coverPhoto": "https://www.theveiledexplorer.com/wp-content/uploads/2021/04/Feature-Image-2-1170x600.jpg",
+    "name": "Iftar Gold",
+    "price": 30000,
+    "services": [
+      "Hall Usage: 3 Hours",
+      "Carpet/PVC",
+      "Deco Carpet",
+      "Entry Gate",
+      "Chair Bow (40 Pieces)",
+      "Welcome Banner",
+      "Decoration Lighting"
+    ],
+    "catering": [
+      "Chola Package/Rice Dish",
+      "Halim",
+      "Dessert",
+      "Cordial Drinks"
+    ]
+  },
+  {
+    "coverPhoto": "https://www.theveiledexplorer.com/wp-content/uploads/2021/04/Feature-Image-2-1170x600.jpg",
+    "name": "Iftar Platinum",
+    "price": 40000,
+    "services": [
+      "Hall Usage: 3 Hours",
+      "Carpet/PVC",
+      "Deco Carpet",
+      "Entry Gate",
+      "Chair Bow (50 Pieces)",
+      "Welcome Banner",
+      "Decoration Lighting"
+    ],
+    "catering": [
+      "Chola Package/Rice Dish",
+      "Halim",
+      "Dessert",
+      "Cordial Drinks"
+    ]
+  }
+]

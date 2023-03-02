@@ -1,0 +1,47 @@
+[
+  {
+    "coverPhoto": "https://c4.wallpaperflare.com/wallpaper/107/120/833/receipt-pink-birthday-cake-4k-wallpaper-preview.jpg",
+    "name": "Glitter Your Birthday",
+    "price": 15000,
+    "services": [
+      "Stage Backdrop",
+      "Cake Table",
+      "Stage Carpet/PVC",
+      "Welcome Banner/Milestone Board",
+      "Decoration Lighting",
+      "Sound System"
+    ]
+  },
+  {
+    "coverPhoto": "https://c4.wallpaperflare.com/wallpaper/107/120/833/receipt-pink-birthday-cake-4k-wallpaper-preview.jpg",
+    "name": "Fullfill Birthday",
+    "price": 30000,
+    "services": [
+      "Stage Backdrop",
+      "Cake Table",
+      "Stage Carpet/PVC",
+      "Photobooth",
+      "Side Decor",
+      "Welcome Banner/Milestone Board",
+      "Decoration Lighting",
+      "Sound System"
+    ]
+  },
+  {
+    "coverPhoto": "https://c4.wallpaperflare.com/wallpaper/107/120/833/receipt-pink-birthday-cake-4k-wallpaper-preview.jpg",
+    "name": "Thematic Birthday Blast",
+    "price": 40000,
+    "services": [
+      "Stage Backdrop",
+      "Cake Table",
+      "Cake Stand",
+      "Stage Carpet/PVC",
+      "Photobooth",
+      "Side Decor",
+      "Entry Gate",
+      "Welcome Banner/Milestone Board",
+      "Decoration Lighting",
+      "Sound System"
+    ]
+  }
+]

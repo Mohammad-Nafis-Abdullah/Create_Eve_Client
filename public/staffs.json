@@ -1,0 +1,56 @@
+[
+  {
+    "image": "./staffs.png",
+    "name": "James",
+    "profession": "Event Planner",
+    "details": "Planning and producing the whole event.Procurement management and resource management. Formulates, prepares and implement risks related management plan to event planning and production."
+  },
+  {
+    "image": "./staffs.png",
+    "name": "William",
+    "profession": "Event / Marketing Coordinator",
+    "details": "They oversee the entire event process, supervising the rest of the team to make sure no balls are dropped. The Coordinator(s) communicates regularly with the Director to make sure the day-to-day work is laddering up to the overall vision."
+  },
+  {
+    "image": "./staffs.png",
+    "name": "Robert",
+    "profession": "Information Manager",
+    "details": "Manages the information acquired through different sources. Responsible for the documentation of all business operations carried out pre-event, at-event and post-event. Maintains database of service providers, delegates, guests, organizers, sponsors, partners, clients, target audience, media people and various govt. departments officials. Formulates, prepares and implements the risk management plan."
+  },
+  {
+    "image": "./staffs.png",
+    "name": "Mary",
+    "profession": "Security Manager",
+    "details": "Formulating, preparing and implementing the security plan and strategies. i.e. how to protect delegates, guests, service providers, organizers, sponsors, partners, clients, target audience, goods and merchandise. Procurement management and resource management."
+  },
+  {
+    "image": "./staffs.png",
+    "name": "Thomas",
+    "profession": "Designer / Experiential Designer",
+    "details": "Our designer is in charge of all of our event’s visual components: from the landing page, emails, and social assets to on-site signage, decor, and branded swag. They work closely with the Marketing Lead on the creative development during your event’s promotion phases."
+  },
+  {
+    "image": "./staffs.png",
+    "name": "Liam",
+    "profession": "On-Site Lead",
+    "details": "Depending on the event, we will most likely need some extra bodies on-site to help run the door, check people in, and be on hand for any extra help. Our On-Site Lead is our go-to point person for anything related to what happens on the day of the event at the venue."
+  },
+  {
+    "image": "./staffs.png",
+    "name": "Niak",
+    "profession": "Venue manager",
+    "details": "Our venue manager is responsible for working with clients and event planners to coordinate events taking place at their venue, which may be at a conference hall, ballroom, hotel space or theater. They ensure that all individuals who are part of the event and the planning process utilize the space correctly and clean up after the event."
+  },
+  {
+    "image": "./staffs.png",
+    "name": "Farin",
+    "profession": "Social media manager",
+    "details": "Our social media manager is responsible for representing a company or brand on various social media networks. They may engage with the audience, create campaigns and advertisements, gather analytics and promote the brand's products and services."
+  },
+  {
+    "image": "./staffs.png",
+    "name": "Nasrim",
+    "profession": "Fundraising manager",
+    "details": "Our fundraising manager is responsible for securing funds for the organization they work for, which is typically a nonprofit charity. They may host events to showcase their organization's efforts and solicit donations from individuals, groups and other businesses."
+  }
+]

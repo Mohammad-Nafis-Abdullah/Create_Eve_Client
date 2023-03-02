@@ -1,0 +1,242 @@
+[
+    {
+        "name": "SPECIAL NEEDS DIETS",
+        "type":"catering",
+        "img": "https://i.ibb.co/19sb9LZ/280x150-Catering4.jpg",
+        "details": [
+            "Diabetic",
+            "Portion Control",
+            "Fat-Free, Low-Sodium"
+        ]
+    },
+    {
+        "name": "FULL SERVICE CATERING",
+        "type":"catering",
+        "img": "https://i.ibb.co/VBKbH92/280x150-Catering1.jpg",
+        "details": [
+            "Tailored Menus",
+            "Reliable Vendors",
+            "Artisan Crafted Displays"
+        ]
+    },
+    {
+        "name": "BUFFET STATIONS",
+        "type":"catering",
+        "img": "https://i.ibb.co/VqfP9pt/280x150-Lighting-Deor-CBD-E1.jpg",
+        "details": [
+            "Servers",
+            "Custom Desserts",
+            "Carving Stations",
+            "DC’s Top Mixologists"
+        ]
+    },
+    {
+        "name": "VEGETARIAN / VEGAN MEALS",
+        "type":"catering",
+        "img": "https://i.ibb.co/zhz7gm5/280x150-Catering5.jpg",
+        "details": [
+            "Vegetarian",
+            "Vegan Menus ",
+            "Organic Ingredients"
+        ]
+    },
+    {
+        "name": "HORS D'OEUVRE STATIONS",
+        "type":"catering",
+        "img": "https://i.ibb.co/PzNNx3p/280x150-Catering2.jpg",
+        "details": [
+            "Mini Desserts",
+            "Mini Soups and More",
+            "Meat and/or Fish Skewers"
+        ]
+    },
+    {
+        "name": "FOOD PRESENTATION EXPERTS",
+        "type":"catering",
+        "img": "https://i.ibb.co/Vq9H7wG/280x150-Catering.jpg",
+        "details": [
+            "Menu Cards and Centerpieces",
+            "Fine China and Custom Linens",
+            "Florals and Decor are designed to compliment the cuisine"
+        ]
+    },
+    {
+        "name": "ETHNIC CUISINE",
+        "type":"catering",
+        "img": "https://i.ibb.co/yQs3Gkh/280x150-Catering9.jpg",
+        "details": [
+            "American, Japanese",
+            "Portugese, Brazilian, Spanish",
+            "Asian Fusion, Moroccon and More"
+        ]
+    },
+    {
+        "name": "PASSED HOR D'OEUVRES",
+        "type":"catering",
+        "img": "https://i.ibb.co/PzNNx3p/280x150-Catering2.jpg",
+        "details": [
+            "Platters",
+            "Hot Displays",
+            "For Large or small Cocktail Receptions"
+        ]
+    },
+    {
+        "img":"https://i.ibb.co/TRf6t6F/280x150-Audiovisual-CBD-Eve.jpg",
+        "type":"audiovisual",
+        "details":[
+            "Stadium Events",
+            "Reliable Vendors",
+            "Special Events Audio Visual",
+            "The Latest On-Site Technology"
+        ]
+    },
+    {
+        "img":"https://i.ibb.co/TRf6t6F/280x150-Audiovisual-CBD-Eve.jpg",
+        "type":"audiovisual",
+        "details":[
+            "Symposiums",
+            "Product Launches",
+            "Formal Presentations",
+            "Hotel Meeting Support"
+        ]
+    },
+    {
+        "img":"https://i.ibb.co/KGsPpP0/280x150-Speakers-CBD-Events.jpg",
+        "type":"audiovisual",
+        "details":[
+            "Live Marketing",
+            "Sporting Events",
+            "Press Conferences",
+            "Support for Meetings and Galas"
+        ]
+    },
+    {
+        "img":"https://i.ibb.co/VqfP9pt/280x150-Lighting-Deor-CBD-E1.jpg",
+        "type":"lighting",
+        "details":[
+            "Pinspots",
+            "Uplighits",
+            "Skylighting",
+            "Intelligent Lighting"
+        ]
+    },
+    {
+        "img":"https://i.ibb.co/gyxJ9QP/280x150-Lighting-Stage-Performance.jpg",
+        "type":"lighting",
+        "details":[
+            "Gobos",
+            "Stage Lighting",
+            "Theatre Lighting",
+            "Lighted Dance Floors"
+        ]
+    },
+    {
+        "img":"https://i.ibb.co/ThQ8m2g/938x462-Brazil-Invite.jpg",
+        "type":"lighting",
+        "details":[
+            "LED Lighting",
+            "Lit Furniture",
+            "Dance Floor Lighting",
+            "Backdrops & Faux Scenery"
+        ]
+    },
+    {
+        "name":"HOSPITALITY STAFF MEET & GREETS",
+        "type":"destination",
+        "img":"https://i.ibb.co/JBkjsJ9/event.jpg",
+        "details":[
+            "OFFSITE MEETINGS",
+            "HOSPITALITY STAFF",
+            "LUXURY & SPECIAL OCCASIONS",
+            "THEATRE & ENTERTAINMENT OPTIONS"
+        ]
+    },
+    {
+        "name":"TOURS & PLANNED OUTINGS",
+        "type":"destination",
+        "img":"https://i.ibb.co/yfTfvrj/TRENO-DA.jpg",
+        "details":[
+            "SIGHTSEEING",
+            "MUSEUM TOURS",
+            "NIGHT TOURS OF WASHINGTON AND VA",
+            "PRIVATE DINING FOR SMALL MEETINGS"
+        ]
+    },
+    {
+        "name":"DAY EXCURSIONS & TOURS",
+        "type":"destination",
+        "img":"https://i.ibb.co/9HFq2cj/Washington-DC-Fireworks.jpg",
+        "details":[
+            "DINNER CRUISE",
+            "SEGWAY AND BIKING",
+            "GETTYSBURG DAY TRIPS",
+            "CULTURAL & THEME TOURS"
+        ]
+    },
+    {
+        "name": "PRE EVENT GUEST MANAGEMENT",
+        "type": "logistic",
+        "img": "https://i.ibb.co/wdFC8gf/280x150-Register-Now.jpg",
+        "details": [
+            "Latest Onsite Technology",
+            "Guest Services Management",
+            "Complete Data Management Services",
+            "Online and Onsite Attendee Registration"
+        ]
+    },
+    {
+        "name": "ONSITE MANAGEMENT",
+        "type": "logistic",
+        "img": "https://i.ibb.co/NWHKhyZ/280x150-Registration-CBD-Ev.jpg",
+        "details": [
+            "Event Set Up",
+            "Financial Management",
+            "Onsite Attendee Management",
+            "Registration and Project Manager Staffing"
+        ]
+    },
+    {
+        "name": "DESTINATION MANAGEMENT",
+        "type": "logistic",
+        "img": "https://i.ibb.co/rbmxPN6/280x150-Attendee-Registrati.jpg",
+        "details": [
+            "Venue Walk-Throughs",
+            "Vendor Load-in/load-out",
+            "Meet and Greet Services",
+            "Hotel Reservations & Rooming Lists"
+        ]
+    },
+    {
+        "name": "EVENT COSTING ANALYSIS",
+        "type": "logistic",
+        "img": "https://i.ibb.co/7KdVSNV/280x150-Guest-Registration.jpg",
+        "details": [
+            "Budget Preparation",
+            "Financial Management",
+            "Project Manager Staffing",
+            "Transportation & Parking"
+        ]
+    },
+    {
+        "name": "LISTS MANAGEMENT",
+        "type": "logistic",
+        "img": "https://i.ibb.co/5nDRkvR/280x150-Registration-Helen-CBD-Events-Washington.jpg",
+        "details": [
+            "Database & Guest List Management",
+            "In-house Video, PSA and Film Production",
+            "Generate venue primary Point of Contact lists",
+            "Design security, parking and guest check-in procedures"
+        ]
+    },
+    {
+        "name": "VENUE COORDINATION SERVICES",
+        "type": "logistic",
+        "img": "https://i.ibb.co/f470mYF/280x150-Audiovisual-Speaker.jpg",
+        "details": [
+            "Budget Preparation",
+            "Site inspections and pre-event walk-throughs",
+            "Transportation and Meet and Greet Services",
+            "Coordinate vendor load-in and load-out and delivery schedules"
+        ]
+    }
+]

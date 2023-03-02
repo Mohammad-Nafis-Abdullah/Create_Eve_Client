@@ -1,0 +1,134 @@
+[
+  {
+    "name": "Menu One",
+    "type": "catering",
+    "img": "https://i.ibb.co/19sb9LZ/280x150-Catering4.jpg",
+    "price": 450,
+    "min_order": 20,
+    "items": [
+      "Bhuna Khichuri",
+      "Chicken Roast / Tandoori Chicken",
+      "Beef Aachari / Kala Bhuna",
+      "Vegetable Malai Curry",
+      "Jorda / Firni / Borhani"
+    ]
+  },
+  {
+    "name": "Menu Two",
+    "type": "catering",
+    "img": "https://i.ibb.co/19sb9LZ/280x150-Catering4.jpg",
+    "price": 550,
+    "min_order": 20,
+    "items": [
+      "Special Beef Tehari",
+      "Chicken Roast / Tandoori Chicken",
+      "Vegetable Malai Curry",
+      "Jali Kabab (Beef / Chicken)",
+      "Jorda / Firni",
+      "Borhani"
+    ]
+  },
+  {
+    "name": "Menu Three",
+    "type": "catering",
+    "img": "https://i.ibb.co/19sb9LZ/280x150-Catering4.jpg",
+    "price": 635,
+    "min_order": 20,
+    "items": [
+      "Kacchi Biryani (Chinigura)",
+      "Chicken Roast / Tandoori Chicken",
+      "Dim Korma",
+      "Shami Kabab (Beef / Chicken)",
+      "Jorda / Firni",
+      "Borhani"
+    ]
+  },
+  {
+    "name": "Menu Four",
+    "type": "catering",
+    "img": "https://i.ibb.co/19sb9LZ/280x150-Catering4.jpg",
+    "price": 665,
+    "min_order": 20,
+    "items": [
+      "Morog Polao",
+      "Beef Rezala / Bhuna",
+      "Prawn Malai Curry / DoPiaza",
+      "Shami Kabab (Beef / Chicken)",
+      "Jorda / Firni",
+      "Borhani"
+    ]
+  },
+  {
+    "name": "Menu Five",
+    "type": "catering",
+    "img": "https://i.ibb.co/19sb9LZ/280x150-Catering4.jpg",
+    "price": 690,
+    "min_order": 20,
+    "items": [
+      "Shahi Polao / MotorShuti Polao",
+      "Chicken Roast / Tandoori Chicken",
+      "Mutton Rezala",
+      "Prawn MalaiKari / DoPiaza",
+      "Jali Kabab (Beef / Chicken)",
+      "Jorda / Firni",
+      "Borhani"
+    ]
+  },
+  {
+    "name": "Engagement Menu",
+    "type": "catering",
+    "img": "https://i.ibb.co/19sb9LZ/280x150-Catering4.jpg",
+    "price": 450,
+    "min_order": 20,
+    "items": [
+      "Chicken Biryani/Morog Polao",
+      "Mutton Rezala",
+      "Vegetable Malai Curry",
+      "Piece Salad",
+      "Misti Paan"
+    ]
+  },
+  {
+    "name": "Gaye Holud Menu",
+    "type": "catering",
+    "img": "https://i.ibb.co/19sb9LZ/280x150-Catering4.jpg",
+    "price": 345,
+    "min_order": 20,
+    "items": [
+      "Shorisha Bhuna Khichuri",
+      "Beef Achari",
+      "Begun Bhaja",
+      "Two Bhortas",
+      "(Chingri / Taki Mach / Loitta Shutki + Tomato / Alu / Dal / Kacha Kola)"
+    ]
+  },
+  {
+    "name": "Akdh Menu",
+    "type": "catering",
+    "img": "https://i.ibb.co/19sb9LZ/280x150-Catering4.jpg",
+    "price": 560,
+    "min_order": 20,
+    "items": [
+      "Shahi Polao / Shahi Paratha",
+      "Chicken Roast / Tandoori Chicken",
+      "Beef Achari",
+      "Rui Fish DoPiaza",
+      "Laddu"
+    ]
+  },
+  {
+    "name": "Grand Wedding Menu",
+    "type": "catering",
+    "img": "https://i.ibb.co/19sb9LZ/280x150-Catering4.jpg",
+    "price": 650,
+    "min_order": 20,
+    "items": [
+      "Shahi Kacchi Biryani",
+      "Chicken Roast / Tandoori Chicken",
+      "Jali Kabab (Beef / Chicken)",
+      "Shahi Malai Jorda / Shahi Firni",
+      "Aloo Bukhara Chatney",
+      "Borhani"
+    ]
+  }
+]

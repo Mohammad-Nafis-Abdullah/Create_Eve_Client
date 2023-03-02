@@ -1,0 +1,323 @@
+[
+  {
+    "_id": "6399c99a7a385744ec093f17",
+    "title": "wedding",
+    "category": "wedding",
+    "packages": [
+      {
+        "coverPhoto":"https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+        "name": "Basic Bronze",
+        "price": 40000,
+        "services": [
+          "Hall Usage: 6 Hours",
+          "Stage",
+          "Sofa",
+          "Entry Gate",
+          "Chair Bow (100 Pieces)",
+          "Welcome Banner",
+          "Decoration Lighting"
+        ],
+        "catering": ["3 Types of Dishes", "Dessert", "Cordial Drinks"]
+      },
+      {
+        "coverPhoto":"https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+        "name": "Standard Silver",
+        "price": 80000,
+        "services": [
+          "Hall Usage: 6 Hours",
+          "Stage",
+          "Sofa",
+          "Arch,Red Carpet",
+          "Photobooth",
+          "Entry Gate",
+          "Chair Bow (100 Pieces)",
+          "Welcome Banner",
+          "Decoration Lighting",
+          "Car Decoration"
+        ],
+        "catering": ["4 Types of Dishes", "Dessert", "Cordial Drinks"]
+      },
+      {
+        "coverPhoto":"https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+        "name": "Classical Golden",
+        "price": 100000,
+        "services": [
+          "Hall Usage: 6 Hours",
+          "Stage",
+          "Sofa",
+          "Arch,Red Carpet",
+          "Photobooth",
+          "Walkway",
+          "Head Table",
+          "Entry Gate",
+          "Chair Bow (150 Pieces)",
+          "Welcome Banner",
+          "Decoration Lighting",
+          "Car Decoration"
+        ],
+        "catering": ["4 Types of Dishes", "Dessert", "Cordial Drinks"]
+      },
+      {
+        "coverPhoto":"https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+        "name": "Stunning Diamond",
+        "price": 115000,
+        "services": [
+          "Hall Usage: 6 Hours",
+          "Stage",
+          "Sofa",
+          "Arch,Red Carpet",
+          "Photobooth",
+          "Walkway",
+          "Head Table",
+          "Entry Gate",
+          "Chair Bow (200 Pieces)",
+          "Welcome Banner",
+          "Decoration Lighting",
+          "Car Decoration"
+        ],
+        "catering": ["4 Types of Dishes", "Dessert", "Cordial Drinks"]
+      },
+      {
+        "coverPhoto":"https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+        "name": "Royal Deluxe",
+        "price": 145000,
+        "services": [
+          "Hall Usage: 6 Hours",
+          "Stage",
+          "Stage Carpet/PVC",
+          "Sofa",
+          "Arch,Red Carpet",
+          "Photobooth",
+          "Walkway",
+          "Tent/Trunnel",
+          "Head Table",
+          "Entry Gate",
+          "Chair Bow (200 Pieces)",
+          "Welcome Banner",
+          "Decoration Lighting",
+          "Car Decoration"
+        ],
+        "catering": ["5 Types of Dishes", "Dessert", "Cordial Drinks"]
+      },
+      {
+        "coverPhoto":"https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+        "name": "Glossy Pearl",
+        "price": 200000,
+        "services": [
+          "Hall Usage: 6 Hours",
+          "Stage",
+          "Stage Carpet/PVC",
+          "Sofa",
+          "Arch,Red Carpet",
+          "Photobooth",
+          "VIP Lounge",
+          "Walkway",
+          "Tent",
+          "Trunnel",
+          "Head Table",
+          "Entry Gate",
+          "Chair Bow (200 Pieces)",
+          "Welcome Banner",
+          "Decoration Lighting",
+          "Car Decoration"
+        ],
+        "catering": ["5 Types of Dishes", "Dessert", "Cordial Drinks"]
+      },
+      {
+        "coverPhoto":"https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+        "name": "Ruby Rose",
+        "price": 255000,
+        "services": [
+          "Hall Usage: 6 Hours",
+          "Stage",
+          "Stage Carpet/PVC",
+          "Sofa",
+          "Truss",
+          "Arch,Red Carpet",
+          "Photobooth",
+          "VIP Lounge",
+          "Walkway",
+          "Head Table",
+          "Entry Gate",
+          "Chair Bow (200 Pieces)",
+          "Welcome Banner",
+          "Decoration Lighting",
+          "Car Decoration"
+        ],
+        "catering": ["5 Types of Dishes", "Dessert", "Cordial Drinks"]
+      }
+    ],
+    "coverPhoto": "https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg"
+  },
+  {
+    "_id": "6399c99a7f5f3a9f2a2017fa",
+    "title": "birthday",
+    "category": "birthday",
+    "packages": [
+      {
+        "coverPhoto": "https://c4.wallpaperflare.com/wallpaper/107/120/833/receipt-pink-birthday-cake-4k-wallpaper-preview.jpg",
+        "name": "Glitter Your Birthday",
+        "price": 15000,
+        "services": [
+          "Stage Backdrop",
+          "Cake Table",
+          "Stage Carpet/PVC",
+          "Welcome Banner/Milestone Board",
+          "Decoration Lighting",
+          "Sound System"
+        ]
+      },
+      {
+        "coverPhoto": "https://c4.wallpaperflare.com/wallpaper/107/120/833/receipt-pink-birthday-cake-4k-wallpaper-preview.jpg",
+        "name": "Fullfill Birthday",
+        "price": 30000,
+        "services": [
+          "Stage Backdrop",
+          "Cake Table",
+          "Stage Carpet/PVC",
+          "Photobooth",
+          "Side Decor",
+          "Welcome Banner/Milestone Board",
+          "Decoration Lighting",
+          "Sound System"
+        ]
+      },
+      {
+        "coverPhoto": "https://c4.wallpaperflare.com/wallpaper/107/120/833/receipt-pink-birthday-cake-4k-wallpaper-preview.jpg",
+        "name": "Thematic Birthday Blast",
+        "price": 40000,
+        "services": [
+          "Stage Backdrop",
+          "Cake Table",
+          "Cake Stand",
+          "Stage Carpet/PVC",
+          "Photobooth",
+          "Side Decor",
+          "Entry Gate",
+          "Welcome Banner/Milestone Board",
+          "Decoration Lighting",
+          "Sound System"
+        ]
+      }
+    ],
+    "coverPhoto": "https://c4.wallpaperflare.com/wallpaper/107/120/833/receipt-pink-birthday-cake-4k-wallpaper-preview.jpg"
+  },
+  {
+    "_id": "6399c99a079c7f712eea08c0",
+    "title": "walima",
+    "category": "walima",
+    "packages": [
+      {
+        "coverPhoto": "https://thehill.com/wp-content/uploads/sites/2/2021/06/ca_alzheimerswedding_062221istock.jpg",
+        "name": "Walima Silver",
+        "price": 60000,
+        "services": [
+          "Hall Usage: 6 Hours",
+          "Stage",
+          "Stage Carpet/PVC",
+          "Sofa",
+          "Backdrop Curtain",
+          "Deco Carpet",
+          "Chair Bow (100 Pieces)"
+        ],
+        "catering": ["3 Types of Dishes", "Dessert", "Cordial Drinks"]
+      },
+      {
+        "coverPhoto": "https://thehill.com/wp-content/uploads/sites/2/2021/06/ca_alzheimerswedding_062221istock.jpg",
+        "name": "Walima Gold",
+        "price": 70000,
+        "services": [
+          "Hall Usage: 6 Hours",
+          "Stage",
+          "Stage Carpet/PVC",
+          "Sofa",
+          "Backdrop Curtain",
+          "Deco Carpet",
+          "Chair Bow (120 Pieces)"
+        ],
+        "catering": ["3 Types of Dishes", "Dessert", "Cordial Drinks"]
+      },
+      {
+        "coverPhoto": "https://thehill.com/wp-content/uploads/sites/2/2021/06/ca_alzheimerswedding_062221istock.jpg",
+        "name": "Walima Platinum",
+        "price": 90000,
+        "services": [
+          "Hall Usage: 6 Hours",
+          "Stage",
+          "Stage Carpet/PVC",
+          "Sofa",
+          "Backdrop Curtain",
+          "Entry Gate",
+          "Welcome Banner",
+          "Deco Carpet",
+          "Chair Bow (150 Pieces)"
+        ],
+        "catering": ["4 Types of Dishes", "Dessert", "Cordial Drinks"]
+      }
+    ],
+    "coverPhoto": "https://thehill.com/wp-content/uploads/sites/2/2021/06/ca_alzheimerswedding_062221istock.jpg"
+  },
+  {
+    "_id": "6399c99a056b6652ccfbc391",
+    "title": "iftar party",
+    "category": "iftar-party",
+    "packages": [
+      {
+        "coverPhoto": "https://www.theveiledexplorer.com/wp-content/uploads/2021/04/Feature-Image-2-1170x600.jpg",
+        "name": "Iftar Silver",
+        "price": 25000,
+        "services": [
+          "Hall Usage: 3 Hours",
+          "Carpet/PVC",
+          "Deco Carpet",
+          "Entry Gate",
+          "Chair Bow (30 Pieces)",
+          "Welcome Banner",
+          "Decoration Lighting"
+        ],
+        "catering": ["Chola Package/Rice Dish", "Dessert", "Cordial Drinks"]
+      },
+      {
+        "coverPhoto": "https://www.theveiledexplorer.com/wp-content/uploads/2021/04/Feature-Image-2-1170x600.jpg",
+        "name": "Iftar Gold",
+        "price": 30000,
+        "services": [
+          "Hall Usage: 3 Hours",
+          "Carpet/PVC",
+          "Deco Carpet",
+          "Entry Gate",
+          "Chair Bow (40 Pieces)",
+          "Welcome Banner",
+          "Decoration Lighting"
+        ],
+        "catering": [
+          "Chola Package/Rice Dish",
+          "Halim",
+          "Dessert",
+          "Cordial Drinks"
+        ]
+      },
+      {
+        "coverPhoto": "https://www.theveiledexplorer.com/wp-content/uploads/2021/04/Feature-Image-2-1170x600.jpg",
+        "name": "Iftar Platinum",
+        "price": 40000,
+        "services": [
+          "Hall Usage: 3 Hours",
+          "Carpet/PVC",
+          "Deco Carpet",
+          "Entry Gate",
+          "Chair Bow (50 Pieces)",
+          "Welcome Banner",
+          "Decoration Lighting"
+        ],
+        "catering": [
+          "Chola Package/Rice Dish",
+          "Halim",
+          "Dessert",
+          "Cordial Drinks"
+        ]
+      }
+    ],
+    "coverPhoto": "https://www.theveiledexplorer.com/wp-content/uploads/2021/04/Feature-Image-2-1170x600.jpg"
+  }
+]

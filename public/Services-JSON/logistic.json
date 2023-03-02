@@ -1,0 +1,68 @@
+[
+    {
+        "name": "PRE EVENT GUEST MANAGEMENT",
+        "type": "logistic",
+        "img": "https://i.ibb.co/wdFC8gf/280x150-Register-Now.jpg",
+        "details": [
+            "Latest Onsite Technology",
+            "Guest Services Management",
+            "Complete Data Management Services",
+            "Online and Onsite Attendee Registration"
+        ]
+    },
+    {
+        "name": "ONSITE MANAGEMENT",
+        "type": "logistic",
+        "img": "https://i.ibb.co/NWHKhyZ/280x150-Registration-CBD-Ev.jpg",
+        "details": [
+            "Event Set Up",
+            "Financial Management",
+            "Onsite Attendee Management",
+            "Registration and Project Manager Staffing"
+        ]
+    },
+    {
+        "name": "DESTINATION MANAGEMENT",
+        "type": "logistic",
+        "img": "https://i.ibb.co/rbmxPN6/280x150-Attendee-Registrati.jpg",
+        "details": [
+            "Venue Walk-Throughs",
+            "Vendor Load-in/load-out",
+            "Meet and Greet Services",
+            "Hotel Reservations & Rooming Lists"
+        ]
+    },
+    {
+        "name": "EVENT COSTING ANALYSIS",
+        "type": "logistic",
+        "img": "https://i.ibb.co/7KdVSNV/280x150-Guest-Registration.jpg",
+        "details": [
+            "Budget Preparation",
+            "Financial Management",
+            "Project Manager Staffing",
+            "Transportation & Parking"
+        ]
+    },
+    {
+        "name": "LISTS MANAGEMENT",
+        "type": "logistic",
+        "img": "https://i.ibb.co/5nDRkvR/280x150-Registration-Helen-CBD-Events-Washington.jpg",
+        "details": [
+            "Database & Guest List Management",
+            "In-house Video, PSA and Film Production",
+            "Generate venue primary Point of Contact lists",
+            "Design security, parking and guest check-in procedures"
+        ]
+    },
+    {
+        "name": "VENUE COORDINATION SERVICES",
+        "type": "logistic",
+        "img": "https://i.ibb.co/f470mYF/280x150-Audiovisual-Speaker.jpg",
+        "details": [
+            "Budget Preparation",
+            "Site inspections and pre-event walk-throughs",
+            "Transportation and Meet and Greet Services",
+            "Coordinate vendor load-in and load-out and delivery schedules"
+        ]
+    }
+]

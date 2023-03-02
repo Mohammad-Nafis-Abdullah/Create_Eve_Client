@@ -1,0 +1,49 @@
+[
+  {
+    "coverPhoto": "https://thehill.com/wp-content/uploads/sites/2/2021/06/ca_alzheimerswedding_062221istock.jpg",
+    "name": "Walima Silver",
+    "price": 60000,
+    "services": [
+      "Hall Usage: 6 Hours",
+      "Stage",
+      "Stage Carpet/PVC",
+      "Sofa",
+      "Backdrop Curtain",
+      "Deco Carpet",
+      "Chair Bow (100 Pieces)"
+    ],
+    "catering": ["3 Types of Dishes", "Dessert", "Cordial Drinks"]
+  },
+  {
+    "coverPhoto": "https://thehill.com/wp-content/uploads/sites/2/2021/06/ca_alzheimerswedding_062221istock.jpg",
+    "name": "Walima Gold",
+    "price": 70000,
+    "services": [
+      "Hall Usage: 6 Hours",
+      "Stage",
+      "Stage Carpet/PVC",
+      "Sofa",
+      "Backdrop Curtain",
+      "Deco Carpet",
+      "Chair Bow (120 Pieces)"
+    ],
+    "catering": ["3 Types of Dishes", "Dessert", "Cordial Drinks"]
+  },
+  {
+    "coverPhoto": "https://thehill.com/wp-content/uploads/sites/2/2021/06/ca_alzheimerswedding_062221istock.jpg",
+    "name": "Walima Platinum",
+    "price": 90000,
+    "services": [
+      "Hall Usage: 6 Hours",
+      "Stage",
+      "Stage Carpet/PVC",
+      "Sofa",
+      "Backdrop Curtain",
+      "Entry Gate",
+      "Welcome Banner",
+      "Deco Carpet",
+      "Chair Bow (150 Pieces)"
+    ],
+    "catering": ["4 Types of Dishes", "Dessert", "Cordial Drinks"]
+  }
+]

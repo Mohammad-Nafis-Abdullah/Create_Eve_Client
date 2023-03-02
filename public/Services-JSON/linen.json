@@ -1,0 +1,37 @@
+[
+    {
+        "img":"https://i.ibb.co/wzm7WY5/Linens-Header.jpg",
+        "type":"linen",
+        "name":"SUPERB LINEN SELECTION"
+    },
+    {
+        "img":"https://i.ibb.co/TmtQPDG/Shiny-Linens.jpg",
+        "type":"linen",
+        "name":"EVENT DECOR"
+    },
+    {
+        "img":"https://i.ibb.co/d2XYT3D/938x462-Rental-Linens.jpg",
+        "type":"linen",
+        "name":"TABLE SETTING"
+    },
+    {
+        "name": "PRINTED SOUVENIR BOOKS",
+        "type": "promotion",
+        "img": "https://i.ibb.co/9T8dnmt/m-2n135358565696-5600785-7313.jpg"
+    },
+    {
+        "name": "PRINTED MAGNETS",
+        "type": "promotion",
+        "img": "https://i.ibb.co/3Sc5drv/m-4n135358565696-5600787-5.jpg"
+    },
+    {
+        "name": "PRINTED LOGO BAGS",
+        "type": "promotion",
+        "img": "https://i.ibb.co/YRTXmhc/200-X200-Brazil-Bag.jpg"
+    },
+    {
+        "name": "COORDINATING TABLE LINENS & CUISINE",
+        "type": "promotion",
+        "img": "https://i.ibb.co/6bVrhjs/Brazil-Events.jpg"
+    }
+]

@@ -1,0 +1,146 @@
+[
+  {
+    "coverPhoto": "https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+    "name": "Basic Bronze",
+    "price": 40000,
+    "services": [
+      "Hall Usage: 6 Hours",
+      "Stage",
+      "Sofa",
+      "Entry Gate",
+      "Chair Bow (100 Pieces)",
+      "Welcome Banner",
+      "Decoration Lighting"
+    ],
+    "catering": ["3 Types of Dishes", "Dessert", "Cordial Drinks"]
+  },
+  {
+    "coverPhoto": "https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+    "name": "Standard Silver",
+    "price": 80000,
+    "services": [
+      "Hall Usage: 6 Hours",
+      "Stage",
+      "Sofa",
+      "Arch,Red Carpet",
+      "Photobooth",
+      "Entry Gate",
+      "Chair Bow (100 Pieces)",
+      "Welcome Banner",
+      "Decoration Lighting",
+      "Car Decoration"
+    ],
+    "catering": ["4 Types of Dishes", "Dessert", "Cordial Drinks"]
+  },
+  {
+    "coverPhoto": "https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+    "name": "Classical Golden",
+    "price": 100000,
+    "services": [
+      "Hall Usage: 6 Hours",
+      "Stage",
+      "Sofa",
+      "Arch,Red Carpet",
+      "Photobooth",
+      "Walkway",
+      "Head Table",
+      "Entry Gate",
+      "Chair Bow (150 Pieces)",
+      "Welcome Banner",
+      "Decoration Lighting",
+      "Car Decoration"
+    ],
+    "catering": ["4 Types of Dishes", "Dessert", "Cordial Drinks"]
+  },
+  {
+    "coverPhoto": "https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+    "name": "Stunning Diamond",
+    "price": 115000,
+    "services": [
+      "Hall Usage: 6 Hours",
+      "Stage",
+      "Sofa",
+      "Arch,Red Carpet",
+      "Photobooth",
+      "Walkway",
+      "Head Table",
+      "Entry Gate",
+      "Chair Bow (200 Pieces)",
+      "Welcome Banner",
+      "Decoration Lighting",
+      "Car Decoration"
+    ],
+    "catering": ["4 Types of Dishes", "Dessert", "Cordial Drinks"]
+  },
+  {
+    "coverPhoto": "https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+    "name": "Royal Deluxe",
+    "price": 145000,
+    "services": [
+      "Hall Usage: 6 Hours",
+      "Stage",
+      "Stage Carpet/PVC",
+      "Sofa",
+      "Arch,Red Carpet",
+      "Photobooth",
+      "Walkway",
+      "Tent/Trunnel",
+      "Head Table",
+      "Entry Gate",
+      "Chair Bow (200 Pieces)",
+      "Welcome Banner",
+      "Decoration Lighting",
+      "Car Decoration"
+    ],
+    "catering": ["5 Types of Dishes", "Dessert", "Cordial Drinks"]
+  },
+  {
+    "coverPhoto": "https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+    "name": "Glossy Pearl",
+    "price": 200000,
+    "services": [
+      "Hall Usage: 6 Hours",
+      "Stage",
+      "Stage Carpet/PVC",
+      "Sofa",
+      "Arch,Red Carpet",
+      "Photobooth",
+      "VIP Lounge",
+      "Walkway",
+      "Tent",
+      "Trunnel",
+      "Head Table",
+      "Entry Gate",
+      "Chair Bow (200 Pieces)",
+      "Welcome Banner",
+      "Decoration Lighting",
+      "Car Decoration"
+    ],
+    "catering": ["5 Types of Dishes", "Dessert", "Cordial Drinks"]
+  },
+  {
+    "coverPhoto": "https://unacash.com.ph/uploads/groom_putting_ring_bride_s_finger_1364eddd26.jpg",
+    "name": "Ruby Rose",
+    "price": 255000,
+    "services": [
+      "Hall Usage: 6 Hours",
+      "Stage",
+      "Stage Carpet/PVC",
+      "Sofa",
+      "Truss",
+      "Arch,Red Carpet",
+      "Photobooth",
+      "VIP Lounge",
+      "Walkway",
+      "Head Table",
+      "Entry Gate",
+      "Chair Bow (200 Pieces)",
+      "Welcome Banner",
+      "Decoration Lighting",
+      "Car Decoration"
+    ],
+    "catering": ["5 Types of Dishes", "Dessert", "Cordial Drinks"]
+  }
+]
+
+
