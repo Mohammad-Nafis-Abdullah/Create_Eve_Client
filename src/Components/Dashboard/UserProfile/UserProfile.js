@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FiEdit } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -13,15 +13,25 @@ import Loading from "../../Share/Loading/Loading";
 import "./UserProfile.css";
 import useRefetch from "../../Hooks/useRefetch";
 import axios from "axios";
+import { StateContext } from "../../../App";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
+
+
+
 const UserProfile = () => {
+  const [state,dispatch] = useContext(StateContext);
   const [user, loading, error] = useAuthState(auth);
   const {
     data: currentUser,
     loading: userLoading,
     refetch,
-  } = useRefetch(`http://localhost:5000/single-user/${user?.uid}`, {});
+  } = useRefetch(`http://localhost:5000/single-user/${user?.uid}`, {},(data)=> {
+      dispatch({
+        type:'userImg',
+        value:data.userImg,
+      })
+  });
   const [open, SetOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -58,7 +68,6 @@ const UserProfile = () => {
             navigate("/manage-profile");
             setFile(null);
             SetOpen(false);
-            window.location.reload();
           });
       } else {
         toast.error("There is a problem on uploading image", {

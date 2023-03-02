@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { BiUser } from "react-icons/bi";
@@ -10,8 +10,10 @@ import auth from "../../../Firebase/firebase.init";
 import { reload, signOut } from "firebase/auth";
 import useRefetch from "../../Hooks/useRefetch";
 import useAdmin from "../../Hooks/useAdmin";
+import { StateContext } from "../../../App";
 
 const Navbar = ({ location }) => {
+  const [state,dispatch] = useContext(StateContext);
   const { pathname } = location;
   const routeName = pathname.slice("1");
   const navigate = useNavigate();
@@ -335,7 +337,7 @@ const Navbar = ({ location }) => {
                     >
                       {currentUser?.userImg && (
                         <img
-                          src={`http://localhost:5000/userImg/${currentUser?.userImg}`}
+                          src={`http://localhost:5000/userImg/${state.userImg || currentUser?.userImg}`}
                           className="w-12 h-12 object-cover rounded-full"
                           alt=""
                         />
@@ -357,7 +359,7 @@ const Navbar = ({ location }) => {
                           <div className="flex justify-center -mt-11">
                             {currentUser?.userImg && (
                               <img
-                                src={`http://localhost:5000/userImg/${currentUser?.userImg}`}
+                                src={`http://localhost:5000/userImg/${state.userImg || currentUser?.userImg}`}
                                 className="w-16 h-16 ring-2 ring-green-600 ring-offset-2 object-cover rounded-full bg-slate-100"
                                 alt=""
                               />
