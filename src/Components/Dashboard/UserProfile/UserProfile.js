@@ -14,7 +14,7 @@ import "./UserProfile.css";
 import useRefetch from "../../Hooks/useRefetch";
 import axios from "axios";
 import { StateContext } from "../../../App";
-import { imgUrl } from "../../Hooks/useMyStorage";
+import useMyStorage, { imgUrl } from "../../Hooks/useMyStorage";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
@@ -23,6 +23,7 @@ const fileTypes = ["JPG", "PNG", "GIF"];
 const UserProfile = () => {
   const [state, dispatch] = useContext(StateContext);
   const [user, loading, error] = useAuthState(auth);
+  const { uploadImage,deleteImage } = useMyStorage();
   const {
     data: currentUser,
     loading: userLoading,
@@ -53,29 +54,22 @@ const UserProfile = () => {
     SetOpen(true);
   };
 
-  const savingImage = () => {
-    const formData = new FormData();
-    formData.append("userImg", file);
+  const savingImage = async() => {
+    try {
+      await deleteImage(currentUser?.userImg);
+      const { name } = await uploadImage(file);
+      await axios.put(`https://create-eve-server.onrender.com/user-update/${user?.uid}`, {
+        userImg: name,
+      })
+      refetch();
+      toast.success("Profile Picture Updated Successfully");
+      navigate("/manage-profile");
+      setFile(null);
+      SetOpen(false);
 
-    axios.post("https://create-eve-server.onrender.com/userImg", formData).then(({ data }) => {
-      if (data?.uploaded) {
-        axios
-          .put(`https://create-eve-server.onrender.com/user-update/${user?.uid}`, {
-            userImg: data?.filename,
-          })
-          .then(({ data }) => {
-            refetch();
-            toast.success("Profile Picture Updated Successfully");
-            navigate("/manage-profile");
-            setFile(null);
-            SetOpen(false);
-          });
-      } else {
-        toast.error("There is a problem on uploading image", {
-          theme: "colored",
-        });
-      }
-    });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
