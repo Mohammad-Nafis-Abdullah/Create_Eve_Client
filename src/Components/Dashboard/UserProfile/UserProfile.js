@@ -24,6 +24,7 @@ const UserProfile = () => {
   const [state, dispatch] = useContext(StateContext);
   const [user, loading, error] = useAuthState(auth);
   const { uploadImage,deleteImage } = useMyStorage();
+  const [ldng,setLdng] = useState(false);
   const {
     data: currentUser,
     loading: userLoading,
@@ -55,6 +56,7 @@ const UserProfile = () => {
   };
 
   const savingImage = async() => {
+    setLdng(true);
     try {
       await deleteImage(currentUser?.userImg);
       const { name } = await uploadImage(file);
@@ -70,10 +72,12 @@ const UserProfile = () => {
     } catch (err) {
       console.log(err);
     }
+    setLdng(false);
   };
 
   return (
     <section className="mt-14 sm:mt-28 mb-20 container mx-auto px-4">
+      {ldng && <Loading/>}
       <div
         className="relative flex flex-col min-w-0 break-words border-2 bg-white w-full shadow-xl rounded-lg"
         id="profileSection"

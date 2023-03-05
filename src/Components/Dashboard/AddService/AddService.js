@@ -39,6 +39,7 @@ const AddService = () => {
 
   // handle service adding
   const handleServiceAdding = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const serviceImg = e.target.image.files[0];
 
@@ -71,11 +72,12 @@ const AddService = () => {
 
     clearStorage();
     e.target.reset();
+    setLoading(false);
   };
 
   return (
     <div style={{ background: "#f4f7fc" }}>
-      {loading && <Loading></Loading>}
+      {loading && <Loading/>}
       <div className="2xl:max-w-7xl mx-auto">
         <h2 className="pt-5 pb-3 text-2xl font-bold text-center">
           Add a Service

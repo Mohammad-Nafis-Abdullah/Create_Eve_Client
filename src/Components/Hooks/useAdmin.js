@@ -11,12 +11,17 @@ const useAdmin = () => {
 
     useEffect(() => {
         if (user) {
-            axios
-                .get(`https://create-eve-server.onrender.com/admin/${user?.uid}`)
-                .then(({ data }) => {
+            const fn = async()=> {
+                try {
+                    const {data} = await axios.get(`https://create-eve-server.onrender.com/admin/${user?.uid}`);
                     setAdmin(data.admin);
                     setLoading(false);
-                });
+
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+            fn();
         }
         else {
             setLoading(false);

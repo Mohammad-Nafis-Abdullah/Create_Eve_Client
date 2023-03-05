@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import auth from '../../../Firebase/firebase.init';
 import useMyStorage, { imgUrl } from '../../Hooks/useMyStorage';
 import { closeModal } from '../../Prebuild/Modal';
+import Loading from '../../Share/Loading/Loading';
 
 const CategoryEditModal = forwardRef(({ category, categoryRefetch }, ref) => {
     const [currentUser] = useAuthState(auth);
@@ -17,6 +18,7 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch }, ref) => {
     const [max, setMax] = useState(0);
     const [cover, setCover] = useState('');
     const { uploadImage, deleteImage } = useMyStorage();
+    const [loading, setLoading] = useState(false);
 
     const topDiv = document.getElementById('view');
 
@@ -52,6 +54,7 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch }, ref) => {
     }
 
     const handleSubmit = async (e) => {
+        setLoading(true);
         e.preventDefault();
         const img = e.target.coverPhoto.files[0];
 
@@ -100,10 +103,12 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch }, ref) => {
         }
 
         e.target.reset();
+        setLoading(false);
     }
 
     return (
         <div className='h-full w-full p-3'>
+            {loading && <Loading/>}
             <section className='h-full max-w-sm bg-white mx-auto rounded-md p-5 overflow-y-auto relative'>
                 <div id='view' className='absolute top-0 right-0 left-0' />
                 <form onSubmit={handleSubmit}>

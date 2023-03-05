@@ -12,6 +12,8 @@ import useRefetch from "../../Hooks/useRefetch";
 import useAdmin from "../../Hooks/useAdmin";
 import { StateContext } from "../../../App";
 import { imgUrl } from "../../Hooks/useMyStorage";
+import { GoChevronDown } from 'react-icons/go';
+
 
 const Navbar = ({ location }) => {
   const [state, dispatch] = useContext(StateContext);
@@ -69,12 +71,11 @@ const Navbar = ({ location }) => {
     >
       {routeName && <TopnavBar />}
       <div
-        className={` ${routeName ? "bg-white text-black" : "bg-black/50 text-white"
-          }  flex items-center justify-around flex-wrap grow-0 gap-y-2 gap-x-10 max-w-8xl w-full mx-auto p-5`}
+        className={` ${routeName ? "bg-white text-black" : "bg-black/50 text-white"} flex justify-between items-center max-w-8xl w-full mx-auto p-3`}
         id="navbar"
       >
         {/* navbar icons and logo */}
-        <div className="flex lg:grow-0 md:grow md:justify-start">
+        <div className="inline-flex items-center gap-0">
           {/* for mobile */}
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost xl:hidden">
@@ -196,21 +197,22 @@ const Navbar = ({ location }) => {
           </div>
 
           {/* logo */}
-          <div className="flex items-end justify-center">
+          <div className="inline-flex items-center">
             <img
               src="https://i.ibb.co/Qb1N5CN/Eventy-Logo.png"
               alt=""
-              className="w-9 h-9"
+              className="w-10"
             />
-            <Link to="/" className=" text-3xl tracking-widest">
+            <Link to="/" className="sm:text-3xl tracking-widest">
               CREATE-EVE
             </Link>
           </div>
+
         </div>
 
         {/* children */}
         <div className=" hidden xl:flex font-bold">
-          <ul className="menu menu-horizontal p-0">
+          <ul className="menu menu-horizontal gap-x-3">
             <li>
               <NavLink to="/" className={navStyle}>
                 Home
@@ -218,17 +220,9 @@ const Navbar = ({ location }) => {
             </li>
 
             <li tabIndex="0">
-              <Link to={pathname} className="uppercase">
-                packages
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                </svg>
+              <Link to={pathname} className="uppercase inline-flex gap-1 items-center">
+                <span>packages</span>
+                <GoChevronDown className="w-4 h-4"/>
               </Link>
               <ul className="p-2" id="megaMenu" style={{ zIndex: "11111" }}>
                 <li>
@@ -255,17 +249,9 @@ const Navbar = ({ location }) => {
             </li>
             {/* HERE THE SERVICES */}
             <li tabIndex="0">
-              <Link to={pathname} className={` `}>
+              <Link to={pathname} className={`uppercase inline-flex gap-1 items-center`}>
                 SERVICES
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                </svg>
+                <GoChevronDown className="w-4 h-4"/>
               </Link>
               <ul className="p-2" id="megaMenu" style={{ zIndex: "11111" }}>
                 <li>
@@ -317,84 +303,82 @@ const Navbar = ({ location }) => {
         </div>
 
         <div className="w-12">
-          <div className="profile ">
-            <div className="flex items-end justify-center mt-2 lg:mt-0">
-              {!user ? (
-                <Link to={"/authentication"} className="text-3xl">
-                  <BiUser />
-                </Link>
-              ) : (
-                <>
-                  <div className="dropdown dropdown-end">
-                    <div
-                      tabIndex="0"
-                      className=""
-                      onClick={() => {
-                        show === "hidden"
-                          ? setShow("block")
-                          : setShow("hidden");
-                      }}
-                    >
-                      {currentUser?.userImg && (
-                        <img
-                          src={imgUrl(state.userImg || currentUser?.userImg)}
-                          className="w-12 h-12 object-cover rounded-full"
-                          alt=""
-                        />
-                      )}
+          <div className="flex items-end justify-center">
+            {!user ? (
+              <Link to={"/authentication"} className="text-3xl">
+                <BiUser />
+              </Link>
+            ) : (
+              <>
+                <div className="dropdown dropdown-end">
+                  <div
+                    tabIndex="0"
+                    className=""
+                    onClick={() => {
+                      show === "hidden"
+                        ? setShow("block")
+                        : setShow("hidden");
+                    }}
+                  >
+                    {currentUser?.userImg && (
+                      <img
+                        src={imgUrl(state.userImg || currentUser?.userImg)}
+                        className="w-12 h-12 object-cover rounded-full"
+                        alt=""
+                      />
+                    )}
 
-                      {!currentUser?.userImg && (
-                        <span className="">
-                          <AiOutlineUser className="border-2 border-black text-black bg-white bg-opacity-50 text-4xl rounded-full" />
-                        </span>
-                      )}
-                    </div>
-
-                    <ul
-                      tabIndex="0"
-                      className={`dropdown-content menu p-2 shadow border-2 bg-white rounded-sm ${show} text-black text-center mt-5`}
-                    >
-                      <div className="grid gap-y-3 pt-7 pb-3">
-                        <div className="bg-gray-200 grid justify-center p-4 rounded-sm">
-                          <div className="flex justify-center -mt-11">
-                            {currentUser?.userImg && (
-                              <img
-                                src={imgUrl(state.userImg || currentUser?.userImg)}
-                                className="w-16 h-16 ring-2 ring-green-600 ring-offset-2 object-cover rounded-full bg-slate-100"
-                                alt=""
-                              />
-                            )}
-
-                            {!currentUser?.userImg && (
-                              <span className="">
-                                <AiOutlineUser className="text-black border-2 border-black bg-white text-5xl rounded-full" />
-                              </span>
-                            )}
-                          </div>
-                          <div>
-                            <p className="pt-3 ">{user?.email}</p>
-                          </div>
-                        </div>
-
-                        <Link
-                          to={`/manage-profile`}
-                          className="uppercase hover:text-gray-600"
-                        >
-                          Manage profile
-                        </Link>
-
-                        <button
-                          onClick={handleSignOut}
-                          className="uppercase hover:text-gray-600"
-                        >
-                          Sign out
-                        </button>
-                      </div>
-                    </ul>
+                    {!currentUser?.userImg && (
+                      <span className="">
+                        <AiOutlineUser className="border-2 border-black text-black bg-white bg-opacity-50 text-4xl rounded-full" />
+                      </span>
+                    )}
                   </div>
-                </>
-              )}
-            </div>
+
+                  <ul
+                    tabIndex="0"
+                    className={`dropdown-content menu p-2 shadow border-2 bg-white rounded-sm ${show} text-black text-center mt-5`}
+                  >
+                    <div className="grid gap-y-3 pt-7 pb-3">
+                      <div className="bg-gray-200 grid justify-center p-4 rounded-sm">
+                        <div className="flex justify-center -mt-11">
+                          {currentUser?.userImg && (
+                            <img
+                              src={imgUrl(state.userImg || currentUser?.userImg)}
+                              className="w-16 h-16 ring-2 ring-green-600 ring-offset-2 object-cover rounded-full bg-slate-100"
+                              alt=""
+                            />
+                          )}
+
+                          {!currentUser?.userImg && (
+                            <span className="">
+                              <AiOutlineUser className="text-black border-2 border-black bg-white text-5xl rounded-full" />
+                            </span>
+                          )}
+                        </div>
+                        <div>
+                          <p className="pt-3 ">{user?.email}</p>
+                        </div>
+                      </div>
+
+                      <Link
+                        to={`/manage-profile`}
+                        className="uppercase hover:text-gray-600"
+                      >
+                        Manage profile
+                      </Link>
+
+                      <button
+                        onClick={handleSignOut}
+                        className="uppercase hover:text-gray-600"
+                      >
+                        Sign out
+                      </button>
+                    </div>
+                  </ul>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

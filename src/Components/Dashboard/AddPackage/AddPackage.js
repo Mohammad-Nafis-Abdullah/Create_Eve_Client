@@ -17,6 +17,7 @@ import useMyStorage from "../../Hooks/useMyStorage";
 const AddPackage = () => {
   const [user] = useAuthState(auth);
   const { uploadImage, deleteImage } = useMyStorage();
+  const {loading,setLoading} = useState(false);
   const [pkg, setPkg] = useState(null);
   const [cateringState, setCateringState] = useState(false);
   const [text, setText] = useState("");
@@ -47,6 +48,7 @@ const AddPackage = () => {
 
   // add package function 
   const handleAddPackage = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const pkgImg = e.target.image.files[0];
 
@@ -102,12 +104,13 @@ const AddPackage = () => {
     clearCateringsStorage();
     setCateringState(false);
     e.target.reset();
+    setLoading(false);
   };
 
   return (
     <div>
       <div className="2xl:max-w-7xl mx-auto">
-        {pkgLoading && <Loading />}
+        {(pkgLoading || loading) && <Loading />}
         <h2 className="pt-5 pb-3 text-2xl font-bold text-center">
           Add a Package
         </h2>

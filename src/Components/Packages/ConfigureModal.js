@@ -13,6 +13,7 @@ import auth from '../../Firebase/firebase.init';
 import useLocalStorage, { getStorage } from '../Hooks/useLocalStorage';
 import useMyStorage, { imgUrl } from '../Hooks/useMyStorage';
 import { closeModal } from '../Prebuild/Modal';
+import Loading from '../Share/Loading/Loading';
 
 const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
     const [currentUser] = useAuthState(auth);
@@ -26,6 +27,7 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
     const [cateringState, setCateringState] = useState(false);
     const [servicesText, setServicesText] = useState('');
     const [cateringsText, setCateringsText] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const topDiv = document.getElementById('view');
 
@@ -50,19 +52,8 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
         cancelButtonText: 'No'
     }
 
-    // Swal.fire(
-    //     'Successfull!',
-    //     'User removed from admin Successfully.',
-    //     'success'
-    // )
-
-    // Swal.fire(
-    //     'Unsuccessfull!',
-    //     'User is not removed from admin.',
-    //     'error'
-    // )
-
     const handleUpdating = async (e) => {
+        setLoading(true);
         e.preventDefault();
         const img = e.target.coverPhoto.files[0];
 
@@ -127,9 +118,11 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
         }
 
         e.target.reset();
+        setLoading(false);
     }
 
     const handleDelete = async (id) => {
+        setLoading(true);
         try {
             const { isConfirmed } = await Swal.fire({ ...swalObj, text: "to Delete the package" });
 
@@ -158,11 +151,12 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
         } catch (err) {
             console.log(err);
         }
+        setLoading(false);
     }
 
     return (
         <section className='max-w-xl w-full h-full mx-auto p-2'>
-
+            {loading && <Loading/>}
             <form onSubmit={handleUpdating} className='bg-white w-full h-full py-5 px-3 space-y-3 overflow-y-auto relative'>
                 <div id='view' className='absolute top-0 right-0 left-0' />
 

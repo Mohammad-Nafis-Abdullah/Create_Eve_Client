@@ -8,12 +8,7 @@
 .divider::after {
   background-color: #cacaca;
 }
-.menu :where(li) > :where(*:not(ul)) {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
+
 .hover\:bg-slate-300:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(240, 240, 240);
@@ -45,9 +40,9 @@
   -o-transition: all 1s ease-in-out;
 }
 .menu li a {
-  padding: 10px;
+  padding: 5px;
+  border-radius: 10px;
 }
-
 .btnActive {
   background: linear-gradient(to bottom right, #ffbe30, #ff3e00) !important;
   color: white !important;

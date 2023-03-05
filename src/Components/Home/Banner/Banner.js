@@ -1,22 +1,19 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import "./Banner.css";
 import { instantModal } from "../../Prebuild/Modal";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillSetting } from "react-icons/ai";
 import ConfigBannerModal from "./ConfigBannerModal";
 import useAdmin from "../../Hooks/useAdmin";
 import Loading from "../../Share/Loading/Loading";
 import useRefetch from "../../Hooks/useRefetch";
 import { imgUrl } from "../../Hooks/useMyStorage";
+import Slider from "react-slick";
 
 const Banner = () => {
   const [admin, adminLoading] = useAdmin();
+  const navigate = useNavigate();
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
@@ -34,6 +31,20 @@ const Banner = () => {
     instantModal(<ConfigBannerModal bannerPhotos={bannerPhotos} refetch={refetch} />);
   };
 
+  // react slicker slides setting
+  const settings = {
+    dots: false,
+    fade: true,
+    infinite: true,
+    autoplay: true,
+    swipeToSlide: false,
+    pauseOnHover: false,
+    speed: 1000,
+    autoplaySpeed: 4000,
+    arrows: false,
+    className: 'mx-auto',
+  };
+
   return (
     <div className="relative">
       {(adminLoading || loading) && <Loading />}
@@ -46,59 +57,27 @@ const Banner = () => {
           <AiFillSetting className="h-full w-full text-black animate-slowSpin" />
         </div>
       )}
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={0}
-        loop={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        centeredSlides={true}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        // pagination={pagination}
-        className="mySwiper"
-      >
-        {bannerPhotos.map((banner, index) => (
-          <SwiperSlide key={index}>
-            <div id="slider_content">
-              <>
-                <div className="relative">
-                  <img
-                    src={imgUrl(banner?.img)}
-                    alt=""
-                  />
-                </div>
-                <div id="slider_bg">
-                  <div id="banner_content">
-                    <div className="banner_text">
-                      <h2 className="text-white text-xl md:text-5xl ">
-                        Create Eve
-                      </h2>
-                      <h1 className="text-white text-3xl md:text-5xl lg:text-7xl py-8 font-semibold">
-                        Event Planner
-                      </h1>
-                      <h4 className="text-white text-xs md:text-base md:tracking-[.4rem] tracking-[1px] ">
-                        Event Sould Be Perfect
-                      </h4>
-                    </div>
-                    <div className="banner_button pt-14">
-                      <Link
-                        to="/about"
-                        className="text-white  text-xs md:text-base py-3 px-6 md:px-14 capitalize font-semibold rounded-full transition-all ease-in-out duration-500"
-                        id="bannerAboutBtn"
-                      >
-                        about
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </>
+      
+      <Slider {...settings}>
+        {
+          bannerPhotos.map(banner => {
+            return (
+            <div className="h-screen">
+              <img className='h-full object-cover w-full' key={banner._id} src={imgUrl(banner.img)} alt='' />
+              
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            )})
+        }
+      </Slider>
+
+
+      <article className="absolute top-0 right-0 bottom-0 left-0 bg-black/60 pt-[108px] flex flex-col justify-center items-center gap-y-6 openSans">
+        <h3 className="text-white font-bold text-3xl sm:text-5xl">Create Eve</h3>
+        <h1 className="text-amber-400 font-bold text-5xl sm:text-7xl">Event Planner</h1>
+        <h6 className="text-white font-bold operator italic tracking-widest">Event Should Be Perfect</h6>
+        <button onClick={()=>navigate('/about')} className="text-gray-900 font-bold text-xl roboto bg-amber-400 px-7 py-2 rounded-full active:scale-95 transition-transform">About</button>
+      </article>
+
     </div>
   );
 };

@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../../Firebase/firebase.init';
 import useMyStorage from '../../Hooks/useMyStorage';
 import { closeModal } from '../../Prebuild/Modal';
+import Loading from '../../Share/Loading/Loading';
 
 const ConfigBannerModal = ({ refetch, bannerPhotos }) => {
     const [user] = useAuthState(auth);
     const { uploadImage, deleteImage } = useMyStorage();
+    const [loading, setLoading] = useState(false);
 
     // console.log(bannerPhotos);
 
@@ -26,6 +28,7 @@ const ConfigBannerModal = ({ refetch, bannerPhotos }) => {
 
 
     const handleSubmit = async (e) => {
+        setLoading(true);
         e.preventDefault();
         const imgs = Object.values(e.target.img?.files);
 
@@ -62,10 +65,12 @@ const ConfigBannerModal = ({ refetch, bannerPhotos }) => {
 
         closeModal();
         e.target.reset();
+        setLoading(false);
     }
 
     return (
         <div className='h-full w-full flex justify-center items-center'>
+            {loading && <Loading/>}
             <form onSubmit={handleSubmit} className='max-w-xs w-full bg-white rounded p-3 space-y-3'>
                 <article>
                     <h3 className='text-black text-lg'>Upload Banner Images :</h3>
