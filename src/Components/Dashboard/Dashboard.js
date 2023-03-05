@@ -18,6 +18,7 @@ import useAdmin from "../Hooks/useAdmin";
 import Loading from "../Share/Loading/Loading";
 import useRefetch from "../Hooks/useRefetch";
 import { GoSettings } from "react-icons/go";
+import { imgUrl } from "../Hooks/useMyStorage";
 
 const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
@@ -73,7 +74,7 @@ const Dashboard = () => {
                   {currentUser?.userImg && (
                     <img
                       className="w-[75px] h-[75px] rounded-full m-auto"
-                      src={`http://localhost:5000/userImg/${currentUser?.userImg}`}
+                      src={imgUrl(currentUser?.userImg)}
                       alt=""
                     />
                   )}

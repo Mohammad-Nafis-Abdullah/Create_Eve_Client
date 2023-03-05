@@ -13,6 +13,7 @@ import ConfigBannerModal from "./ConfigBannerModal";
 import useAdmin from "../../Hooks/useAdmin";
 import Loading from "../../Share/Loading/Loading";
 import useRefetch from "../../Hooks/useRefetch";
+import { imgUrl } from "../../Hooks/useMyStorage";
 
 const Banner = () => {
   const [admin, adminLoading] = useAdmin();
@@ -65,7 +66,7 @@ const Banner = () => {
               <>
                 <div className="relative">
                   <img
-                    src={`http://localhost:5000/serviceImg/${banner?.img}`}
+                    src={imgUrl(banner?.img)}
                     alt=""
                   />
                 </div>

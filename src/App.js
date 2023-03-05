@@ -166,10 +166,10 @@ function App() {
         </Routes>
         <Footer />
         <BackTopBtn />
-        <MessengerCustomerChat
+        {/* <MessengerCustomerChat
           pageId="109936842004249"
           appId="1531565924021354"
-        />
+        /> */}
         <ToastContainer />
         <Modal />
       </div>

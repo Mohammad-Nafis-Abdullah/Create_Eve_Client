@@ -14,6 +14,7 @@ import "./UserProfile.css";
 import useRefetch from "../../Hooks/useRefetch";
 import axios from "axios";
 import { StateContext } from "../../../App";
+import { imgUrl } from "../../Hooks/useMyStorage";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
@@ -91,7 +92,7 @@ const UserProfile = () => {
                   <BiUserCircle className="w-20 h-20 sm:w-44 sm:h-44 border-2 text-slate-700 bg-slate-200 bg-opacity-100 text-4xl rounded-full" />
                 ) : (
                   <img
-                    src={`http://localhost:5000/userImg/${currentUser?.userImg}`}
+                    src={imgUrl(currentUser?.userImg)}
                     className="w-20 h-20 sm:w-44 sm:h-44 object-cover rounded-full"
                     alt=""
                   />

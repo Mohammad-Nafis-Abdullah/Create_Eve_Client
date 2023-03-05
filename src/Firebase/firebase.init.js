@@ -3,19 +3,24 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAOlzhUQSvLk-ZPk1JiTAItfJljhDtD6V0",
-  authDomain: "create-eve.firebaseapp.com",
-  projectId: "create-eve",
-  storageBucket: "create-eve.appspot.com",
-  messagingSenderId: "621398773003",
-  appId: "1:621398773003:web:72b92a9a369d48042f260e",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 
+const auth = getAuth(app);
 export default auth;
+
+
+const storage = getStorage(app);
+export {storage};

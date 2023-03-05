@@ -1,6 +1,7 @@
 import React from 'react';
 import { BsPlusLg } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { imgUrl } from '../../Hooks/useMyStorage';
 import './OurServices.css'
 
 const ServiceCard = ({ service }) => {
@@ -13,7 +14,7 @@ const ServiceCard = ({ service }) => {
             <div className="cursor-pointer">
 
                 <div className="relative">
-                    <img src={`http://localhost:5000/serviceImg/${service.coverPhoto}`} alt="" className="w-full h-80 object-cover" />
+                    <img src={imgUrl(service.coverPhoto)} alt="" className="w-full h-80 object-cover" />
                     <div className="absolute top-0 right-0 left-0 bottom-0 bg-transparent cld">
                         <BsPlusLg
                             onClick={() => navigate(`/packages/${service?.category}`)}

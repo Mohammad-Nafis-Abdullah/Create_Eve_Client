@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import auth from '../../Firebase/firebase.init';
 import useLocalStorage, { getStorage } from '../Hooks/useLocalStorage';
+import useMyStorage, { imgUrl } from '../Hooks/useMyStorage';
 import { closeModal } from '../Prebuild/Modal';
 
 const ConfigureModal = ({configItem, clearConfigItem, refetchAllPackage}) => {
@@ -20,6 +21,7 @@ const ConfigureModal = ({configItem, clearConfigItem, refetchAllPackage}) => {
     const [coverPhoto,setCoverPhoto] = useState('');
     const [services,setServices] = useState([]);
     const [caterings,setCaterings] = useState([]);
+    const { uploadImage,deleteImage } = useMyStorage();
 
     const [cateringState, setCateringState] = useState(false);
     const [servicesText,setServicesText] = useState('');
@@ -60,11 +62,9 @@ const ConfigureModal = ({configItem, clearConfigItem, refetchAllPackage}) => {
     //     'error'
     // )
 
-    const handleUpdating = (e)=> {
+    const handleUpdating = async (e)=> {
         e.preventDefault();
         const img = e.target.coverPhoto.files[0];
-        const formData = new FormData();
-        formData.append('img',img);
 
         const pkg = {
             name:name,
@@ -75,67 +75,56 @@ const ConfigureModal = ({configItem, clearConfigItem, refetchAllPackage}) => {
         if (caterings?.length) {
             pkg.catering=caterings;
         }
-        
 
-        Swal.fire({...swalObj,text: "to Update the package"}).then(({ isConfirmed }) => {
+
+        try {
+            const {isConfirmed} = await Swal.fire({...swalObj,text: "to Update the package"});
             if (isConfirmed) {
-
+                
                 if (img) {
-
-                    axios.post('http://localhost:5000/serviceImg', formData, {
+                    await deleteImage(coverPhoto);
+                    const {name} = await uploadImage(img);
+                    const {data} = await axios.put(`http://localhost:5000/package/${configItem?.category}/${configItem?._id}`, { ...pkg, coverPhoto: name}, {
                         headers: {
                             uid: currentUser?.uid
-                        }
-                    }).then(({ data }) => {
-                        if (data?.uploaded) {
-                            axios.put(`http://localhost:5000/package/${configItem?.category}/${configItem?._id}`, { ...pkg, coverPhoto: data.filename}, {
-                                headers: {
-                                    uid: currentUser?.uid
-                                }
-                            })
-                                .then(({ data }) => {
-                                    if (data.acknowledged && data.modifiedCount) {
-                                        Swal.fire(
-                                            'Successfull!',
-                                            'Package Updated Successfully.',
-                                            'success'
-                                        )
-                                        refetchAllPackage();
-                                        clearConfigItem();
-                                        closeModal();
-                                    }
-                                })
-
-                        } else {
-                            toast.error('Image not uploaded',{theme:'colored'});
-                            return 0;
                         }
                     });
+                    if (data.acknowledged && data.modifiedCount) {
+                        Swal.fire(
+                            'Successfull!',
+                            'Package Updated Successfully.',
+                            'success'
+                        )
+                        refetchAllPackage();
+                        clearConfigItem();
+                        closeModal();
+                    }
 
                 } else {
-                    axios.put(`http://localhost:5000/package/${configItem?.category}/${configItem?._id}`,{...pkg,coverPhoto:coverPhoto},{
+                    const {data} = await axios.put(`http://localhost:5000/package/${configItem?.category}/${configItem?._id}`,{...pkg,coverPhoto:coverPhoto},{
                         headers: {
                             uid: currentUser?.uid
                         }
-                    })
-                    .then(({data})=> {
-                        if (data.acknowledged && data.modifiedCount) {
-                            Swal.fire(
-                                'Successfull!',
-                                'Package Updated Successfully.',
-                                'success'
-                            )
-                            refetchAllPackage();
-                            clearConfigItem();
-                            closeModal();
-                        }
-                    })
+                    });
+                    if (data.acknowledged && data.modifiedCount) {
+                        Swal.fire(
+                            'Successfull!',
+                            'Package Updated Successfully.',
+                            'success'
+                        )
+                        refetchAllPackage();
+                        clearConfigItem();
+                        closeModal();
+                    }
                 }
 
             }else{
                 closeModal();
             }
-        });
+
+        } catch (err) {
+            console.log(err);
+        }
 
         e.target.reset();
     }
@@ -190,7 +179,7 @@ const ConfigureModal = ({configItem, clearConfigItem, refetchAllPackage}) => {
 
                 <div className='flex gap-2 flex-wrap'>
                     <p className='font-bold'>Cover Photo :</p>
-                    <img className='w-[60%] rounded object-scale-down' src={`http://localhost:5000/serviceImg/${coverPhoto}`} alt="" />
+                    <img className='w-[60%] rounded object-scale-down' src={imgUrl(coverPhoto)} alt="" />
                 </div>
 
                 <hr />

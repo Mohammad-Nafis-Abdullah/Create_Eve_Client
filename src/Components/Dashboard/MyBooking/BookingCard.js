@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { useState } from 'react';
 import Confirmation from '../../Prebuild/Confirmation';
 import { useNavigate } from 'react-router-dom';
+import { imgUrl } from '../../Hooks/useMyStorage';
 
 
 const BookingCard = ({ booking, refetch }) => {
@@ -37,7 +38,7 @@ const BookingCard = ({ booking, refetch }) => {
     return (
         <div className="rounded-md overflow-hidden bg-cover basis-96 shrink-0"
             style={{
-                backgroundImage: `url(http://localhost:5000/serviceImg/${booking?.package?.coverPhoto})`
+                backgroundImage: `url(${imgUrl(booking?.package?.coverPhoto)})`
             }}>
 
             <section className='bg-black/70 h-full w-full text-highlight font-bold p-5 pr-8 text-sm flex flex-col justify-between gap-y-10 relative'>

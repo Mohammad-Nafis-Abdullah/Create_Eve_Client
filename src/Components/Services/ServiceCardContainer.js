@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useAdmin from '../Hooks/useAdmin';
 import { getStorage } from '../Hooks/useLocalStorage';
+import { imgUrl } from '../Hooks/useMyStorage';
 import { instantModal } from '../Prebuild/Modal';
 import Loading from '../Share/Loading/Loading';
 import ServiceConfigModal from './ServiceConfigModal';
@@ -18,7 +19,7 @@ const ServiceCardContainer = ({services, setServiceStore, refetch}) => {
             {adminLoading && <Loading/>}
             {[...services]?.map((s) => (
                 <div title={s.name} key={s._id} className="slided-card max-w-7xl mx-auto rounded-lg">
-                    <img className="h-full w-full object-cover" src={`http://localhost:5000/serviceImg/${s.img}`} alt="" />
+                    <img className="h-full w-full object-cover" src={imgUrl(s.img)} alt="" />
 
                     <div className="btn-div bg-black/50">
                         {

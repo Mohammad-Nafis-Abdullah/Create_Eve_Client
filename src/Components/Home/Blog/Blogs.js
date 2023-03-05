@@ -8,7 +8,7 @@ const Blogs = () => {
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
   // const navigate = useNavigate();
-  const [blogs] = useBlogs();
+  const [blogs] = useBlogs() || [];
   return (
     <section id="ask-questions" className="bg-gray-100">
       <div className=" lg:max-w-7xl lg:mx-auto   lg:pt-20  ">

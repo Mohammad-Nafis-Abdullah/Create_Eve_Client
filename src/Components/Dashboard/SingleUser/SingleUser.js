@@ -6,6 +6,7 @@ import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { GrUserAdmin } from 'react-icons/gr';
 import { TiCancel } from 'react-icons/ti';
 import auth from "../../../Firebase/firebase.init";
+import { imgUrl } from "../../Hooks/useMyStorage";
 
 const SingleUser = ({ user, handleRemoveAdmin, handleMakeAdmin, ownerState }) => {
   const [currentUser] = useAuthState(auth);
@@ -17,7 +18,7 @@ const SingleUser = ({ user, handleRemoveAdmin, handleMakeAdmin, ownerState }) =>
         {userImg ? (
           <img
             className="h-8 w-8 rounded-full object-cover "
-            src={`http://localhost:5000/userImg/${userImg}`}
+            src={imgUrl(userImg)}
             alt=""
           />
         ) : (

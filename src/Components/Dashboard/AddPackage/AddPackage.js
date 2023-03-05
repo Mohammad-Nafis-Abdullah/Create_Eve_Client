@@ -12,9 +12,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/firebase.init";
 import { toast } from "react-toastify";
 import axios from "axios";
+import useMyStorage from "../../Hooks/useMyStorage";
 
 const AddPackage = () => {
   const [user] = useAuthState(auth);
+  const { uploadImage, deleteImage } = useMyStorage();
   const [pkg, setPkg] = useState(null);
   const [cateringState, setCateringState] = useState(false);
   const [text, setText] = useState("");
@@ -42,10 +44,11 @@ const AddPackage = () => {
     return text.toLowerCase().trim().split(" ").join("-");
   };
 
+
+  // add package function 
   const handleAddPackage = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("img", e.target.image.files[0]);
+    const pkgImg = e.target.image.files[0];
 
     const createdPackage = {
       name: e.target.title.value,
@@ -68,55 +71,31 @@ const AddPackage = () => {
         title: e.target.category.value,
         category: categoryNaming(e.target.category.value),
       };
+
       try {
-        const categoryFormData = new FormData();
-        categoryFormData.append("img", e.target.cover.files[0]);
-        const coverData = await axios.post(
-          "http://localhost:5000/serviceImg",
-          categoryFormData,
-          {
-            headers: {
-              uid: user?.uid,
-            },
-          }
-        );
-        const categoryData = await axios.put(
-          `http://localhost:5000/packages/${category}`,
-          { ...categoryObj, coverPhoto: coverData.data.filename }
-        );
+        const coverImg = e.target.cover.files[0];
+        const {name:coverImgName} = await uploadImage(coverImg);
+        const categoryData = await axios.put(`http://localhost:5000/packages/${category}`,{ ...categoryObj, coverPhoto: coverImgName });
+
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     }
 
-    axios
-      .post("http://localhost:5000/serviceImg", formData, {
-        headers: {
-          uid: user?.uid,
-        },
-      })
-      .then(({ data }) => {
-        if (data?.uploaded) {
-          axios
-            .post(`http://localhost:5000/package/${category}`, {
-              ...createdPackage,
-              coverPhoto: data.filename,
-            })
-            .then(({ data }) => {
-              if (data.acknowledged) {
-                toast.success("Package added successfully", {
-                  theme: "colored",
-                });
-              } else {
-                toast.error("Package not added", { theme: "colored" });
-                return 0;
-              }
-            });
-        } else {
-          toast.error("Image not uploaded", { theme: "colored" });
-          return 0;
-        }
-      });
+    try {
+      const {name} = await uploadImage(pkgImg);
+      console.log(name);
+      const {data} = await axios.post(`http://localhost:5000/package/${category}`, {...createdPackage,coverPhoto:name,});
+      console.log(data);
+      data.acknowledged?
+        toast.success("Package added successfully", {theme: "colored",})
+        :
+        toast.error("Package not added", { theme: "colored" });
+      
+    } catch (err) {
+      toast.error("There was an error", { theme: "colored" });
+      // console.dir(err);
+    }
 
     pkgRefetch();
     clearStorage();

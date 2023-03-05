@@ -11,6 +11,7 @@ import { reload, signOut } from "firebase/auth";
 import useRefetch from "../../Hooks/useRefetch";
 import useAdmin from "../../Hooks/useAdmin";
 import { StateContext } from "../../../App";
+import { imgUrl } from "../../Hooks/useMyStorage";
 
 const Navbar = ({ location }) => {
   const [state,dispatch] = useContext(StateContext);
@@ -337,7 +338,7 @@ const Navbar = ({ location }) => {
                     >
                       {currentUser?.userImg && (
                         <img
-                          src={`http://localhost:5000/userImg/${state.userImg || currentUser?.userImg}`}
+                          src={imgUrl(state.userImg || currentUser?.userImg)}
                           className="w-12 h-12 object-cover rounded-full"
                           alt=""
                         />
@@ -359,7 +360,7 @@ const Navbar = ({ location }) => {
                           <div className="flex justify-center -mt-11">
                             {currentUser?.userImg && (
                               <img
-                                src={`http://localhost:5000/userImg/${state.userImg || currentUser?.userImg}`}
+                                src={imgUrl(state.userImg || currentUser?.userImg)}
                                 className="w-16 h-16 ring-2 ring-green-600 ring-offset-2 object-cover rounded-full bg-slate-100"
                                 alt=""
                               />

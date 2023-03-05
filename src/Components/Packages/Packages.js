@@ -9,6 +9,7 @@ import '../Home/Blog/BlogDetails/BlogDetails.css'
 import { BsSearch } from "react-icons/bs";
 import { TbArrowsDownUp, TbArrowsUpDown } from "react-icons/tb";
 import { useEffect } from "react";
+import { imgUrl } from "../Hooks/useMyStorage";
 
 const Packages = () => {
   const { category } = useParams();
@@ -43,7 +44,7 @@ const Packages = () => {
         data-testid='packages'
         className={`${style.bg} h-80`}
         style={{
-          backgroundImage: `url(http://localhost:5000/serviceImg/${selectedCategory?.coverPhoto})`,
+          backgroundImage: `url(${imgUrl(selectedCategory?.coverPhoto)})`,
         }}
       >
         <div className="h-full bg-black/80 flex flex-col justify-center items-center openSans text-center p-5">

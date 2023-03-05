@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useLocalStorage from "../Hooks/useLocalStorage";
+import { imgUrl } from "../Hooks/useMyStorage";
 import { instantModal, closeModal } from "../Prebuild/Modal";
 import Loading from "../Share/Loading/Loading";
 import ConfigureModal from "./ConfigureModal";
@@ -33,7 +34,7 @@ const PackageCard = ({ eventPackage, category, refetchAllPackage }) => {
   return (
     <div className="slided-card max-w-7xl mx-auto rounded-lg">
       {adminLoading && <Loading/>}
-      <img className="h-full w-full object-cover" src={`http://localhost:5000/serviceImg/${coverPhoto}`} alt="" />
+      <img className="h-full w-full object-cover" src={imgUrl(coverPhoto)} alt="" />
       <div className="btn-div bg-black/50">
         {
           admin ?

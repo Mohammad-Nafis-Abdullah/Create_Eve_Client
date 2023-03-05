@@ -2,14 +2,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { deleteObject, ref } from "firebase/storage";
 import { useUploadFile } from "react-firebase-hooks/storage";
-import { storage } from "../firebase.init";
+import { storage } from "../../Firebase/firebase.init";
 
 
 const imgUrl = (imgName)=> {
     if (!imgName) {
         return false;
     }
-    const storeName = process.env.REACT_APP_STORAGE_BUCKET.split('//')[1];
+    const storeName = process.env.REACT_APP_storageBucket.split('//')[1];
     return `https://firebasestorage.googleapis.com/v0/b/${storeName}/o/${imgName}?alt=media`;
 }
 export {imgUrl};
@@ -31,14 +31,20 @@ const useMyStorage = () => {
             console.log('no file');
             return;
         }
+
+
         return new Promise(async(resolve, reject) => {
+            // console.log(file);
             try {
                 const uploadRef = ref(storage,imageNaming(file?.name));
+                console.log(uploadRef);
                 const result = await uploadFile(uploadRef, file, {
                     contentType: 'image/jpeg'
                 });
+                // console.log(result);
                 resolve(result?.metadata);
             } catch (err) {
+                // console.log(err);
                 reject(err);
             }
         });

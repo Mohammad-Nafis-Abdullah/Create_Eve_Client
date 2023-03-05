@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../../Firebase/firebase.init';
+import useMyStorage, { imgUrl } from '../../Hooks/useMyStorage';
 import { closeModal } from '../../Prebuild/Modal';
 
 const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
@@ -15,6 +16,7 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(0);
     const [cover, setCover] = useState('');
+    const { uploadImage, deleteImage } = useMyStorage();
 
     const topDiv = document.getElementById('view');
     
@@ -49,7 +51,7 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
         return text.toLowerCase().trim().split(' ').join('-');
     }
 
-    const handleSubmit = (e)=> {
+    const handleSubmit = async (e)=> {
         e.preventDefault();
         const img = e.target.coverPhoto.files[0];
 
@@ -62,44 +64,39 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
             priceRange: [min,max]
         }
 
-        if (img) {
-            axios.post('http://localhost:5000/serviceImg', formData, {
-                headers: {
-                    uid: currentUser?.uid
+        try {
+            
+            if (img) {
+                await deleteImage(cover);
+                const {name} = await uploadImage(img);
+                const {data} = await axios.put(`http://localhost:5000/packages/${categoryObj?.category}`,{ ...categoryObj, coverPhoto: name}, {
+                    headers: {
+                        uid: currentUser?.uid
+                    }
+                });
+                if (data.acknowledged && data.modifiedCount) {
+                    categoryRefetch();
+                    closeModal();
+                    toast.success('Successfully Completed',{theme:'dark'});
+                }else{
+                    toast.error('An error occurred',{theme:'colored'});
                 }
-            }).then(({ data }) => {
-                if (data?.uploaded) {
-                    axios.put(`http://localhost:5000/packages/${categoryObj?.category}`, { ...categoryObj, coverPhoto: data.filename}, {
-                        headers: {
-                            uid: currentUser?.uid
-                        }
-                    })
-                        .then(({ data }) => {
-                            if (data.acknowledged && data.modifiedCount) {
-                                categoryRefetch();
-                                closeModal();
-                                toast.success('Successfully Completed',{theme:'dark'});
-                            }
-                        })
 
-                } else {
-                    toast.error('Image not uploaded',{theme:'colored'});
-                    return 0;
-                }
-            });
-        } else {
-            axios.put(`http://localhost:5000/packages/${categoryObj?.category}`,{...categoryObj,coverPhoto:cover},{
-                headers: {
-                    uid: currentUser?.uid
-                }
-            })
-            .then(({data})=> {
+            } else {
+                const {data} = await axios.put(`http://localhost:5000/packages/${categoryObj?.category}`,{...categoryObj,coverPhoto:cover},{
+                    headers: {
+                        uid: currentUser?.uid
+                    }
+                });
                 if (data.acknowledged && data.modifiedCount) {
                     categoryRefetch();
                     closeModal();
                     toast.success('Successfully Completed',{theme:'dark'})
                 }
-            })
+            }
+
+        } catch (err) {
+            console.log(err);
         }
 
         e.target.reset();
@@ -147,7 +144,7 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
                     <input type="file" name='coverPhoto' className="file-input file-input-bordered file-input-warning w-full max-w-xs" accept='.jpg, .png, .jpeg' />
 
                     <h3 className='mt-3'>Present Cover Photo :</h3>
-                    <img className='h-40 max-w-[80%] mx-auto object-scale-down rounded-md' src={`http://localhost:5000/serviceImg/${cover}`} alt="" />
+                    <img className='h-40 max-w-[80%] mx-auto object-scale-down rounded-md' src={imgUrl(cover)} alt="" />
 
                     <div className="divider" />
 

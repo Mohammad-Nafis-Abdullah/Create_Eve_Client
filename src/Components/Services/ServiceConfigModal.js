@@ -10,6 +10,7 @@ import { TbSquarePlus, TbTrash } from 'react-icons/tb';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import auth from '../../Firebase/firebase.init';
+import useMyStorage, { imgUrl } from '../Hooks/useMyStorage';
 import { closeModal } from '../Prebuild/Modal';
 
 
@@ -22,6 +23,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
     const [description, setDescription] = useState('');
     const [services, setServices] = useState([]);
     const [servicesText,setServicesText] = useState('');
+    const { uploadImage, deleteImage } = useMyStorage();
 
 
     useImperativeHandle(ref, () => ({
@@ -59,11 +61,9 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
     }
 
 
-    const handleSubmit = (e)=> {
+    const handleSubmit = async (e)=> {
         e.preventDefault();
         const img = e.target.image.files[0];
-        const formData = new FormData();
-        formData.append('img',img);
 
         const serviceObj = {
             name:name,
@@ -82,66 +82,58 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
             serviceObj.features = services;
         }
 
-        Swal.fire({...swalObj,text: "to Update the service"}).then(({ isConfirmed }) => {
+
+        try {
+            const { isConfirmed } = await Swal.fire({...swalObj,text: "to Update the service"});
             if (isConfirmed) {
 
                 if (img) {
-
-                    axios.post('http://localhost:5000/serviceImg', formData, {
+                    await deleteImage(service?.img);
+                    const {name} = await uploadImage(img);
+                    const { data } = await axios.put(`http://localhost:5000/service/${service?.type}/${service?._id}`, { ...serviceObj, img: name }, {
                         headers: {
                             uid: currentUser?.uid
-                        }
-                    }).then(({ data }) => {
-                        if (data?.uploaded) {
-                            axios.put(`http://localhost:5000/service/${service?.type}/${service?._id}`, { ...serviceObj, img: data.filename}, {
-                                headers: {
-                                    uid: currentUser?.uid
-                                }
-                            })
-                                .then(({ data }) => {
-                                    if (data.acknowledged && data.modifiedCount) {
-                                        Swal.fire(
-                                            'Successfull!',
-                                            'Service Updated Successfully.',
-                                            'success'
-                                        )
-                                        refetch();
-                                        closeModal();
-                                    }
-                                })
-
-                        } else {
-                            toast.error('Image not uploaded',{theme:'colored'});
-                            return 0;
                         }
                     });
+                    if (data.acknowledged && data.modifiedCount) {
+                        Swal.fire(
+                            'Successfull!',
+                            'Service Updated Successfully.',
+                            'success'
+                        )
+                        refetch();
+                        closeModal();
+                    }
 
                 } else {
-                    axios.put(`http://localhost:5000/service/${service?.type}/${service?._id}`,{ ...serviceObj, img:service?.img},{
+                    const { data } = await axios.put(`http://localhost:5000/service/${service?.type}/${service?._id}`, { ...serviceObj, img: service?.img }, {
                         headers: {
                             uid: currentUser?.uid
                         }
-                    })
-                    .then(({data})=> {
-                        if (data.acknowledged && data.modifiedCount) {
-                            Swal.fire(
-                                'Successfull!',
-                                'Service Updated Successfully.',
-                                'success'
-                            )
-                            refetch();
-                            closeModal();
-                        }else {
-                            toast.error('Service not updated',{theme:'colored'});
-                            return 0;
-                        }
-                    })
+                    });
+                    if (data.acknowledged && data.modifiedCount) {
+                        Swal.fire(
+                            'Successfull!',
+                            'Service Updated Successfully.',
+                            'success'
+                        )
+                        refetch();
+                        closeModal();
+                    } else {
+                        toast.error('Service not updated', { theme: 'colored' });
+                        closeModal();
+                        return 0;
+                    }
                 }
 
             }else{
                 closeModal();
             }
-        });
+
+            
+        } catch (err) {
+            console.log(err);
+        }
         e.target.reset();
     }
 
@@ -198,7 +190,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
                 <div className='flex gap-2 flex-wrap'>
                     <p className='font-bold basis-full'>Service Photo :</p>
                     <input type="file" name='image' accept='.png, .jpg, .jpeg' className="file-input file-input-bordered file-input-warning w-full max-w-xs mx-auto" />
-                    <img className='w-[60%] rounded object-scale-down mx-auto' src={`http://localhost:5000/serviceImg/${service?.img}`} alt="" />
+                    <img className='w-[60%] rounded object-scale-down mx-auto' src={imgUrl(service?.img)} alt="" />
                 </div>
 
                 <div className="divider h-10" />

@@ -11,9 +11,11 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/firebase.init";
+import useMyStorage from "../../Hooks/useMyStorage";
 
 const AddService = () => {
   const [user] = useAuthState(auth);
+  const { uploadImage,deleteImage } = useMyStorage();
 
   // State initilize
   const [loading, setLoading] = useState(false);
@@ -38,8 +40,7 @@ const AddService = () => {
   // handle service adding
   const handleServiceAdding = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("img", e.target.image.files[0]);
+    const serviceImg = e.target.image.files[0];
 
     const service = {
       name: e.target.name.value,
@@ -57,35 +58,16 @@ const AddService = () => {
       service_diff.features = items;
     }
 
-    axios
-      .post("http://localhost:5000/serviceImg", formData, {
-        headers: {
-          uid: user?.uid,
-        },
-      })
-      .then(({ data }) => {
-        if (data?.uploaded) {
-          axios
-            .post(`http://localhost:5000/service/${type}`, {
-              ...service,
-              ...service_diff,
-              img: data.filename,
-            })
-            .then(({ data }) => {
-              if (data.acknowledged) {
-                toast.success("Service added successfully", {
-                  theme: "colored",
-                });
-              } else {
-                toast.error("Service not added", { theme: "colored" });
-                return 0;
-              }
-            });
-        } else {
-          toast.error("Image not uploaded", { theme: "colored" });
-          return 0;
-        }
-      });
+    try {
+      const {name} = await uploadImage(serviceImg);
+      const {data} = await axios.post(`http://localhost:5000/service/${type}`, {...service,...service_diff,img:name,});
+      data.acknowledged?
+        toast.success("Service added successfully", {theme: "colored",})
+        :
+        toast.error("Service not added", { theme: "colored" });
+    } catch (err) {
+      
+    }
 
     clearStorage();
     e.target.reset();
