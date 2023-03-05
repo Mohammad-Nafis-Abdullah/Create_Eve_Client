@@ -28,7 +28,7 @@ const useMyStorage = () => {
 
     const uploadImage = (file=undefined) => {
         if(!file){
-            console.log('no file');
+            // console.log('no file');
             return;
         }
 
@@ -37,7 +37,7 @@ const useMyStorage = () => {
             // console.log(file);
             try {
                 const uploadRef = ref(storage,imageNaming(file?.name));
-                console.log(uploadRef);
+                // console.log(uploadRef);
                 const result = await uploadFile(uploadRef, file, {
                     contentType: 'image/jpeg'
                 });
@@ -53,7 +53,6 @@ const useMyStorage = () => {
 
 
     const deleteImage = (imgName='')=> {
-        // let deleted;
         if(!imgName){
             return;
         }

@@ -31,7 +31,7 @@ const Banner = () => {
   } = useRefetch("http://localhost:5000/home-banner");
 
   const configBanner = () => {
-    instantModal(<ConfigBannerModal refetch={refetch} />);
+    instantModal(<ConfigBannerModal bannerPhotos={bannerPhotos} refetch={refetch} />);
   };
 
   return (

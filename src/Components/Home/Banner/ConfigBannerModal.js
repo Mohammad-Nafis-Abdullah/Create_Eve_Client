@@ -4,41 +4,64 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../../Firebase/firebase.init';
+import useMyStorage from '../../Hooks/useMyStorage';
 import { closeModal } from '../../Prebuild/Modal';
 
-const ConfigBannerModal = ({refetch}) => {
+const ConfigBannerModal = ({refetch,bannerPhotos}) => {
     const [user] = useAuthState(auth);
+    const { uploadImage,deleteImage } = useMyStorage();
+    
+    // console.log(bannerPhotos);
 
-    const handleSubmit = (e)=> {
+    const promiseArray = (arr=[],callback=()=>0)=> {
+        return arr.map(e=>{
+            return callback(e);
+        })
+    };
+
+    // console.log(promiseArray([...bannerPhotos],(banner)=> {
+    //     return {img:banner._id};
+    // }));
+
+
+
+    const handleSubmit = async (e)=> {
         e.preventDefault();
         const imgs = Object.values(e.target.img?.files);
 
-        const formData = new FormData();
-        imgs.forEach(img=>{
-            formData.append("img",img);
-        })
+        try {
+            if (imgs.length<=5) {
+                await Promise.all(promiseArray([...bannerPhotos],(b)=> deleteImage(b.img)));
+                const imgInfo = await Promise.all(promiseArray([...imgs],(img)=> uploadImage(img)));
+                const names = imgInfo.map(img=> {return {img:img.name}});
 
-        if (imgs.length<=5) {
-            axios.post('http://localhost:5000/home-banner',formData,{
-                headers:{
-                    uid: user?.uid
-                }
-            })
-            .then(({data})=>{
+                // console.log(names);
+
+                const { data } = await axios.post('http://localhost:5000/home-banner', names, {
+                    headers: {
+                        uid: user?.uid
+                    }
+                })
                 if (data.upload) {
-                    toast.success('Image uploaded successfully',{theme:'dark'})
+                    toast.success('Image uploaded successfully', { theme: 'dark' })
                     e.target.reset();
                     refetch();
                     closeModal();
                 }
-            })
 
-        } else {
-            toast.error('Please upload 1-5 images',{theme:'dark'});
-            e.target.reset();
-            refetch();
-            closeModal();
-        };
+            } else {
+                toast.error('Please upload 1-5 images',{theme:'dark'});
+                e.target.reset();
+                refetch();
+                closeModal();
+            };
+            
+        } catch (err) {
+            console.log(err);
+        }
+
+        closeModal();
+        e.target.reset();
     }
 
     return (
