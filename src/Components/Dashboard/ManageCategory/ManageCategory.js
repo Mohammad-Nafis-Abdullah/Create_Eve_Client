@@ -13,14 +13,14 @@ const ManageCategory = () => {
     return (
         <div>
             {categoryLoading && <Loading />}
-            <h2 className='pt-5 pb-3 text-2xl font-bold text-center'>Manage Package Category</h2>
-            <div className='ml-8 sm:ml-5 my-3 mr-10 bg-white p-5 rounded-none sm:rounded-2xl'>
+            <h2 className='pt-5 pb-3 sm:text-xl font-bold text-center'>Manage Package Category</h2>
+            <div className='bg-white p-5 rounded-none sm:rounded-2xl'>
                 <section className='flex flex-wrap gap-2 justify-center pt-10 relative'>
                     <button onClick={() => {
                         childRef?.current?.blank();
                         childRef?.current?.topMove();
                         instantModal(<CategoryEditModal ref={childRef} category={null} categoryRefetch={categoryRefetch} />);
-                    }} className='btn btn-sm absolute top-0 right-0'>Create new category</button>
+                    }} className='btn btn-sm px-0 w-full sm:w-auto sm:px-2 absolute top-0 right-0'>Create new category</button>
                     {
                         [...categories].map(category => <CategoryCard key={category._id} category={category} categoryRefetch={categoryRefetch} />)
                     }

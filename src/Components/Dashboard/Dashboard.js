@@ -54,11 +54,9 @@ const Dashboard = () => {
               </span>
             </label>
           </div>
-          <div className="text-center ">
-            <div id="header" className=""></div>
-            <div className="text-left px-3">
-              <Outlet />
-            </div>
+
+          <div className="px-3">
+            <Outlet />
           </div>
         </div>
         <div className="drawer-side w-[100%] lg:w-[260px]">
