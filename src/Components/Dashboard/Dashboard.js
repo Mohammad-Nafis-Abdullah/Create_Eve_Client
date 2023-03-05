@@ -29,7 +29,7 @@ const Dashboard = () => {
     data: currentUser,
     loading: currentUserLoading,
     refetch: currentUserRefetch,
-  } = useRefetch(`http://localhost:5000/single-user/${user?.uid}`);
+  } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
 
   if (loading || adminLoading) {
     return <Loading />;

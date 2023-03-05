@@ -12,16 +12,16 @@ import ServiceConfigModal from "../ServiceConfigModal";
 function Audiovisual() {
   const navigate = useNavigate();
   const [audio, setAudio, clearAudio] = useLocalStorage("audio", {});
-  const { data: audios, loading, refetch } = useRefetch(`http://localhost:5000/services/audiovisual`, []);
+  const { data: audios, loading, refetch } = useRefetch(`https://create-eve-server.onrender.com/services/audiovisual`, []);
 
   return (
     <div className="route">
-      {loading && <Loading/>}
+      {loading && <Loading />}
       <div className="bg-image h-[300px] banner-background" style={{
         backgroundImage: 'url(https://images.squarespace-cdn.com/content/v1/58ab1e8abe6594a08431ecfb/1487712703490-BTG81NCCWEWH1LX9PNB7/promo_02.png)'
       }}>
         <div className="flex justify-center items-center flex-wrap content-center h-full bg-black/50">
-          
+
           <div className="text-white text-center basis-full grow">
             <p className="tracking-[8px]">ALL YOU NEED TO KNOW</p>
             <p className="text-4xl text-center font-bold my-3">
@@ -29,7 +29,7 @@ function Audiovisual() {
               <span className="font-normal tracking-wide">SERVICES</span>
             </p>
           </div>
-          
+
           <div className="flex justify-center items-center gap-x-3 text-white ">
             <Link to="/" className="text-lg">
               Home

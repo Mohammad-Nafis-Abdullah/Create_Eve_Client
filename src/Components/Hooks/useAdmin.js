@@ -12,13 +12,13 @@ const useAdmin = () => {
     useEffect(() => {
         if (user) {
             axios
-                .get(`http://localhost:5000/admin/${user?.uid}`)
-                .then(({data}) => {
+                .get(`https://create-eve-server.onrender.com/admin/${user?.uid}`)
+                .then(({ data }) => {
                     setAdmin(data.admin);
                     setLoading(false);
                 });
         }
-        else{
+        else {
             setLoading(false);
         }
         return;

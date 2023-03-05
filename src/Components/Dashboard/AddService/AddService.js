@@ -15,7 +15,7 @@ import useMyStorage from "../../Hooks/useMyStorage";
 
 const AddService = () => {
   const [user] = useAuthState(auth);
-  const { uploadImage,deleteImage } = useMyStorage();
+  const { uploadImage, deleteImage } = useMyStorage();
 
   // State initilize
   const [loading, setLoading] = useState(false);
@@ -59,14 +59,14 @@ const AddService = () => {
     }
 
     try {
-      const {name} = await uploadImage(serviceImg);
-      const {data} = await axios.post(`http://localhost:5000/service/${type}`, {...service,...service_diff,img:name,});
-      data.acknowledged?
-        toast.success("Service added successfully", {theme: "colored",})
+      const { name } = await uploadImage(serviceImg);
+      const { data } = await axios.post(`https://create-eve-server.onrender.com/service/${type}`, { ...service, ...service_diff, img: name, });
+      data.acknowledged ?
+        toast.success("Service added successfully", { theme: "colored", })
         :
         toast.error("Service not added", { theme: "colored" });
     } catch (err) {
-      
+
     }
 
     clearStorage();

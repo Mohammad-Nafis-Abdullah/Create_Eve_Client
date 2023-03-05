@@ -21,17 +21,17 @@ const fileTypes = ["JPG", "PNG", "GIF"];
 
 
 const UserProfile = () => {
-  const [state,dispatch] = useContext(StateContext);
+  const [state, dispatch] = useContext(StateContext);
   const [user, loading, error] = useAuthState(auth);
   const {
     data: currentUser,
     loading: userLoading,
     refetch,
-  } = useRefetch(`http://localhost:5000/single-user/${user?.uid}`, {},(data)=> {
-      dispatch({
-        type:'userImg',
-        value:data.userImg,
-      })
+  } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, {}, (data) => {
+    dispatch({
+      type: 'userImg',
+      value: data.userImg,
+    })
   });
   const [open, SetOpen] = useState(false);
   const navigate = useNavigate();
@@ -57,10 +57,10 @@ const UserProfile = () => {
     const formData = new FormData();
     formData.append("userImg", file);
 
-    axios.post("http://localhost:5000/userImg", formData).then(({ data }) => {
+    axios.post("https://create-eve-server.onrender.com/userImg", formData).then(({ data }) => {
       if (data?.uploaded) {
         axios
-          .put(`http://localhost:5000/user-update/${user?.uid}`, {
+          .put(`https://create-eve-server.onrender.com/user-update/${user?.uid}`, {
             userImg: data?.filename,
           })
           .then(({ data }) => {

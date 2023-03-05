@@ -6,7 +6,7 @@ import "./BlogComment.s.css";
 import Comment from "./Comment";
 
 const BlogComments = ({ blogId }) => {
-  const [comments, loading, refetch] = useRefetch(`http://localhost:5000/comment/${blogId}`, []);
+  const [comments, loading, refetch] = useRefetch(`https://create-eve-server.onrender.com/comment/${blogId}`, []);
 
   return (
     <section className="max-w-7xl mx-auto px-5  ">

@@ -17,15 +17,15 @@ const BookingCard = ({ booking, refetch }) => {
     const navigate = useNavigate();
 
     const total = () => {
-        return (booking?.package?.price + 
-            ((booking?.catering?.price * booking?.catering?.orderCount) || 0) + 
-            ((booking?.audio?.price * booking?.audio?.orderCount) || 0) + 
+        return (booking?.package?.price +
+            ((booking?.catering?.price * booking?.catering?.orderCount) || 0) +
+            ((booking?.audio?.price * booking?.audio?.orderCount) || 0) +
             ((booking?.lighting?.price * booking?.lighting?.orderCount) || 0));
     }
 
     useEffect(() => {
         if (confirmState) {
-            axios.delete(`http://localhost:5000/bookings/${booking?._id}`)
+            axios.delete(`https://create-eve-server.onrender.com/bookings/${booking?._id}`)
                 .then(({ data }) => {
                     if (data?.acknowledged) {
                         toast.success('Booking deleted successfully', { theme: 'dark' });
@@ -45,9 +45,9 @@ const BookingCard = ({ booking, refetch }) => {
                 <div className='w-8 h-10 bg-white rounded-b-full flex justify-center items-center absolute top-0 right-1'>
                     {
                         booking?.paid ?
-                        <GiCheckMark className='w-6 h-6 text-green-600 cursor-pointer'/>:
-                        <ShowModalBtn showInModal={<Confirmation setConfirmState={setConfirmState} />}>
-                        <FaTrash className='w-6 h-6 text-red-500 hover:text-red-600 active:scale-95 transition-colors cursor-pointer' /></ShowModalBtn>
+                            <GiCheckMark className='w-6 h-6 text-green-600 cursor-pointer' /> :
+                            <ShowModalBtn showInModal={<Confirmation setConfirmState={setConfirmState} />}>
+                                <FaTrash className='w-6 h-6 text-red-500 hover:text-red-600 active:scale-95 transition-colors cursor-pointer' /></ShowModalBtn>
                     }
                 </div>
                 <div>
@@ -88,7 +88,7 @@ const BookingCard = ({ booking, refetch }) => {
                     {
                         booking?.paid ||
                         <div className='basis-full flex justify-end'>
-                            <button onClick={()=> navigate(`/dashboard/payment/${booking?._id}`)} className='btn btn-sm bg-highlight text-black hover:bg-highlight hover:text-black hover:ring-2 hover:ring-highlight hover:underline'>Pay</button>
+                            <button onClick={() => navigate(`/dashboard/payment/${booking?._id}`)} className='btn btn-sm bg-highlight text-black hover:bg-highlight hover:text-black hover:ring-2 hover:ring-highlight hover:underline'>Pay</button>
                         </div>
                     }
                 </div>

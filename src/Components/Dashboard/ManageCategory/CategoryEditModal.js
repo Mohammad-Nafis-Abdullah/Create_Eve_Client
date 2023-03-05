@@ -10,7 +10,7 @@ import auth from '../../../Firebase/firebase.init';
 import useMyStorage, { imgUrl } from '../../Hooks/useMyStorage';
 import { closeModal } from '../../Prebuild/Modal';
 
-const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
+const CategoryEditModal = forwardRef(({ category, categoryRefetch }, ref) => {
     const [currentUser] = useAuthState(auth);
     const [title, setTitle] = useState('');
     const [min, setMin] = useState(0);
@@ -19,15 +19,15 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
     const { uploadImage, deleteImage } = useMyStorage();
 
     const topDiv = document.getElementById('view');
-    
-    useImperativeHandle(ref, ()=> ({
-        blank : ()=> {
+
+    useImperativeHandle(ref, () => ({
+        blank: () => {
             setTitle('');
             setMin('');
             setMax('');
             setCover('');
         },
-        topMove : ()=> {
+        topMove: () => {
             topDiv?.scrollIntoView();
         }
     }))
@@ -39,7 +39,7 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
             setMin(category?.priceRange[0]);
             setMax(category?.priceRange[1]);
             setCover(category?.coverPhoto);
-        }else{
+        } else {
             setTitle('');
             setMin('');
             setMax('');
@@ -47,29 +47,29 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
         }
     }, [category]);
 
-    const categoryNaming = (text='')=> {
+    const categoryNaming = (text = '') => {
         return text.toLowerCase().trim().split(' ').join('-');
     }
 
-    const handleSubmit = async (e)=> {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const img = e.target.coverPhoto.files[0];
 
         const formData = new FormData();
-        formData.append('img',img);
+        formData.append('img', img);
 
         const categoryObj = {
             title: title,
             category: category?.category || categoryNaming(title),
-            priceRange: [min,max]
+            priceRange: [min, max]
         }
 
         try {
-            
+
             if (img) {
                 await deleteImage(cover);
-                const {name} = await uploadImage(img);
-                const {data} = await axios.put(`http://localhost:5000/packages/${categoryObj?.category}`,{ ...categoryObj, coverPhoto: name}, {
+                const { name } = await uploadImage(img);
+                const { data } = await axios.put(`https://create-eve-server.onrender.com/packages/${categoryObj?.category}`, { ...categoryObj, coverPhoto: name }, {
                     headers: {
                         uid: currentUser?.uid
                     }
@@ -77,13 +77,13 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
                 if (data.acknowledged && data.modifiedCount) {
                     categoryRefetch();
                     closeModal();
-                    toast.success('Successfully Completed',{theme:'dark'});
-                }else{
-                    toast.error('An error occurred',{theme:'colored'});
+                    toast.success('Successfully Completed', { theme: 'dark' });
+                } else {
+                    toast.error('An error occurred', { theme: 'colored' });
                 }
 
             } else {
-                const {data} = await axios.put(`http://localhost:5000/packages/${categoryObj?.category}`,{...categoryObj,coverPhoto:cover},{
+                const { data } = await axios.put(`https://create-eve-server.onrender.com/packages/${categoryObj?.category}`, { ...categoryObj, coverPhoto: cover }, {
                     headers: {
                         uid: currentUser?.uid
                     }
@@ -91,7 +91,7 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
                 if (data.acknowledged && data.modifiedCount) {
                     categoryRefetch();
                     closeModal();
-                    toast.success('Successfully Completed',{theme:'dark'})
+                    toast.success('Successfully Completed', { theme: 'dark' })
                 }
             }
 
@@ -105,16 +105,16 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
     return (
         <div className='h-full w-full p-3'>
             <section className='h-full max-w-sm bg-white mx-auto rounded-md p-5 overflow-y-auto relative'>
-            <div id='view' className='absolute top-0 right-0 left-0'/>
+                <div id='view' className='absolute top-0 right-0 left-0' />
                 <form onSubmit={handleSubmit}>
-                        <label className="input-group input-group-md font-bold">
-                            <span className='bg-gray-900 text-highlight'>Title</span>
-                            {
-                                category?
-                                <input type="text" placeholder="Category Title" className="input input-bordered input-md grow" readOnly value={title}/>:
-                                <input onChange={(e)=> setTitle(e.target.value)} type="text" placeholder="Category Title" className="input input-bordered input-md grow" value={title}/>
-                            }
-                        </label>
+                    <label className="input-group input-group-md font-bold">
+                        <span className='bg-gray-900 text-highlight'>Title</span>
+                        {
+                            category ?
+                                <input type="text" placeholder="Category Title" className="input input-bordered input-md grow" readOnly value={title} /> :
+                                <input onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Category Title" className="input input-bordered input-md grow" value={title} />
+                        }
+                    </label>
 
                     <div className="divider" />
 
@@ -122,20 +122,20 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch },ref) => {
 
                     <section className='space-y-3'>
 
-                            <label className="input-group input-group-md font-bold">
-                                <span className='bg-gray-900 text-highlight'>Min:</span>
-                                <input onChange={(e)=> setMin(parseFloat(e.target.value))} 
+                        <label className="input-group input-group-md font-bold">
+                            <span className='bg-gray-900 text-highlight'>Min:</span>
+                            <input onChange={(e) => setMin(parseFloat(e.target.value))}
                                 onWheel={e => e.target.blur()}
-                                type="number" placeholder="Min Price Range" className="input input-bordered input-md grow" value={min}/>
-                            </label>
+                                type="number" placeholder="Min Price Range" className="input input-bordered input-md grow" value={min} />
+                        </label>
 
-                            <label className="input-group input-group-md font-bold">
-                                <span className='bg-gray-900 text-highlight'>Max:</span>
-                                <input onChange={(e)=> setMax(parseFloat(e.target.value))} 
-                                type="number" 
+                        <label className="input-group input-group-md font-bold">
+                            <span className='bg-gray-900 text-highlight'>Max:</span>
+                            <input onChange={(e) => setMax(parseFloat(e.target.value))}
+                                type="number"
                                 onWheel={e => e.target.blur()}
-                                placeholder="Max Price Range" className="input input-bordered input-md grow" value={max}/>
-                            </label>
+                                placeholder="Max Price Range" className="input input-bordered input-md grow" value={max} />
+                        </label>
 
                     </section>
 

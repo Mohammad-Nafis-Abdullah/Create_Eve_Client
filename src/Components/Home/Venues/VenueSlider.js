@@ -7,7 +7,7 @@ const VenueSlider = () => {
   const [select, setSelect] = useState({});
   const [venues, setVenues] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/venues`).then((res) => {
+    axios.get(`https://create-eve-server.onrender.com/venues`).then((res) => {
       setVenues(res?.data);
       setSelect(res?.data[0]);
     });
@@ -40,9 +40,8 @@ const VenueSlider = () => {
                 return (
                   <div
                     key={index}
-                    className={`h-[141px] max-w-[424.4px] mr-[30px] p-[30px] flex items-center gap-[10%] text-white whitespace-pre cursor-pointer ${
-                      venue._id === select._id && styles.selected
-                    } `}
+                    className={`h-[141px] max-w-[424.4px] mr-[30px] p-[30px] flex items-center gap-[10%] text-white whitespace-pre cursor-pointer ${venue._id === select._id && styles.selected
+                      } `}
                     onClick={() => selection(venue)}
                   >
                     <img

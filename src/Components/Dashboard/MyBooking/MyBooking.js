@@ -24,7 +24,7 @@ function MyBooking() {
     data: bookings,
     loading,
     refetch,
-  } = useRefetch(`http://localhost:5000/bookings/${user?.uid}`, []);
+  } = useRefetch(`https://create-eve-server.onrender.com/bookings/${user?.uid}`, []);
 
   return (
     <div className="p-3">

@@ -14,7 +14,7 @@ import { StateContext } from "../../../App";
 import { imgUrl } from "../../Hooks/useMyStorage";
 
 const Navbar = ({ location }) => {
-  const [state,dispatch] = useContext(StateContext);
+  const [state, dispatch] = useContext(StateContext);
   const { pathname } = location;
   const routeName = pathname.slice("1");
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Navbar = ({ location }) => {
     data: pkgs,
     loading: pkgLoading,
     refetch: pkgRefetch,
-  } = useRefetch(`http://localhost:5000/packages`, []);
+  } = useRefetch(`https://create-eve-server.onrender.com/packages`, []);
 
   const [navbarBg, setNavbar] = useState(false);
   const changeBg = () => {
@@ -61,7 +61,7 @@ const Navbar = ({ location }) => {
     data: currentUser,
     loading: currentUserLoading,
     refetch: currentUserRefetch,
-  } = useRefetch(`http://localhost:5000/single-user/${user?.uid}`);
+  } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
 
   return (
     <section
@@ -69,9 +69,8 @@ const Navbar = ({ location }) => {
     >
       {routeName && <TopnavBar />}
       <div
-        className={` ${
-          routeName ? "bg-white text-black" : "bg-black/50 text-white"
-        }  flex items-center justify-around flex-wrap grow-0 gap-y-2 gap-x-10 max-w-8xl w-full mx-auto p-5`}
+        className={` ${routeName ? "bg-white text-black" : "bg-black/50 text-white"
+          }  flex items-center justify-around flex-wrap grow-0 gap-y-2 gap-x-10 max-w-8xl w-full mx-auto p-5`}
         id="navbar"
       >
         {/* navbar icons and logo */}

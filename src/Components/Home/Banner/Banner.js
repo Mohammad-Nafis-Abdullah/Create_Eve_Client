@@ -28,7 +28,7 @@ const Banner = () => {
     data: bannerPhotos,
     loading,
     refetch,
-  } = useRefetch("http://localhost:5000/home-banner");
+  } = useRefetch("https://create-eve-server.onrender.com/home-banner");
 
   const configBanner = () => {
     instantModal(<ConfigBannerModal bannerPhotos={bannerPhotos} refetch={refetch} />);

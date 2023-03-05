@@ -14,15 +14,15 @@ import { imgUrl } from "../Hooks/useMyStorage";
 const Packages = () => {
   const { category } = useParams();
   const [range, setRange] = useState(0);
-  const [sort,setSort] = useState(true);
-  const {pathname} = useLocation();
+  const [sort, setSort] = useState(true);
+  const { pathname } = useLocation();
 
   const { data: selectedCategory, refetch } = useRefetch(
-    `http://localhost:5000/packages/${category}`,
+    `https://create-eve-server.onrender.com/packages/${category}`,
     {}
   );
   const { data: allPackages, refetch: packageRefetch } = useRefetch(
-    `http://localhost:5000/all-packages/${category}?range=${range}&sort=${sort?1:-1}`,
+    `https://create-eve-server.onrender.com/all-packages/${category}?range=${range}&sort=${sort ? 1 : -1}`,
     []
   );
 
@@ -30,13 +30,13 @@ const Packages = () => {
     packageRefetch();
   }, [range]);
 
-  useEffect(()=> {
+  useEffect(() => {
     packageRefetch();
-  },[sort]);
+  }, [sort]);
 
-  useEffect(()=> {
-      setRange(0);
-  },[pathname])
+  useEffect(() => {
+    setRange(0);
+  }, [pathname])
 
   return (
     <div className="min-h-screen">
@@ -59,7 +59,7 @@ const Packages = () => {
           </h2>
         </div>
       </section>
-      
+
       {/* filter options */}
       <section className="mt-10 mx-auto max-w-7xl px-5 flex justify-between items-center flex-wrap gap-y-10 gap-x-5">
         <div className="max-w-sm grow px-12">
@@ -74,7 +74,7 @@ const Packages = () => {
             step={
               ((selectedCategory?.priceRange?.[1] -
                 selectedCategory?.priceRange?.[0]) /
-              4)+''
+                4) + ''
             }
           />
           <div className="w-full flex justify-between text-xs">
@@ -90,9 +90,9 @@ const Packages = () => {
               <small className="absolute -bottom-3">
                 {parseInt(
                   selectedCategory?.priceRange?.[0] +
-                    (selectedCategory?.priceRange?.[1] -
-                      selectedCategory?.priceRange?.[0]) /
-                      4
+                  (selectedCategory?.priceRange?.[1] -
+                    selectedCategory?.priceRange?.[0]) /
+                  4
                 )}
                 /-
               </small>
@@ -102,10 +102,10 @@ const Packages = () => {
               <small className="absolute -bottom-3">
                 {parseInt(
                   selectedCategory?.priceRange?.[0] +
-                    ((selectedCategory?.priceRange?.[1] -
-                      selectedCategory?.priceRange?.[0]) /
-                      4) *
-                      2
+                  ((selectedCategory?.priceRange?.[1] -
+                    selectedCategory?.priceRange?.[0]) /
+                    4) *
+                  2
                 )}
                 /-
               </small>
@@ -116,10 +116,10 @@ const Packages = () => {
               <small className="absolute -bottom-3">
                 {parseInt(
                   selectedCategory?.priceRange?.[0] +
-                    ((selectedCategory?.priceRange?.[1] -
-                      selectedCategory?.priceRange?.[0]) /
-                      4) *
-                      3
+                  ((selectedCategory?.priceRange?.[1] -
+                    selectedCategory?.priceRange?.[0]) /
+                    4) *
+                  3
                 )}
                 /-
               </small>
@@ -133,19 +133,19 @@ const Packages = () => {
             </span>
           </div>
         </div>
-        
+
         {/* sort state */}
-        <div onClick={()=> setSort(prev=> !prev)} className="p-2 rounded-md inline-flex gap-2 items-center bg-highlight text-gray-900 cursor-pointer select-none border-2">
-            {
-              sort?
-              <TbArrowsDownUp className="h-5 w-5"/>:
-              <TbArrowsUpDown className="h-5 w-5"/>
-            }
-            {
-              sort?
-              <span className="font-bold">Price Low to High</span>:
+        <div onClick={() => setSort(prev => !prev)} className="p-2 rounded-md inline-flex gap-2 items-center bg-highlight text-gray-900 cursor-pointer select-none border-2">
+          {
+            sort ?
+              <TbArrowsDownUp className="h-5 w-5" /> :
+              <TbArrowsUpDown className="h-5 w-5" />
+          }
+          {
+            sort ?
+              <span className="font-bold">Price Low to High</span> :
               <span className="font-bold">Price High to Low</span>
-            }
+          }
         </div>
       </section>
 

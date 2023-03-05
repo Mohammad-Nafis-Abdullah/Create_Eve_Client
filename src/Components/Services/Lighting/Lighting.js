@@ -14,7 +14,7 @@ import ServiceConfigModal from "../ServiceConfigModal";
 
 function Lighting() {
   const [lighting, setLighting, clearLighting] = useLocalStorage("lighting", {});
-  const { data: lightings, loading, refetch } = useRefetch(`http://localhost:5000/services/lighting`, []);
+  const { data: lightings, loading, refetch } = useRefetch(`https://create-eve-server.onrender.com/services/lighting`, []);
 
   return (
     <div className="route">

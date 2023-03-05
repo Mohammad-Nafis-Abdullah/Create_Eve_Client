@@ -14,7 +14,7 @@ import ServiceCardContainer from "../ServiceCardContainer";
 function Catering() {
   const navigate = useNavigate();
   const [catering, setCatering, clearCatering] = useLocalStorage("catering", {});
-  const { data: caterings, loading, refetch } = useRefetch(`http://localhost:5000/services/catering`, []);
+  const { data: caterings, loading, refetch } = useRefetch(`https://create-eve-server.onrender.com/services/catering`, []);
 
   return (
     <div className="route">
@@ -23,7 +23,7 @@ function Catering() {
         backgroundImage: 'url(https://ravishmag.co.uk/wp-content/uploads/2022/07/Starting-a-Luxury-Catering-Business-.jpg)'
       }}>
         <div className="flex justify-center items-center content-center gap-y-3 flex-wrap h-full bg-black/50">
-          
+
           <div className="text-white text-center basis-full">
             <p className="tracking-[8px] uppercase">All You Need to Know</p>
             <p className="text-4xl text-center font-bold inline-flex gap-5 tracking-wider">
@@ -31,7 +31,7 @@ function Catering() {
               <span className="font-normal tracking-wide uppercase">Services</span>
             </p>
           </div>
-          
+
           <div className="flex justify-center items-center gap-x-3 text-white ">
             <Link to="/" className="text-lg">
               Home
@@ -41,7 +41,7 @@ function Catering() {
               Contact Us
             </Link>
           </div>
-          
+
         </div>
       </div>
 
@@ -80,7 +80,7 @@ function Catering() {
               Vegetarian Catering, Vegan Catering and other specialty catering
               services. CBD menus can also be customized to accommodate
               international, indigenous cuisine.
-            </p> 
+            </p>
             <h3 className="signature text-4xl tracking-wider text-right">Create-eve Event</h3>
           </div>
         </div>

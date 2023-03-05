@@ -10,49 +10,49 @@ import SingleUser from "../SingleUser/SingleUser";
 
 const AllUsers = () => {
   const [currentUser] = useAuthState(auth);
-  const {data:allUsers, loading, refetch} = useRefetch("http://localhost:5000/allusers")  
-  const {data:user, loading:userLoading, refetch:userRefetch} = useRefetch(`http://localhost:5000/user/${currentUser?.uid}`,{})
+  const { data: allUsers, loading, refetch } = useRefetch("https://create-eve-server.onrender.com/allusers")
+  const { data: user, loading: userLoading, refetch: userRefetch } = useRefetch(`https://create-eve-server.onrender.com/user/${currentUser?.uid}`, {})
 
   const makeAdmin = {
-      title: 'Are you sure?',
-      text: "to make the user as admin",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No'
+    title: 'Are you sure?',
+    text: "to make the user as admin",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes',
+    cancelButtonText: 'No'
   }
 
   const removeAdmin = {
-      title: 'Are you sure?',
-      text: "to remove the user from admin",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No'
+    title: 'Are you sure?',
+    text: "to remove the user from admin",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes',
+    cancelButtonText: 'No'
   }
 
   const handleMakeAdmin = (uid) => {
 
     Swal.fire(makeAdmin).then(({ isConfirmed }) => {
       if (isConfirmed) {
-        axios.put(`http://localhost:5000/make-admin/${uid}`,{},{
-          headers:{
-            uid : currentUser?.uid
+        axios.put(`https://create-eve-server.onrender.com/make-admin/${uid}`, {}, {
+          headers: {
+            uid: currentUser?.uid
           }
         })
           .then(({ data }) => {
-            if (data.acknowledged && data.matchedCount===1 && data.modifiedCount===1) {
+            if (data.acknowledged && data.matchedCount === 1 && data.modifiedCount === 1) {
               refetch();
               Swal.fire(
                 'Successfull!',
                 'Admin Successfully made.',
                 'success'
               )
-            }else{
+            } else {
               Swal.fire(
                 'Unsuccessfull!',
                 'Admin unsuccessfully made.',
@@ -60,28 +60,28 @@ const AllUsers = () => {
               )
             }
           })
-        }
-      });
+      }
+    });
   }
 
-  const handleRemoveAdmin = (uid)=> {
+  const handleRemoveAdmin = (uid) => {
 
     Swal.fire(removeAdmin).then(({ isConfirmed }) => {
       if (isConfirmed) {
-        axios.put(`http://localhost:5000/remove-admin/${uid}`,{},{
-          headers:{
-            uid : currentUser?.uid
+        axios.put(`https://create-eve-server.onrender.com/remove-admin/${uid}`, {}, {
+          headers: {
+            uid: currentUser?.uid
           }
         })
           .then(({ data }) => {
-            if (data.acknowledged && data.matchedCount===1 && data.modifiedCount===1) {
+            if (data.acknowledged && data.matchedCount === 1 && data.modifiedCount === 1) {
               refetch();
               Swal.fire(
                 'Successfull!',
                 'User removed from admin Successfully.',
                 'success'
               )
-            }else{
+            } else {
               Swal.fire(
                 'Unsuccessfull!',
                 'User is not removed from admin.',
@@ -89,14 +89,14 @@ const AllUsers = () => {
               )
             }
           })
-        }
-      });
+      }
+    });
   }
 
 
   return (
     <div className="my-12 overflow-x-auto">
-      {(loading || userLoading) && <Loading/>}
+      {(loading || userLoading) && <Loading />}
 
       <section className="w-[56rem] mx-auto">
         <table className="">
@@ -122,7 +122,7 @@ const AllUsers = () => {
             {allUsers.map((u) => (
               <SingleUser
                 user={u}
-                ownerState={user?.role==='owner'}
+                ownerState={user?.role === 'owner'}
                 handleRemoveAdmin={handleRemoveAdmin}
                 handleMakeAdmin={handleMakeAdmin}
                 key={u._id}

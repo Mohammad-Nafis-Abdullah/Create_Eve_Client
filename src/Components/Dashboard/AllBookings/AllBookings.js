@@ -15,7 +15,7 @@ function AllBookings() {
     loading: bookingLoading,
     refetch: refetchBooking,
   } = useRefetch(
-    `http://localhost:5000/get-all-booking-info?limit=${limit}&page=${page}`,
+    `https://create-eve-server.onrender.com/get-all-booking-info?limit=${limit}&page=${page}`,
     {}
   );
 

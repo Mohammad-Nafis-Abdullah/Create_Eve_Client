@@ -78,7 +78,7 @@ const OrderSummary = () => {
       audio: audio,
       lighting: lighting,
     };
-    axios.post("http://localhost:5000/bookings", booking).then(({ data }) => {
+    axios.post("https://create-eve-server.onrender.com/bookings", booking).then(({ data }) => {
       if (data.acknowledged) {
         reset();
         clearStorage();

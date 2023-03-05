@@ -20,7 +20,7 @@ const Payment = () => {
     data: booking,
     loading,
     refetch,
-  } = useRefetch(`http://localhost:5000/payment/${Id}`, {});
+  } = useRefetch(`https://create-eve-server.onrender.com/payment/${Id}`, {});
 
   let total = parseInt(booking.package?.price);
 
