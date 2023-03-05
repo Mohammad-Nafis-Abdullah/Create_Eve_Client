@@ -22,7 +22,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
     const [min_order, setMin_order] = useState(0);
     const [description, setDescription] = useState('');
     const [services, setServices] = useState([]);
-    const [servicesText,setServicesText] = useState('');
+    const [servicesText, setServicesText] = useState('');
     const { uploadImage, deleteImage } = useMyStorage();
 
 
@@ -30,7 +30,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
         moveTop: () => {
             topRef.current?.scrollIntoView();
         },
-        reset: ()=> {
+        reset: () => {
             setName(service?.name);
             setPrice(service?.price);
             setMin_order(service?.min_order);
@@ -46,7 +46,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
         setMin_order(service?.min_order);
         service?.items && setServices([...service?.items]);
         service?.features && setServices([...service?.features]);
-        service?.description? setDescription(service?.description):setDescription('');
+        service?.description ? setDescription(service?.description) : setDescription('');
     }, [service]);
 
 
@@ -61,15 +61,15 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
     }
 
 
-    const handleSubmit = async (e)=> {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const img = e.target.image.files[0];
 
         const serviceObj = {
-            name:name,
-            type:service?.type,
-            price:price,
-            min_order:min_order,
+            name: name,
+            type: service?.type,
+            price: price,
+            min_order: min_order,
         }
 
         if (description) {
@@ -84,12 +84,12 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
 
 
         try {
-            const { isConfirmed } = await Swal.fire({...swalObj,text: "to Update the service"});
+            const { isConfirmed } = await Swal.fire({ ...swalObj, text: "to Update the service" });
             if (isConfirmed) {
 
                 if (img) {
                     await deleteImage(service?.img);
-                    const {name} = await uploadImage(img);
+                    const { name } = await uploadImage(img);
                     const { data } = await axios.put(`http://localhost:5000/service/${service?.type}/${service?._id}`, { ...serviceObj, img: name }, {
                         headers: {
                             uid: currentUser?.uid
@@ -126,42 +126,43 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
                     }
                 }
 
-            }else{
+            } else {
                 closeModal();
             }
 
-            
+
         } catch (err) {
             console.log(err);
         }
         e.target.reset();
     }
 
-    const handleDelete = ()=> {
-        Swal.fire({...swalObj,text: "to Delete the service"}).then(({ isConfirmed }) => {
+    const handleDelete = async () => {
+        
+        try {
+            const { isConfirmed } = await Swal.fire({ ...swalObj, text: "to Delete the service" });
             if (isConfirmed) {
-
-                axios.delete(`http://localhost:5000/service/${service?.type}/${service?._id}`,{
+                await deleteImage(service?.img);
+                const { data } = await axios.delete(`http://localhost:5000/service/${service?.type}/${service?._id}`, {
                     headers: {
                         uid: currentUser?.uid
                     }
                 })
-                .then(({data})=>{
-                    if (data.acknowledged && data.deletedCount) {
-                        Swal.fire(
-                            'Successfull!',
-                            'Service Deleted Successfully.',
-                            'success'
-                        )
-                        refetch();
-                        closeModal();
-                    }
-                })
-
-            }else{
+                if (data.acknowledged && data.deletedCount) {
+                    Swal.fire(
+                        'Successfull!',
+                        'Service Deleted Successfully.',
+                        'success'
+                    )
+                    refetch();
+                    closeModal();
+                }
+            } else {
                 closeModal();
             }
-        });
+        } catch (err) {
+            console.log(err);
+        }
     }
 
 
@@ -172,17 +173,17 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
 
                 <label className="input-group input-group-md font-bold">
                     <span className='bg-slate-800 text-highlight text-lg'>Name </span>
-                    <input type="text" onChange={e=> setName(e.target.value)} name='name' className="input input-bordered input-md text-lg grow" value={name} />
+                    <input type="text" onChange={e => setName(e.target.value)} name='name' className="input input-bordered input-md text-lg grow" value={name} />
                 </label>
 
                 <label className="input-group input-group-md font-bold">
                     <span className='bg-slate-800 text-highlight text-lg'>Price </span>
-                    <input type="number" onChange={e=> setPrice(parseFloat(e.target.value))} onWheel={e => e.target.blur()} name='price' value={price} className="input input-bordered input-md text-lg grow" />
+                    <input type="number" onChange={e => setPrice(parseFloat(e.target.value))} onWheel={e => e.target.blur()} name='price' value={price} className="input input-bordered input-md text-lg grow" />
                 </label>
 
                 <label className="input-group input-group-md font-bold">
                     <span className='bg-slate-800 text-highlight text-lg'>Minimum Order </span>
-                    <input type="number" onChange={e=> setMin_order(parseFloat(e.target.value))} onWheel={e => e.target.blur()} name='min_order' value={min_order} className="input input-bordered input-md text-lg grow" />
+                    <input type="number" onChange={e => setMin_order(parseFloat(e.target.value))} onWheel={e => e.target.blur()} name='min_order' value={min_order} className="input input-bordered input-md text-lg grow" />
                 </label>
 
                 <div className="divider h-10" />
@@ -197,7 +198,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
 
                 <label htmlFor="description" className='space-y-2'>
                     <h3>Description : </h3>
-                    <textarea id='description' onChange={e=> setDescription(e.target.value)} className="textarea textarea-warning w-full resize-none h-40 overflow-y-auto" placeholder="Description..." value={description}></textarea>
+                    <textarea id='description' onChange={e => setDescription(e.target.value)} className="textarea textarea-warning w-full resize-none h-40 overflow-y-auto" placeholder="Description..." value={description}></textarea>
                 </label>
 
                 <div className="divider h-10" />
@@ -248,7 +249,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
 
                 <div className='flex justify-between'>
                     <input className='btn btn-sm bg-highlight text-black hover:text-highlight max-w-[10rem] w-full' type='submit' value='Update' />
-                    <input type='button' onClick={handleDelete} className='btn btn-sm btn-error max-w-[10rem] w-full' value="Delete"/>
+                    <input type='button' onClick={handleDelete} className='btn btn-sm btn-error max-w-[10rem] w-full' value="Delete" />
                 </div>
 
             </form>

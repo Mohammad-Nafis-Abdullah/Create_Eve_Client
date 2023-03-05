@@ -129,32 +129,35 @@ const ConfigureModal = ({configItem, clearConfigItem, refetchAllPackage}) => {
         e.target.reset();
     }
 
-    const handleDelete = (id)=> {
-        Swal.fire({...swalObj,text: "to Delete the package"}).then(({ isConfirmed }) => {
-            if (isConfirmed) {
+    const handleDelete = async(id)=> {
+        try {
+            const {isConfirmed} = await Swal.fire({...swalObj,text: "to Delete the package"});
 
-                axios.delete(`http://localhost:5000/package/${configItem?.category}/${id}`,{
+            if (isConfirmed) {
+                await deleteImage(coverPhoto);
+                const { data } = await axios.delete(`http://localhost:5000/package/${configItem?.category}/${id}`, {
                     headers: {
                         uid: currentUser?.uid
                     }
-                })
-                .then(({data})=>{
-                    if (data.acknowledged && data.deletedCount) {
-                        Swal.fire(
-                            'Successfull!',
-                            'Package Deleted Successfully.',
-                            'success'
-                        )
-                        refetchAllPackage();
-                        clearConfigItem();
-                        closeModal();
-                    }
-                })
+                });
+                if (data.acknowledged && data.deletedCount) {
+                    Swal.fire(
+                        'Successfull!',
+                        'Package Deleted Successfully.',
+                        'success'
+                    )
+                    refetchAllPackage();
+                    clearConfigItem();
+                    closeModal();
+                }
 
-            }else{
+            } else {
                 closeModal();
             }
-        });
+            
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     return (
