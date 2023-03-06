@@ -14,13 +14,6 @@ import Slider from "react-slick";
 const Banner = () => {
   const [admin, adminLoading] = useAdmin();
   const navigate = useNavigate();
-  const pagination = {
-    clickable: true,
-    renderBullet: function (index, className) {
-      return '<span className="' + className + '">' + (index + 1) + "</span>";
-    },
-  };
-
   const {
     data: bannerPhotos,
     loading,
@@ -60,11 +53,10 @@ const Banner = () => {
 
       <Slider {...settings}>
         {
-          bannerPhotos.map(banner => {
+          bannerPhotos?.map(banner => {
             return (
               <div key={banner._id} className="h-screen">
-                <img className='h-full object-cover w-full' key={banner._id} src={imgUrl(banner.img)} alt='' />
-
+                <img className='h-full object-cover w-full' key={banner._id} src={imgUrl(banner?.img)} alt='' />
               </div>
             )
           })

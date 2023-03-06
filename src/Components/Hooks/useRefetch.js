@@ -9,26 +9,29 @@ const useRefetch = (url, initialValue = [], callback = () => 0) => {
   const [data, setData] = useState(initialValue);
   const [link,setLink] = useState(url);
   const [refetcher, setRefetch] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  let headers;
 
   useEffect(() => {
     if (!url) {
       return;
     };
-    
+    // console.log(user);
     if (user) {
-      axios.get(link,{
+      headers = {
         headers:{
           contentType: 'application/json',
           uid: `${user?.uid}`,
         }
-      })
+      }
+    }    
+      setLoading(true);
+      axios.get(link,headers)
       .then(({ data }) => {
         setData(data);
         callback(data);
         setLoading(false);
       });
-    }
 
   }, [refetcher, link, user]);
 

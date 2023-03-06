@@ -7,9 +7,10 @@ import auth from "../../Firebase/firebase.init";
 const useAdmin = () => {
     const [user] = useAuthState(auth);
     const [admin, setAdmin] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         if (user) {
             const fn = async () => {
                 try {

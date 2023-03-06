@@ -31,14 +31,14 @@ const UserProfile = () => {
 
 
 
-  const {user:currentUser,userRefetch:refetch} = state;
-  
+  const { user: currentUser, userRefetch: refetch } = state;
+
   /* const {
     data: currentUser,
     loading: userLoading,
     refetch,
   } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, {}); */
-  
+
 
   // upload photo drag in drop
 
@@ -111,8 +111,8 @@ const UserProfile = () => {
                   type="checkbox"
                   checked={open}
                   className="modal-toggle bdr w-10 h-10"
-                  onChange={(e)=> {
-                      setOpen(e.target.checked);
+                  onChange={(e) => {
+                    setOpen(e.target.checked);
                   }}
                 />
                 {open && (
