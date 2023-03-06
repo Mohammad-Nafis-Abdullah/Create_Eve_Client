@@ -23,13 +23,14 @@ const fileTypes = ["JPG", "PNG", "GIF"];
 const UserProfile = () => {
   const [state, dispatch] = useContext(StateContext);
   const [user, loading, error] = useAuthState(auth);
-  const { uploadImage,deleteImage } = useMyStorage();
-  const [ldng,setLdng] = useState(false);
+  const { uploadImage, deleteImage } = useMyStorage();
+  const [ldng, setLdng] = useState(false);
   const {
     data: currentUser,
     loading: userLoading,
     refetch,
   } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, {}, (data) => {
+    console.log(data);
     dispatch({
       type: 'userImg',
       value: data.userImg,
@@ -55,7 +56,7 @@ const UserProfile = () => {
     SetOpen(true);
   };
 
-  const savingImage = async() => {
+  const savingImage = async () => {
     setLdng(true);
     try {
       await deleteImage(currentUser?.userImg);
@@ -63,6 +64,7 @@ const UserProfile = () => {
       await axios.put(`https://create-eve-server.onrender.com/user-update/${user?.uid}`, {
         userImg: name,
       })
+      state.userRefetch();
       refetch();
       toast.success("Profile Picture Updated Successfully");
       navigate("/manage-profile");
@@ -77,7 +79,7 @@ const UserProfile = () => {
 
   return (
     <section className="mt-14 sm:mt-28 mb-20 container mx-auto px-4">
-      {ldng && <Loading/>}
+      {ldng && <Loading />}
       <div
         className="relative flex flex-col min-w-0 break-words border-2 bg-white w-full shadow-xl rounded-lg"
         id="profileSection"
@@ -90,7 +92,7 @@ const UserProfile = () => {
                   <BiUserCircle className="w-20 h-20 sm:w-44 sm:h-44 border-2 text-slate-700 bg-slate-200 bg-opacity-100 text-4xl rounded-full" />
                 ) : (
                   <img
-                    src={imgUrl(currentUser?.userImg)}
+                    src={imgUrl(state.user.userImg)}
                     className="w-20 h-20 sm:w-44 sm:h-44 object-cover rounded-full"
                     alt=""
                   />

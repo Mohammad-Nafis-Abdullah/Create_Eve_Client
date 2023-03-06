@@ -11,9 +11,9 @@ const useAdmin = () => {
 
     useEffect(() => {
         if (user) {
-            const fn = async()=> {
+            const fn = async () => {
                 try {
-                    const {data} = await axios.get(`https://create-eve-server.onrender.com/admin/${user?.uid}`);
+                    const { data } = await axios.get(`https://create-eve-server.onrender.com/admin/${user?.uid}`);
                     setAdmin(data.admin);
                     setLoading(false);
 

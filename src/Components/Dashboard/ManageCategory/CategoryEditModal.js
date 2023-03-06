@@ -108,7 +108,7 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch }, ref) => {
 
     return (
         <div className='h-full w-full p-3'>
-            {loading && <Loading/>}
+            {loading && <Loading />}
             <section className='h-full max-w-sm bg-white mx-auto rounded-md p-5 overflow-y-auto relative'>
                 <div id='view' className='absolute top-0 right-0 left-0' />
                 <form onSubmit={handleSubmit}>

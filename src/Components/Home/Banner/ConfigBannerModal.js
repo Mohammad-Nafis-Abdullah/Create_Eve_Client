@@ -70,7 +70,7 @@ const ConfigBannerModal = ({ refetch, bannerPhotos }) => {
 
     return (
         <div className='h-full w-full flex justify-center items-center'>
-            {loading && <Loading/>}
+            {loading && <Loading />}
             <form onSubmit={handleSubmit} className='max-w-xs w-full bg-white rounded p-3 space-y-3'>
                 <article>
                     <h3 className='text-black text-lg'>Upload Banner Images :</h3>

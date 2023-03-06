@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import AOS from "aos";
@@ -39,6 +40,9 @@ import AddPackage from "./Components/Dashboard/AddPackage/AddPackage";
 import ManageCategory from "./Components/Dashboard/ManageCategory/ManageCategory";
 import AddService from "./Components/Dashboard/AddService/AddService";
 import useStateReducer from "./Components/Hooks/useStateReducer";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "./Firebase/firebase.init";
+import useRefetch from "./Components/Hooks/useRefetch";
 
 
 // global state handling context api
@@ -47,16 +51,42 @@ export { StateContext };
 
 function App() {
   const location = useLocation();
+  const [user] = useAuthState(auth);
   const [admin, loading] = useAdmin();
+  const [state, dispatch] = useStateReducer();
+  const { data: currentUser, loading: userLoading, refetch } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, null);
+
   const { pathname } = location;
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
 
+  useEffect(() => {
+    if (user && !currentUser) {
+      refetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
+    }
+    console.log(user);
+    console.log(currentUser);
+    if (currentUser) {
+      dispatch({
+        type: 'user',
+        value: currentUser,
+      });
+      dispatch({
+        type: 'userRefetch',
+        value: () => {
+          refetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
+        }
+      })
+    }
+  }, [user, currentUser])
+
+
+
 
   return (
-    <StateContext.Provider value={useStateReducer()}>
+    <StateContext.Provider value={[state, dispatch]}>
       <div className="overflow-x-hidden">
         {loading && <Loading />}
         <Navbar location={location} />

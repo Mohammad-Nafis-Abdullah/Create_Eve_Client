@@ -25,7 +25,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
     const [services, setServices] = useState([]);
     const [servicesText, setServicesText] = useState('');
     const { uploadImage, deleteImage } = useMyStorage();
-    const [loading,setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
 
     useImperativeHandle(ref, () => ({
@@ -173,7 +173,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
 
     return (
         <section className='max-w-xl w-full h-full mx-auto p-2'>
-            {loading && <Loading/>}
+            {loading && <Loading />}
             <form onSubmit={handleSubmit} className='bg-white w-full h-full py-5 px-3 space-y-3 overflow-y-auto relative'>
                 <div ref={topRef} className='absolute top-0 right-0 left-0' />
 

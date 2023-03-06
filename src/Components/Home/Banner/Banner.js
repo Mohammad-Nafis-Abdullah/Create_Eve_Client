@@ -57,16 +57,17 @@ const Banner = () => {
           <AiFillSetting className="h-full w-full text-black animate-slowSpin" />
         </div>
       )}
-      
+
       <Slider {...settings}>
         {
           bannerPhotos.map(banner => {
             return (
-            <div className="h-screen">
-              <img className='h-full object-cover w-full' key={banner._id} src={imgUrl(banner.img)} alt='' />
-              
-            </div>
-            )})
+              <div key={banner._id} className="h-screen">
+                <img className='h-full object-cover w-full' key={banner._id} src={imgUrl(banner.img)} alt='' />
+
+              </div>
+            )
+          })
         }
       </Slider>
 
@@ -75,7 +76,7 @@ const Banner = () => {
         <h3 className="text-white font-bold text-3xl sm:text-5xl">Create Eve</h3>
         <h1 className="text-amber-400 font-bold text-5xl sm:text-7xl">Event Planner</h1>
         <h6 className="text-white font-bold operator italic tracking-widest">Event Should Be Perfect</h6>
-        <button onClick={()=>navigate('/about')} className="text-gray-900 font-bold text-xl roboto bg-amber-400 px-7 py-2 rounded-full active:scale-95 transition-transform">About</button>
+        <button onClick={() => navigate('/about')} className="text-gray-900 font-bold text-xl roboto bg-amber-400 px-7 py-2 rounded-full active:scale-95 transition-transform">About</button>
       </article>
 
     </div>

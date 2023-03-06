@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { BiUser } from "react-icons/bi";
@@ -13,10 +14,14 @@ import useAdmin from "../../Hooks/useAdmin";
 import { StateContext } from "../../../App";
 import { imgUrl } from "../../Hooks/useMyStorage";
 import { GoChevronDown } from 'react-icons/go';
+import Loading from "../Loading/Loading";
+import { toast } from "react-toastify";
 
 
 const Navbar = ({ location }) => {
+  const [user] = useAuthState(auth);
   const [state, dispatch] = useContext(StateContext);
+  const [show, setShow] = useState(false);
   const { pathname } = location;
   const routeName = pathname.slice("1");
   const navigate = useNavigate();
@@ -39,14 +44,12 @@ const Navbar = ({ location }) => {
   window.addEventListener("scroll", changeBg);
 
   const handleSignOut = async () => {
+    setShow(false);
     await signOut(auth);
     localStorage.clear();
     window.location.reload();
     navigate("/");
   };
-  const [user] = useAuthState(auth);
-
-  const [show, setShow] = useState("hidden");
 
   const homeRoute = navbarBg
     ? "active_nav fixed left-0 right-0 top-0 text-white p-2"
@@ -58,17 +61,15 @@ const Navbar = ({ location }) => {
     return isActive ? "btnActive" : "btnInactive";
   };
 
-  // profile photos load
-  const {
-    data: currentUser,
-    loading: currentUserLoading,
-    refetch: currentUserRefetch,
-  } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
+
+
+  // console.log(state);
 
   return (
     <section
       className={`${routeName ? anotherRoute : homeRoute} bg-white z-50`}
     >
+      {loading && <Loading />}
       {routeName && <TopnavBar />}
       <div
         className={` ${routeName ? "bg-white text-black" : "bg-black/50 text-white"} flex justify-between items-center max-w-8xl w-full mx-auto p-3`}
@@ -222,7 +223,7 @@ const Navbar = ({ location }) => {
             <li tabIndex="0">
               <Link to={pathname} className="uppercase inline-flex gap-1 items-center">
                 <span>packages</span>
-                <GoChevronDown className="w-4 h-4"/>
+                <GoChevronDown className="w-4 h-4" />
               </Link>
               <ul className="p-2" id="megaMenu" style={{ zIndex: "11111" }}>
                 <li>
@@ -251,7 +252,7 @@ const Navbar = ({ location }) => {
             <li tabIndex="0">
               <Link to={pathname} className={`uppercase inline-flex gap-1 items-center`}>
                 SERVICES
-                <GoChevronDown className="w-4 h-4"/>
+                <GoChevronDown className="w-4 h-4" />
               </Link>
               <ul className="p-2" id="megaMenu" style={{ zIndex: "11111" }}>
                 <li>
@@ -309,75 +310,71 @@ const Navbar = ({ location }) => {
                 <BiUser />
               </Link>
             ) : (
-              <>
-                <div className="dropdown dropdown-end">
-                  <div
-                    tabIndex="0"
-                    className=""
-                    onClick={() => {
-                      show === "hidden"
-                        ? setShow("block")
-                        : setShow("hidden");
-                    }}
-                  >
-                    {currentUser?.userImg && (
-                      <img
-                        src={imgUrl(state.userImg || currentUser?.userImg)}
-                        className="w-12 h-12 object-cover rounded-full"
-                        alt=""
-                      />
-                    )}
+              <div className="relative">
+                <div
+                  className=""
+                  onClick={() => {
+                    setShow(prev => !prev);
+                  }}
+                >
+                  {state?.user && (
+                    <img
+                      src={imgUrl(state?.user?.userImg)}
+                      className="w-12 h-12 object-cover rounded-full border cursor-pointer"
+                      alt=""
+                    />
+                  )}
 
-                    {!currentUser?.userImg && (
-                      <span className="">
-                        <AiOutlineUser className="border-2 border-black text-black bg-white bg-opacity-50 text-4xl rounded-full" />
-                      </span>
-                    )}
+                  {!state.user && (
+                    <span className="">
+                      <AiOutlineUser className="border-2 border-black text-black bg-white bg-opacity-50 text-4xl rounded-full" />
+                    </span>
+                  )}
+                </div>
+                <div className={`absolute top-[70px] -right-2 bg-gray-300 border-4 border-gray-900 rounded-lg p-3 space-y-5 ${show ? 'flex' : 'hidden'} flex-col justify-center`}>
+                  <div className="space-y-3">
+                    <div className="flex justify-center">
+                      {state.user && (
+                        <img
+                          src={imgUrl(state.user.userImg)}
+                          className="w-16 h-16 ring-2 ring-green-600 ring-offset-2 object-cover rounded-full"
+                          alt=""
+                        />
+                      )}
+
+                      {!state.user && (
+                        <span className="">
+                          <AiOutlineUser className="text-black border-2 border-black bg-white text-5xl rounded-full" />
+                        </span>
+                      )}
+                    </div>
+                    <div>
+                      <p onClick={() => {
+                        navigator.clipboard.writeText(user?.email).then(() => {
+                          toast('Email Copied to Clipboard', { theme: 'dark' });
+                        });
+                      }} title='click to copy mail address' className="text-gray-900 font-bold cursor-pointer hover:underline underline-offset-2 decoration-2">{user?.email}</p>
+                    </div>
                   </div>
 
-                  <ul
-                    tabIndex="0"
-                    className={`dropdown-content menu p-2 shadow border-2 bg-white rounded-sm ${show} text-black text-center mt-5`}
+                  <Link
+                    onClick={() => {
+                      setShow(false);
+                    }}
+                    to={`/manage-profile`}
+                    className="uppercase w-full text-center text-gray-900 bg-amber-400 py-2 rounded-xl font-bold"
                   >
-                    <div className="grid gap-y-3 pt-7 pb-3">
-                      <div className="bg-gray-200 grid justify-center p-4 rounded-sm">
-                        <div className="flex justify-center -mt-11">
-                          {currentUser?.userImg && (
-                            <img
-                              src={imgUrl(state.userImg || currentUser?.userImg)}
-                              className="w-16 h-16 ring-2 ring-green-600 ring-offset-2 object-cover rounded-full bg-slate-100"
-                              alt=""
-                            />
-                          )}
+                    Manage profile
+                  </Link>
 
-                          {!currentUser?.userImg && (
-                            <span className="">
-                              <AiOutlineUser className="text-black border-2 border-black bg-white text-5xl rounded-full" />
-                            </span>
-                          )}
-                        </div>
-                        <div>
-                          <p className="pt-3 ">{user?.email}</p>
-                        </div>
-                      </div>
-
-                      <Link
-                        to={`/manage-profile`}
-                        className="uppercase hover:text-gray-600"
-                      >
-                        Manage profile
-                      </Link>
-
-                      <button
-                        onClick={handleSignOut}
-                        className="uppercase hover:text-gray-600"
-                      >
-                        Sign out
-                      </button>
-                    </div>
-                  </ul>
+                  <button
+                    onClick={handleSignOut}
+                    className="uppercase w-full text-center text-gray-900 bg-amber-400 py-2 rounded-xl font-bold"
+                  >
+                    Sign out
+                  </button>
                 </div>
-              </>
+              </div>
             )}
           </div>
         </div>
