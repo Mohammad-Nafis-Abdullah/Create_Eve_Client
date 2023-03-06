@@ -8,7 +8,7 @@ import gallery6 from "../../asset/images/gallery/gallery6.jpg";
 
 function Memories() {
   return (
-    <div className="py-5 px-3 max-w-7xl mx-auto">
+    <div className="py-5 px-3 max-w-7xl mx-auto ">
       <div className="flex flex-wrap -m-1 md:-m-2">
         <div className="flex flex-wrap w-1/2">
           <div

@@ -21,30 +21,32 @@ const fileTypes = ["JPG", "PNG", "GIF"];
 
 
 const UserProfile = () => {
+  const navigate = useNavigate();
   const [state, dispatch] = useContext(StateContext);
   const [user, loading, error] = useAuthState(auth);
   const { uploadImage, deleteImage } = useMyStorage();
   const [ldng, setLdng] = useState(false);
-  const {
+  const [open, setOpen] = useState(false);
+  const [file, setFile] = useState(null);
+
+
+
+  const {user:currentUser,userRefetch:refetch} = state;
+  
+  /* const {
     data: currentUser,
     loading: userLoading,
     refetch,
-  } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, {}, (data) => {
-    console.log(data);
-    dispatch({
-      type: 'userImg',
-      value: data.userImg,
-    })
-  });
-  const [open, SetOpen] = useState(false);
-  const navigate = useNavigate();
+  } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, {}); */
+  
 
   // upload photo drag in drop
-  const [file, setFile] = useState(null);
 
   const handleChange = (file) => {
     setFile(file);
   };
+
+  // console.log(state);
 
   if (loading) {
     return <Loading />;
@@ -53,7 +55,7 @@ const UserProfile = () => {
     console.log(error);
   }
   const openPopup = () => {
-    SetOpen(true);
+    setOpen(true);
   };
 
   const savingImage = async () => {
@@ -69,7 +71,7 @@ const UserProfile = () => {
       toast.success("Profile Picture Updated Successfully");
       navigate("/manage-profile");
       setFile(null);
-      SetOpen(false);
+      setOpen(false);
 
     } catch (err) {
       console.log(err);
@@ -100,7 +102,7 @@ const UserProfile = () => {
                 <label
                   className="absolute bottom-0 right-0 sm:bottom-1 sm:right-1 sm:w-10 sm:h-10 flex justify-center items-center"
                   id="profile_picture_change_btn"
-                  onClick={() => SetOpen(true)}
+                  onClick={() => setOpen(true)}
                 >
                   <BsFillCameraFill className="sm:w-8 sm:h-8" />
                 </label>
@@ -108,14 +110,17 @@ const UserProfile = () => {
                 <input
                   type="checkbox"
                   checked={open}
-                  className="modal-toggle"
+                  className="modal-toggle bdr w-10 h-10"
+                  onChange={(e)=> {
+                      setOpen(e.target.checked);
+                  }}
                 />
                 {open && (
                   <div className="modal">
                     <div className="modal-box rounded">
                       <form>
                         <label
-                          onClick={() => SetOpen(false)}
+                          onClick={() => setOpen(false)}
                           htmlFor="profile_picture"
                           className="btn btn-sm btn-circle bg-red-500 hover:bg-red-600 border-none absolute right-2 top-2"
                         >

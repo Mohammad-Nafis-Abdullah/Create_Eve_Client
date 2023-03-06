@@ -49,6 +49,8 @@ import useRefetch from "./Components/Hooks/useRefetch";
 const StateContext = React.createContext();
 export { StateContext };
 
+AOS.init({ duration: 200 });
+
 function App() {
   const location = useLocation();
   const [user] = useAuthState(auth);
@@ -66,8 +68,8 @@ function App() {
     if (user && !currentUser) {
       refetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
     }
-    console.log(user);
-    console.log(currentUser);
+    // console.log(user);
+    // console.log(currentUser);
     if (currentUser) {
       dispatch({
         type: 'user',
@@ -82,8 +84,7 @@ function App() {
     }
   }, [user, currentUser])
 
-
-
+  // console.log(state);
 
   return (
     <StateContext.Provider value={[state, dispatch]}>

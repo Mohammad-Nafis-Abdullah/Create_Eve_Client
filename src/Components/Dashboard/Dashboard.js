@@ -19,23 +19,19 @@ import Loading from "../Share/Loading/Loading";
 import useRefetch from "../Hooks/useRefetch";
 import { GoSettings } from "react-icons/go";
 import { imgUrl } from "../Hooks/useMyStorage";
+import { StateContext } from "../../App";
+import { useContext } from "react";
 
 const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
+  const [state,dispatch] = useContext(StateContext);
 
-  // profile photos load
-  const {
-    data: currentUser,
-    loading: currentUserLoading,
-    refetch: currentUserRefetch,
-  } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
+  console.log(state);
 
-  if (loading || adminLoading) {
-    return <Loading />;
-  }
   return (
     <div className="mx-auto px-2 lg:px-0 route">
+      {loading && adminLoading && <Loading/>}
       <div className="drawer drawer-mobile pt-0">
         <input
           id="open-dashboard-menu"
@@ -68,16 +64,17 @@ const Dashboard = () => {
             {/* <!-- Sidebar content here --> */}
             <div className="" id="sidebar_User_profile">
               <div className="pt-5">
-                <div id="user_profile_photo" data-aos="zoom-in">
-                  {currentUser?.userImg && (
+                <div id="user_profile_photo">
+                  
+                  {state?.user && (
                     <img
-                      className="w-[75px] h-[75px] rounded-full m-auto"
-                      src={imgUrl(currentUser?.userImg)}
+                      className="w-16 h-16 object-cover rounded-full m-auto"
+                      src={imgUrl(state?.user?.userImg)}
                       alt=""
                     />
                   )}
 
-                  {!currentUser?.userImg && (
+                  {!state?.user && (
                     <span className="">
                       <AiOutlineUser className="w-[75px] h-[75px] border-2  text-slate-800 m-auto bg-white bg-opacity-50 text-4xl rounded-full" />
                     </span>
@@ -86,15 +83,13 @@ const Dashboard = () => {
                 <div id="user_content" className="pt-2">
                   <h1
                     className="text-white text-center text-sm capitalize"
-                    data-aos="zoom-out"
                   >
-                    {currentUser?.displayName}
+                    {state?.user?.displayName}
                   </h1>
                   <h1
                     className="text-white text-center text-sm"
-                    data-aos="zoom-out"
                   >
-                    {currentUser?.email}
+                    {state?.user?.email}
                   </h1>
                 </div>
               </div>
