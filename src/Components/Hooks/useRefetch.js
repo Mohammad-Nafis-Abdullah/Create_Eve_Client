@@ -7,29 +7,41 @@ import auth from "../../Firebase/firebase.init";
 const useRefetch = (url, initialValue = [], callback = () => 0) => {
   const [user] = useAuthState(auth);
   const [data, setData] = useState(initialValue);
+  const [link,setLink] = useState(url);
   const [refetcher, setRefetch] = useState(true);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(url,{
-      headers:{
-        contentType: 'application/json',
-        uid: `${user?.uid}`,
-      }
-    })
-    .then(({ data }) => {
-      setData(data);
-      callback(data);
-      setLoading(false);
-    });
-  }, [refetcher, url]);
+    if (!url) {
+      return;
+    };
+    
+    if (user) {
+      axios.get(link,{
+        headers:{
+          contentType: 'application/json',
+          uid: `${user?.uid}`,
+        }
+      })
+      .then(({ data }) => {
+        setData(data);
+        callback(data);
+        setLoading(false);
+      });
+    }
+
+  }, [refetcher, link, user]);
 
   return {
     data,
     loading,
-    refetch: () => {
+    refetch: (URL) => {
+      if (URL) {
+        setLink(URL);
+      }
       setLoading(true);
       setRefetch((previous) => !previous);
+      return;
     },
   };
 };

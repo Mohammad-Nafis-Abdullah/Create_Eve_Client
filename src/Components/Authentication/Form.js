@@ -17,7 +17,6 @@ import { toast } from "react-toastify";
 import { BsFacebook } from "react-icons/bs";
 import { IoLogoGoogle } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
-import useToken from "../Hooks/useToken";
 import { useLocation, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import axios from "axios";

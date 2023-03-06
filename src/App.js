@@ -40,8 +40,6 @@ import ManageCategory from "./Components/Dashboard/ManageCategory/ManageCategory
 import AddService from "./Components/Dashboard/AddService/AddService";
 import useStateReducer from "./Components/Hooks/useStateReducer";
 
-// aos
-AOS.init({ duration: 200 });
 
 // global state handling context api
 const StateContext = React.createContext();
