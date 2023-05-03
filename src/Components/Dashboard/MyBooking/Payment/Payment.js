@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Loading from "../../../Share/Loading/Loading";
 import { loadStripe } from "@stripe/stripe-js";
@@ -9,8 +8,14 @@ import CheckoutForm from "./CheckoutForm";
 import axios from "axios";
 import useRefetch from "../../../Hooks/useRefetch";
 
+// old
+// pk_test_51L0ozSFQMC6ZB6bzt0dxa1LaoMEuD6gRJRf610DtiJ5HQ8OUPWSK5UBcaF13eDEGuncz7XIkz8ggSzRwL42z1HxR00AQ59TUxV
+
+// new
+// pk_test_51L3eYcIsG6t6EWnkOiJzzkmaaKd3tr3LcGjdbhkuKH1YYdZ1Qfvcf6IFMt1ChcJ7eJCXtpl7RZiPaj9HH3W3fk8M00rIbRpG9V
+
 const stripePromise = loadStripe(
-  "pk_test_51L0ozSFQMC6ZB6bzt0dxa1LaoMEuD6gRJRf610DtiJ5HQ8OUPWSK5UBcaF13eDEGuncz7XIkz8ggSzRwL42z1HxR00AQ59TUxV"
+  "pk_test_51L3eYcIsG6t6EWnkOiJzzkmaaKd3tr3LcGjdbhkuKH1YYdZ1Qfvcf6IFMt1ChcJ7eJCXtpl7RZiPaj9HH3W3fk8M00rIbRpG9V"
 );
 
 const Payment = () => {

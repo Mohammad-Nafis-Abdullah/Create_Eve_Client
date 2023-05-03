@@ -317,7 +317,7 @@ const Navbar = ({ location }) => {
                     setShow(prev => !prev);
                   }}
                 >
-                  {state?.user && (
+                  {state?.user?.userImg && (
                     <img
                       src={imgUrl(state?.user?.userImg)}
                       className="w-12 h-12 object-cover rounded-full border cursor-pointer"
@@ -325,7 +325,7 @@ const Navbar = ({ location }) => {
                     />
                   )}
 
-                  {!state.user && (
+                  {!state?.user?.userImg && (
                     <span className="">
                       <AiOutlineUser className="border-2 border-black text-black bg-white bg-opacity-50 text-4xl rounded-full" />
                     </span>
@@ -334,7 +334,7 @@ const Navbar = ({ location }) => {
                 <div className={`absolute top-[70px] -right-2 bg-gray-300 border-4 border-gray-900 rounded-lg p-3 space-y-5 ${show ? 'flex' : 'hidden'} flex-col justify-center`}>
                   <div className="space-y-3">
                     <div className="flex justify-center">
-                      {state.user && (
+                      {state?.user?.userImg && (
                         <img
                           src={imgUrl(state.user.userImg)}
                           className="w-16 h-16 ring-2 ring-green-600 ring-offset-2 object-cover rounded-full"
@@ -342,7 +342,7 @@ const Navbar = ({ location }) => {
                         />
                       )}
 
-                      {!state.user && (
+                      {!state?.user?.userImg && (
                         <span className="">
                           <AiOutlineUser className="text-black border-2 border-black bg-white text-5xl rounded-full" />
                         </span>
