@@ -7,6 +7,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import axios from "axios";
 import useRefetch from "../../../Hooks/useRefetch";
+import { useQueryFetch } from "../../../Hooks/useQueryFetch";
 
 // old
 // pk_test_51L0ozSFQMC6ZB6bzt0dxa1LaoMEuD6gRJRf610DtiJ5HQ8OUPWSK5UBcaF13eDEGuncz7XIkz8ggSzRwL42z1HxR00AQ59TUxV
@@ -21,11 +22,8 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { Id } = useParams();
 
-  const {
-    data: booking,
-    loading,
-    refetch,
-  } = useRefetch(`https://create-eve-server.onrender.com/payment/${Id}`, {});
+  // const {data: booking,loading,refetch} = useRefetch(`https://create-eve-server.onrender.com/payment/${Id}`, {});
+  const {data: booking,loading,refetch} = useQueryFetch('single-booking',`https://create-eve-server.onrender.com/payment/${Id}`);
 
   let total = parseInt(booking.package?.price);
 

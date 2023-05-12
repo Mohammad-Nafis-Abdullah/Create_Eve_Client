@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase/firebase.init';
 import useRefetch from '../../Hooks/useRefetch';
+import { useQueryFetch } from '../../Hooks/useQueryFetch';
 
 const DisplayMyTickets = ({ ticket, refetch }) => {
 
@@ -12,7 +13,8 @@ const DisplayMyTickets = ({ ticket, refetch }) => {
     const navigate = useNavigate()
     const { _id, enterprise, eventId, professional, standard, total, userId, bookingId } = ticket;
 
-    const [event] = useRefetch(`https://create-eve-server.onrender.com/event-details/${ticket?.eventId}`, {})
+    // const [event] = useRefetch(`https://create-eve-server.onrender.com/event-details/${ticket?.eventId}`, {});
+    const {data:event} = useQueryFetch('event',`https://create-eve-server.onrender.com/event-details/${ticket?.eventId}`);
     // cancle order
     const handleBookingCancle = id => {
         console.log(id);

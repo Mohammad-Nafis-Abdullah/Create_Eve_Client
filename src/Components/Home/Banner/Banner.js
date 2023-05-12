@@ -10,15 +10,14 @@ import Loading from "../../Share/Loading/Loading";
 import useRefetch from "../../Hooks/useRefetch";
 import { imgUrl } from "../../Hooks/useMyStorage";
 import Slider from "react-slick";
+import { useQueryFetch } from "../../Hooks/useQueryFetch";
 
 const Banner = () => {
   const [admin, adminLoading] = useAdmin();
   const navigate = useNavigate();
-  const {
-    data: bannerPhotos,
-    loading,
-    refetch,
-  } = useRefetch("https://create-eve-server.onrender.com/home-banner");
+  // const {data: bannerPhotos,loading,refetch} = useRefetch("https://create-eve-server.onrender.com/home-banner");
+
+  const {data:bannerPhotos,loading,refetch} = useQueryFetch('banner',"https://create-eve-server.onrender.com/home-banner");
 
   const configBanner = () => {
     instantModal(<ConfigBannerModal bannerPhotos={bannerPhotos} refetch={refetch} />);

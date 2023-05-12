@@ -1,12 +1,12 @@
 import React from "react";
-import useRefetch from '../../../../Hooks/useRefetch'
 import WriteAComment from "../../WriteAComment/WriteAComment";
 import Loading from '../../../../Share/Loading/Loading'
 import "./BlogComment.s.css";
 import Comment from "./Comment";
+import { useQueryFetch } from "../../../../Hooks/useQueryFetch";
 
 const BlogComments = ({ blogId }) => {
-  const [comments, loading, refetch] = useRefetch(`https://create-eve-server.onrender.com/comment/${blogId}`, []);
+  const {data:comments, loading, refetch} = useQueryFetch('comments',`https://create-eve-server.onrender.com/comment/${blogId}`);
 
   return (
     <section className="max-w-7xl mx-auto px-5  ">

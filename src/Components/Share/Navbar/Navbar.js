@@ -16,6 +16,7 @@ import { imgUrl } from "../../Hooks/useMyStorage";
 import { GoChevronDown } from 'react-icons/go';
 import Loading from "../Loading/Loading";
 import { toast } from "react-toastify";
+import { useQueryFetch } from "../../Hooks/useQueryFetch";
 
 
 const Navbar = ({ location }) => {
@@ -27,11 +28,7 @@ const Navbar = ({ location }) => {
   const navigate = useNavigate();
   const [admin, loading] = useAdmin();
 
-  const {
-    data: pkgs,
-    loading: pkgLoading,
-    refetch: pkgRefetch,
-  } = useRefetch(`https://create-eve-server.onrender.com/packages`, []);
+  const {data: pkgs,loading: pkgLoading,refetch: pkgRefetch} = useQueryFetch('package',`https://create-eve-server.onrender.com/packages`);
 
   const [navbarBg, setNavbar] = useState(false);
   const changeBg = () => {

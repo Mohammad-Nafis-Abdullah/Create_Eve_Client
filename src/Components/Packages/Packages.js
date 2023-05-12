@@ -10,6 +10,8 @@ import { BsSearch } from "react-icons/bs";
 import { TbArrowsDownUp, TbArrowsUpDown } from "react-icons/tb";
 import { useEffect } from "react";
 import { imgUrl } from "../Hooks/useMyStorage";
+import { useQueryFetch } from "../Hooks/useQueryFetch";
+import Loading from "../Share/Loading/Loading";
 
 const Packages = () => {
   const { category } = useParams();
@@ -17,14 +19,13 @@ const Packages = () => {
   const [sort, setSort] = useState(true);
   const { pathname } = useLocation();
 
-  const { data: selectedCategory, refetch } = useRefetch(
-    `https://create-eve-server.onrender.com/packages/${category}`,
-    {}
-  );
-  const { data: allPackages, refetch: packageRefetch } = useRefetch(
-    `https://create-eve-server.onrender.com/all-packages/${category}?range=${range}&sort=${sort ? 1 : -1}`,
-    []
-  );
+  // const { data: selectedCategory, refetch } = useRefetch(`https://create-eve-server.onrender.com/packages/${category}`,{});
+  const { data: selectedCategory, loading, refetch } = useQueryFetch('selected-category',`https://create-eve-server.onrender.com/packages/${category}`);
+
+
+  // const { data: allPackages, loading:ldng, refetch: packageRefetch } = useRefetch(`https://create-eve-server.onrender.com/all-packages/${category}?range=${range}&sort=${sort ? 1 : -1}`,[]);
+  const { data: allPackages, loading:ldng, refetch: packageRefetch } = useQueryFetch('all-package',`https://create-eve-server.onrender.com/all-packages/${category}?range=${range}&sort=${sort ? 1 : -1}`);
+
 
   useEffect(() => {
     packageRefetch();
@@ -40,6 +41,7 @@ const Packages = () => {
 
   return (
     <div className="min-h-screen">
+      {(loading || ldng) && <Loading/>}
       <section
         data-testid='packages'
         className={`${style.bg} h-80`}

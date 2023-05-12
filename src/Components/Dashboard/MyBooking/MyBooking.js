@@ -6,6 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/firebase.init";
 import usePayment from "./PaymentInfoHook/usePayment";
 import BookingCard from "./BookingCard";
+import { useQueryFetch } from "../../Hooks/useQueryFetch";
 
 function MyBooking() {
   const [toggleState, setToggleState] = useState(1);
@@ -20,11 +21,8 @@ function MyBooking() {
 
   const paymentInfo = usePayment(uid);
 
-  const {
-    data: bookings,
-    loading,
-    refetch,
-  } = useRefetch(`https://create-eve-server.onrender.com/bookings/${user?.uid}`, []);
+  // const {data: bookings,loading,refetch} = useRefetch(`https://create-eve-server.onrender.com/bookings/${user?.uid}`, []);
+  const {data: bookings,loading,refetch} = useQueryFetch('booking',`https://create-eve-server.onrender.com/bookings/${user?.uid}`);
 
   return (
     <div className="p-3">

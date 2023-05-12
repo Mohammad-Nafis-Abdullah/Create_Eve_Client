@@ -13,6 +13,7 @@ import auth from "../../../Firebase/firebase.init";
 import { toast } from "react-toastify";
 import axios from "axios";
 import useMyStorage from "../../Hooks/useMyStorage";
+import { useQueryFetch } from "../../Hooks/useQueryFetch";
 
 const AddPackage = () => {
   const [user] = useAuthState(auth);
@@ -25,11 +26,9 @@ const AddPackage = () => {
   const [items, setStorage, clearStorage] = useLocalStorage("package", []);
   const [caterings, setCateringsStorage, clearCateringsStorage] =
     useLocalStorage("pkgCatering", []);
-  const {
-    data: pkgs,
-    loading: pkgLoading,
-    refetch: pkgRefetch,
-  } = useRefetch(`https://create-eve-server.onrender.com/packages`, []);
+  // const {data: pkgs,loading: pkgLoading,refetch: pkgRefetch} = useRefetch(`https://create-eve-server.onrender.com/packages`, []);
+  
+  const {data: pkgs,loading: pkgLoading,refetch: pkgRefetch} = useQueryFetch('package',`https://create-eve-server.onrender.com/packages`);
 
   useEffect(() => {
     clearStorage();

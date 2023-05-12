@@ -43,6 +43,7 @@ import useStateReducer from "./Components/Hooks/useStateReducer";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./Firebase/firebase.init";
 import useRefetch from "./Components/Hooks/useRefetch";
+import { useQueryFetch } from "./Components/Hooks/useQueryFetch";
 
 
 // global state handling context api
@@ -56,7 +57,9 @@ function App() {
   const [user] = useAuthState(auth);
   const [admin, loading] = useAdmin();
   const [state, dispatch] = useStateReducer();
-  const { data: currentUser, loading: userLoading, refetch } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, null);
+  // const { data: currentUser, loading: userLoading, refetch } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, null);
+
+  const { data: currentUser, loading: userLoading, refetch } = useQueryFetch('current-user',`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
 
   const { pathname } = location;
   useEffect(() => {

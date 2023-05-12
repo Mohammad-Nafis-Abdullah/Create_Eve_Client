@@ -7,11 +7,16 @@ import auth from "../../../Firebase/firebase.init";
 import useRefetch from "../../Hooks/useRefetch";
 import Loading from "../../Share/Loading/Loading";
 import SingleUser from "../SingleUser/SingleUser";
+import { useQueryFetch } from "../../Hooks/useQueryFetch";
 
 const AllUsers = () => {
   const [currentUser] = useAuthState(auth);
-  const { data: allUsers, loading, refetch } = useRefetch("https://create-eve-server.onrender.com/allusers")
-  const { data: user, loading: userLoading, refetch: userRefetch } = useRefetch(`https://create-eve-server.onrender.com/user/${currentUser?.uid}`, {})
+  
+  // const { data: allUsers, loading, refetch } = useRefetch("https://create-eve-server.onrender.com/allusers");
+  const { data: allUsers, loading, refetch } = useQueryFetch('all-user',"https://create-eve-server.onrender.com/allusers");
+  
+  // const { data: user, loading: userLoading, refetch: userRefetch } = useRefetch(`https://create-eve-server.onrender.com/user/${currentUser?.uid}`, {});
+  const { data: user, loading: userLoading, refetch: userRefetch } = useQueryFetch('current-user',`https://create-eve-server.onrender.com/user/${currentUser?.uid}`);
 
   const makeAdmin = {
     title: 'Are you sure?',

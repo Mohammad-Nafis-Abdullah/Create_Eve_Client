@@ -4,20 +4,16 @@ import useRefetch from "../../Hooks/useRefetch";
 import Loading from "../../Share/Loading/Loading";
 import Pagination from "./Pagination";
 import SingleOrder from "./SingleOrder";
+import { useQueryFetch } from "../../Hooks/useQueryFetch";
 
 function AllBookings() {
   const limits = [10, 20, 30];
   const [limit, setLimit] = useState(limits[0]);
   const [page, setPage] = useState(1);
 
-  const {
-    data,
-    loading: bookingLoading,
-    refetch: refetchBooking,
-  } = useRefetch(
-    `https://create-eve-server.onrender.com/get-all-booking-info?limit=${limit}&page=${page}`,
-    {}
-  );
+  // const {data,loading: bookingLoading,refetch: refetchBooking,} = useRefetch(`https://create-eve-server.onrender.com/get-all-booking-info?limit=${limit}&page=${page}`,{});
+
+  const {data, loading:bookingLoading, refetch:refetchBooking,} = useQueryFetch('all-booking',`https://create-eve-server.onrender.com/get-all-booking-info?limit=${limit}&page=${page}`);
 
   return (
     <div className="overflow-x-auto">

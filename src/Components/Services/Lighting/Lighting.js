@@ -11,10 +11,13 @@ import { instantModal } from "../../Prebuild/Modal";
 import Loading from "../../Share/Loading/Loading";
 import ServiceCardContainer from "../ServiceCardContainer";
 import ServiceConfigModal from "../ServiceConfigModal";
+import { useQueryFetch } from "../../Hooks/useQueryFetch";
 
 function Lighting() {
   const [lighting, setLighting, clearLighting] = useLocalStorage("lighting", {});
-  const { data: lightings, loading, refetch } = useRefetch(`https://create-eve-server.onrender.com/services/lighting`, []);
+  // const { data: lightings, loading, refetch } = useRefetch(`https://create-eve-server.onrender.com/services/lighting`, []);
+  const { data: lightings, loading, refetch } = useQueryFetch('lightings',`https://create-eve-server.onrender.com/services/lighting`);
+
 
   return (
     <div className="route">

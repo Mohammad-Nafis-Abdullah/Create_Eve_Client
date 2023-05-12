@@ -5,9 +5,11 @@ import { instantModal } from '../../Prebuild/Modal';
 import Loading from '../../Share/Loading/Loading';
 import CategoryCard from './CategoryCard';
 import CategoryEditModal from './CategoryEditModal';
+import { useQueryFetch } from '../../Hooks/useQueryFetch';
 
 const ManageCategory = () => {
-    const { data: categories, loading: categoryLoading, refetch: categoryRefetch } = useRefetch('https://create-eve-server.onrender.com/packages', []);
+    // const { data: categories, loading: categoryLoading, refetch: categoryRefetch } = useRefetch('https://create-eve-server.onrender.com/packages', []);
+    const { data: categories, loading: categoryLoading, refetch: categoryRefetch } = useQueryFetch('categories','https://create-eve-server.onrender.com/packages');
     const childRef = useRef();
 
     return (

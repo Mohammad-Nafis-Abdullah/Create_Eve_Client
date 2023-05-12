@@ -9,12 +9,14 @@ import { toast } from "react-toastify";
 import { instantModal } from "../../Prebuild/Modal";
 import ServiceConfigModal from "../ServiceConfigModal";
 import ServiceCardContainer from "../ServiceCardContainer";
+import { useQueryFetch } from "../../Hooks/useQueryFetch";
 
 
 function Catering() {
   const navigate = useNavigate();
   const [catering, setCatering, clearCatering] = useLocalStorage("catering", {});
-  const { data: caterings, loading, refetch } = useRefetch(`https://create-eve-server.onrender.com/services/catering`, []);
+  // const { data: caterings, loading, refetch } = useRefetch(`https://create-eve-server.onrender.com/services/catering`, []);
+  const { data: caterings, loading, refetch } = useQueryFetch('caterings',`https://create-eve-server.onrender.com/services/catering`);
 
   return (
     <div className="route">
