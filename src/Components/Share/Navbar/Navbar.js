@@ -66,7 +66,7 @@ const Navbar = ({ location }) => {
     <section
       className={`${routeName ? anotherRoute : homeRoute} bg-white z-50`}
     >
-      {loading && <Loading />}
+      {(loading || pkgLoading) && <Loading />}
       {routeName && <TopnavBar />}
       <div
         className={` ${routeName ? "bg-white text-black" : "bg-black/50 text-white"} flex justify-between items-center max-w-8xl w-full mx-auto p-3`}

@@ -27,8 +27,6 @@ const Dashboard = () => {
   const [admin, adminLoading] = useAdmin(user);
   const [state,dispatch] = useContext(StateContext);
 
-  console.log(state);
-
   return (
     <div className="mx-auto px-2 lg:px-0 route">
       {loading && adminLoading && <Loading/>}
