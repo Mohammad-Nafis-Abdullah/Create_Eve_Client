@@ -84,7 +84,7 @@ const Navbar = ({ location }) => {
 
 
 
-  // console.log(state);
+  console.log(state);
 
   return (
     <section
