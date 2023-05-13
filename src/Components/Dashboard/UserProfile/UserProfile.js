@@ -37,7 +37,7 @@ const UserProfile = () => {
     data: currentUser,
     loading: userLoading,
     refetch,
-  } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, {}); */
+  } = useRefetch(`http://localhost:5000/single-user/${user?.uid}`, {}); */
 
 
   // upload photo drag in drop
@@ -63,7 +63,7 @@ const UserProfile = () => {
     try {
       await deleteImage(currentUser?.userImg);
       const { name } = await uploadImage(file);
-      await axios.put(`https://create-eve-server.onrender.com/user-update/${user?.uid}`, {
+      await axios.put(`http://localhost:5000/user-update/${user?.uid}`, {
         userImg: name,
       })
       state.userRefetch();

@@ -57,9 +57,9 @@ function App() {
   const [user] = useAuthState(auth);
   const [admin, loading] = useAdmin();
   const [state, dispatch] = useStateReducer();
-  // const { data: currentUser, loading: userLoading, refetch } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, null);
+  // const { data: currentUser, loading: userLoading, refetch } = useRefetch(`http://localhost:5000/single-user/${user?.uid}`, null);
 
-  const { data: currentUser, loading: userLoading, refetch } = useQueryFetch('current-user',`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
+  const { data: currentUser, loading: userLoading, refetch } = useQueryFetch('current-user', `http://localhost:5000/single-user/${user?.uid}`);
 
   const { pathname } = location;
   useEffect(() => {
@@ -69,7 +69,7 @@ function App() {
 
   useEffect(() => {
     if (user && !currentUser) {
-      refetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
+      refetch(`http://localhost:5000/single-user/${user?.uid}`);
     }
     // console.log(user);
     // console.log(currentUser);
@@ -81,7 +81,7 @@ function App() {
       dispatch({
         type: 'userRefetch',
         value: () => {
-          refetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`);
+          refetch(`http://localhost:5000/single-user/${user?.uid}`);
         }
       })
     }

@@ -61,7 +61,7 @@ const AddService = () => {
 
     try {
       const { name } = await uploadImage(serviceImg);
-      const { data } = await axios.post(`https://create-eve-server.onrender.com/service/${type}`, { ...service, ...service_diff, img: name, });
+      const { data } = await axios.post(`http://localhost:5000/service/${type}`, { ...service, ...service_diff, img: name, });
       data.acknowledged ?
         toast.success("Service added successfully", { theme: "colored", })
         :

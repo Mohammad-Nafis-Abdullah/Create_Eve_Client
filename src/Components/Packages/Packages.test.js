@@ -5,7 +5,7 @@ import Packages from "./Packages";
 
 test('Data for Catering Services', async () => {
 
-    const data = await fetch(`https://create-eve-server.onrender.com/services/catering`);
+    const data = await fetch(`http://localhost:5000/services/catering`);
     const dt = await data.json();
 
     for (const singleDt of dt) {

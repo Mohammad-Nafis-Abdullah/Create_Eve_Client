@@ -45,7 +45,7 @@ const CheckoutForm = ({ booking }) => {
 
   useEffect(() => {
     axios
-      .post("https://create-eve-server.onrender.com/create-payment-intent", {
+      .post("http://localhost:5000/create-payment-intent", {
         totalPrice: total() || 100,
       })
       .then(({ data }) => {
@@ -120,7 +120,7 @@ const CheckoutForm = ({ booking }) => {
         paid: true,
       };
       await axios
-        .put(`https://create-eve-server.onrender.com/payment-info/${_id}`, payment)
+        .put(`http://localhost:5000/payment-info/${_id}`, payment)
         .then(({ data }) => {
           console.log(data);
         });

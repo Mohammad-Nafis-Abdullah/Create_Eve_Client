@@ -5,11 +5,11 @@ import useFetch from "../../Home/OurServices/Hook/useFetch";
 
 function Logistics() {
   const logisticServices = useFetch(
-    `https://create-eve-server.onrender.com/get-sub-services/logistic`
+    `http://localhost:5000/get-sub-services/logistic`
   );
 
   const promotionServices = useFetch(
-    `https://create-eve-server.onrender.com/get-sub-services/promotion`
+    `http://localhost:5000/get-sub-services/promotion`
   );
 
   return (

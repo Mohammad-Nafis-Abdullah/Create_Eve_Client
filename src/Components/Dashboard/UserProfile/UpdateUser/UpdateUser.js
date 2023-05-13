@@ -22,7 +22,7 @@ const UpdateUser = () => {
 
   useEffect(() => {
     axios
-      .get(`https://create-eve-server.onrender.com/single-user/${email}`)
+      .get(`http://localhost:5000/single-user/${email}`)
       .then(({ data }) => setUserData(data));
   }, [email]);
 
@@ -38,7 +38,7 @@ const UpdateUser = () => {
     };
 
     axios
-      .put(`https://create-eve-server.onrender.com/user-update/${user?.uid}`, userInfo)
+      .put(`http://localhost:5000/user-update/${user?.uid}`, userInfo)
       .then(({ data }) => {
         if (data) {
           toast.success("Information updated successfully");

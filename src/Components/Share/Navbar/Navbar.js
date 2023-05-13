@@ -28,7 +28,7 @@ const Navbar = ({ location }) => {
   const navigate = useNavigate();
   const [admin, loading] = useAdmin();
 
-  const {data: pkgs,loading: pkgLoading,refetch: pkgRefetch} = useQueryFetch('package',`https://create-eve-server.onrender.com/packages`);
+  const { data: pkgs, loading: pkgLoading, refetch: pkgRefetch } = useQueryFetch('package', `http://localhost:5000/packages`);
 
   const [navbarBg, setNavbar] = useState(false);
   const changeBg = () => {

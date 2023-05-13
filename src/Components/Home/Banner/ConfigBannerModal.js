@@ -40,7 +40,7 @@ const ConfigBannerModal = ({ refetch, bannerPhotos }) => {
 
                 // console.log(names);
 
-                const { data } = await axios.post('https://create-eve-server.onrender.com/home-banner', names, {
+                const { data } = await axios.post('http://localhost:5000/home-banner', names, {
                     headers: {
                         uid: user?.uid
                     }

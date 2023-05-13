@@ -7,7 +7,7 @@ const usePayment = (uid) => {
     // payment info
 
     useEffect(() => {
-        axios.get(`https://create-eve-server.onrender.com/get-payment/${uid}`)
+        axios.get(`http://localhost:5000/get-payment/${uid}`)
             .then(res => {
                 const { data } = res
                 console.log(data);
