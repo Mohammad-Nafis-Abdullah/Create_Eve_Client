@@ -1,21 +1,19 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import "./Banner.css";
 import { instantModal } from "../../Prebuild/Modal";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AiFillSetting } from "react-icons/ai";
 import ConfigBannerModal from "./ConfigBannerModal";
-import useAdmin from "../../Hooks/useAdmin";
 import Loading from "../../Share/Loading/Loading";
-import useRefetch from "../../Hooks/useRefetch";
 import { imgUrl } from "../../Hooks/useMyStorage";
 import Slider from "react-slick";
 import { useQueryFetch } from "../../Hooks/useQueryFetch";
+import { StateContext } from "../../../App";
 
 const Banner = () => {
-  const [admin, adminLoading] = useAdmin();
+  const [state] = useContext(StateContext);
   const navigate = useNavigate();
-  // const {data: bannerPhotos,loading,refetch} = useRefetch("https://create-eve-server.onrender.com/home-banner");
 
   const { data: bannerPhotos, loading, refetch } = useQueryFetch('banner', "https://create-eve-server.onrender.com/home-banner");
 
@@ -39,8 +37,8 @@ const Banner = () => {
 
   return (
     <div className="relative">
-      {(adminLoading || loading) && <Loading />}
-      {admin && (
+      {loading && <Loading />}
+      {(state.user?.role==='owner' || state.user?.role==='admin') && (
         <div
           onClick={configBanner}
           className="absolute left-0 top-[30vh] z-20 w-10 h-10 bg-highlight p-1 cursor-pointer select-none active:scale-95"
