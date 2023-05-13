@@ -17,6 +17,7 @@ import { GoChevronDown } from 'react-icons/go';
 import Loading from "../Loading/Loading";
 import { toast } from "react-toastify";
 import { useQueryFetch } from "../../Hooks/useQueryFetch";
+import axios from "axios";
 
 
 const Navbar = ({ location }) => {
@@ -43,8 +44,8 @@ const Navbar = ({ location }) => {
   const handleSignOut = async () => {
     setShow(false);
     await signOut(auth);
+    await axios.get(`http://localhost:5000/sign-out`,{withCredentials:true});
     localStorage.clear();
-    window.location.reload();
     navigate("/");
   };
 

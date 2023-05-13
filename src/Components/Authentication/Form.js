@@ -38,7 +38,9 @@ const Form = () => {
       };
 
       axios
-        .put(`http://localhost:5000/user/${user?.uid}`, currentUser)
+        .put(`http://localhost:5000/user/${user?.uid}`, currentUser, {
+          withCredentials:true,
+        })
         .then(({ data }) => {
           if (data) {
             toast.success("Successfully Signed In");
