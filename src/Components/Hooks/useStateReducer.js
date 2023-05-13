@@ -2,7 +2,6 @@ import { useReducer } from "react";
 
 const initialState = { // declare initial state here as {key : value} pair
     user:'',
-    userRefetch:'',
 };
 
 const reducer = (state,action)=> { // declare logic of reducer function that handle the changing of state
@@ -12,9 +11,6 @@ const reducer = (state,action)=> { // declare logic of reducer function that han
     
         case 'user': // user profile picture url state
             return {...state,user:action.value};
-
-        case 'userRefetch': // user Refetch function
-            return {...state,userRefetch:action.value}
 
         default:
             return {...state};

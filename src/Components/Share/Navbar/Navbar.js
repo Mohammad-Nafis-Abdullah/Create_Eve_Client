@@ -18,6 +18,7 @@ import Loading from "../Loading/Loading";
 import { toast } from "react-toastify";
 import { useQueryFetch } from "../../Hooks/useQueryFetch";
 import axios from "axios";
+import { queryClient } from "../../..";
 
 
 const Navbar = ({ location }) => {
@@ -41,10 +42,32 @@ const Navbar = ({ location }) => {
   };
   window.addEventListener("scroll", changeBg);
 
+  useEffect(()=> {
+    if (user) {
+      axios.get(`http://localhost:5000/single-user/${user?.uid}`,{withCredentials:true})
+      .then(({data})=> {
+          dispatch({
+            type:'user',
+            value:data,
+          })
+      })
+    } else {
+      dispatch({
+        type:'user',
+        value:null,
+      })
+    }
+  },[user]);
+
   const handleSignOut = async () => {
     setShow(false);
     await signOut(auth);
     await axios.get(`http://localhost:5000/sign-out`,{withCredentials:true});
+    dispatch({
+      type: 'user',
+      value: '',
+    })
+    queryClient.invalidateQueries({ queryKey: ['current-user'] });
     localStorage.clear();
     navigate("/");
   };
@@ -311,14 +334,12 @@ const Navbar = ({ location }) => {
               <div className="relative">
                 <div
                   className=""
-                  onClick={() => {
-                    setShow(prev => !prev);
-                  }}
+                  onClick={() => setShow(prev => !prev)}
                 >
                   {state?.user?.userImg && (
                     <img
                       src={imgUrl(state?.user?.userImg)}
-                      className="w-12 h-12 object-cover rounded-full border cursor-pointer"
+                      className="w-12 h-12 object-cover rounded-full cursor-pointer"
                       alt=""
                     />
                   )}
@@ -329,7 +350,7 @@ const Navbar = ({ location }) => {
                     </span>
                   )}
                 </div>
-                <div className={`absolute top-[70px] -right-2 bg-gray-300 border-4 border-gray-900 rounded-lg p-3 space-y-5 ${show ? 'flex' : 'hidden'} flex-col justify-center`}>
+                <div className={`absolute top-[70px] -right-2 bg-gray-300 border-4 border-gray-900 rounded-lg p-3 space-y-5 ${show ? 'flex' : 'hidden'} flex-col justify-center w-60`}>
                   <div className="space-y-3">
                     <div className="flex justify-center">
                       {state?.user?.userImg && (
@@ -351,7 +372,7 @@ const Navbar = ({ location }) => {
                         navigator.clipboard.writeText(user?.email).then(() => {
                           toast('Email Copied to Clipboard', { theme: 'dark' });
                         });
-                      }} title='click to copy mail address' className="text-gray-900 font-bold cursor-pointer hover:underline underline-offset-2 decoration-2">{user?.email}</p>
+                      }} title='click to copy mail address' className="text-gray-900 font-bold cursor-pointer hover:underline underline-offset-2 decoration-2 text-center">{user?.email}</p>
                     </div>
                   </div>
 

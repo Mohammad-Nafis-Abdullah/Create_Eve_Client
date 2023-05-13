@@ -3,15 +3,13 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import NotFound from "./Components/Share/NotFound/NotFound";
 import BackTopBtn from "./Components/BackToTop/BackTopBtn";
 import Form from "./Components/Authentication/Form";
-import MessengerCustomerChat from "react-messenger-customer-chat";
-
 import AboutUs from "./Components/About/AboutUs/AboutUs";
 import Footer from "./Components/Share/Footer/Footer";
 import EventBooking from "./Components/EventBooking/EventBooking";
@@ -24,7 +22,6 @@ import Catering from "./Components/Services/Catering/Catering";
 import Audiovisual from "./Components/Services/Audiovisual/Audiovisual";
 import Lighting from "./Components/Services/Lighting/Lighting";
 import AllUsers from "./Components/Dashboard/AllUsers/AllUsers";
-import OurTeam from "./Components/OurTeam/OurTeam";
 import UserProfile from "./Components/Dashboard/UserProfile/UserProfile";
 import UpdateUser from "./Components/Dashboard/UserProfile/UpdateUser/UpdateUser";
 import RequireAdmin from "./Components/Authentication/RequireAdmin/RequireAdmin";
@@ -40,11 +37,6 @@ import AddPackage from "./Components/Dashboard/AddPackage/AddPackage";
 import ManageCategory from "./Components/Dashboard/ManageCategory/ManageCategory";
 import AddService from "./Components/Dashboard/AddService/AddService";
 import useStateReducer from "./Components/Hooks/useStateReducer";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "./Firebase/firebase.init";
-import useRefetch from "./Components/Hooks/useRefetch";
-import { useQueryFetch } from "./Components/Hooks/useQueryFetch";
-
 
 // global state handling context api
 const StateContext = React.createContext();
@@ -54,40 +46,13 @@ AOS.init({ duration: 200 });
 
 function App() {
   const location = useLocation();
-  const [user] = useAuthState(auth);
   const [admin, loading] = useAdmin();
   const [state, dispatch] = useStateReducer();
-  // const { data: currentUser, loading: userLoading, refetch } = useRefetch(`http://localhost:5000/single-user/${user?.uid}`, null);
-
-  const { data: currentUser, loading: userLoading, refetch } = useQueryFetch('current-user', `http://localhost:5000/single-user/${user?.uid}`);
-
   const { pathname } = location;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
-
-  useEffect(() => {
-    if (user && !currentUser) {
-      refetch(`http://localhost:5000/single-user/${user?.uid}`);
-    }
-    // console.log(user);
-    // console.log(currentUser);
-    if (currentUser) {
-      dispatch({
-        type: 'user',
-        value: currentUser,
-      });
-      dispatch({
-        type: 'userRefetch',
-        value: () => {
-          refetch(`http://localhost:5000/single-user/${user?.uid}`);
-        }
-      })
-    }
-  }, [user, currentUser])
-
-  // console.log(state);
 
   return (
     <StateContext.Provider value={[state, dispatch]}>

@@ -64,7 +64,7 @@ const Dashboard = () => {
               <div className="pt-5">
                 <div id="user_profile_photo">
                   
-                  {state?.user && (
+                  {state?.user?.userImg && (
                     <img
                       className="w-16 h-16 object-cover rounded-full m-auto"
                       src={imgUrl(state?.user?.userImg)}
@@ -72,7 +72,7 @@ const Dashboard = () => {
                     />
                   )}
 
-                  {!state?.user && (
+                  {!state?.user?.userImg && (
                     <span className="">
                       <AiOutlineUser className="w-[75px] h-[75px] border-2  text-slate-800 m-auto bg-white bg-opacity-50 text-4xl rounded-full" />
                     </span>

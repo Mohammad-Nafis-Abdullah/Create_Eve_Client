@@ -15,6 +15,7 @@ import useRefetch from "../../Hooks/useRefetch";
 import axios from "axios";
 import { StateContext } from "../../../App";
 import useMyStorage, { imgUrl } from "../../Hooks/useMyStorage";
+import { queryClient } from "../../../index";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
@@ -41,7 +42,6 @@ const UserProfile = () => {
 
 
   // upload photo drag in drop
-
   const handleChange = (file) => {
     setFile(file);
   };
@@ -66,8 +66,11 @@ const UserProfile = () => {
       await axios.put(`http://localhost:5000/user-update/${user?.uid}`, {
         userImg: name,
       })
-      state.userRefetch();
-      refetch();
+      queryClient.invalidateQueries({ queryKey: ['current-user'] });
+      dispatch({
+        type:'user',
+        value:{...state.user,userImg:name}
+      });
       toast.success("Profile Picture Updated Successfully");
       navigate("/manage-profile");
       setFile(null);
@@ -138,6 +141,7 @@ const UserProfile = () => {
                               className={`text-sm font-medium text-slate-700 mt-8`}
                             >{`Image Name: ${file?.name}`}</p>
                           )}
+                          <img src={file?URL.createObjectURL(file):''} alt={file?.name} />
                           {!file && (
                             <p
                               className={`pt-4 text-sm text-red-600 font-medium`}
