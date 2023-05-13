@@ -29,16 +29,7 @@ const UserProfile = () => {
   const [ldng, setLdng] = useState(false);
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
-
-
-
-  const { user: currentUser, userRefetch: refetch } = state;
-
-  /* const {
-    data: currentUser,
-    loading: userLoading,
-    refetch,
-  } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, {}); */
+  const { user: currentUser } = state;
 
 
   // upload photo drag in drop
@@ -69,7 +60,7 @@ const UserProfile = () => {
       queryClient.invalidateQueries({ queryKey: ['current-user'] });
       dispatch({
         type: 'user',
-        value: { ...state.user, userImg: name }
+        value: { ...currentUser, userImg: name }
       });
       toast.success("Profile Picture Updated Successfully");
       navigate("/manage-profile");
