@@ -93,7 +93,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
                 if (img) {
                     await deleteImage(service?.img);
                     const { name } = await uploadImage(img);
-                    const { data } = await axios.put(`http://localhost:5000/service/${service?.type}/${service?._id}`, { ...serviceObj, img: name }, {
+                    const { data } = await axios.put(`https://create-eve-server.onrender.com/service/${service?.type}/${service?._id}`, { ...serviceObj, img: name }, {
                         headers: {
                             uid: currentUser?.uid
                         }
@@ -109,7 +109,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
                     }
 
                 } else {
-                    const { data } = await axios.put(`http://localhost:5000/service/${service?.type}/${service?._id}`, { ...serviceObj, img: service?.img }, {
+                    const { data } = await axios.put(`https://create-eve-server.onrender.com/service/${service?.type}/${service?._id}`, { ...serviceObj, img: service?.img }, {
                         headers: {
                             uid: currentUser?.uid
                         }
@@ -147,7 +147,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
             const { isConfirmed } = await Swal.fire({ ...swalObj, text: "to Delete the service" });
             if (isConfirmed) {
                 await deleteImage(service?.img);
-                const { data } = await axios.delete(`http://localhost:5000/service/${service?.type}/${service?._id}`, {
+                const { data } = await axios.delete(`https://create-eve-server.onrender.com/service/${service?.type}/${service?._id}`, {
                     headers: {
                         uid: currentUser?.uid
                     }

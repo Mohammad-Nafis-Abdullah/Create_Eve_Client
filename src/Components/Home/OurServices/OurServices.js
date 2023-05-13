@@ -9,7 +9,7 @@ import useFetch from "./Hook/useFetch";
 import ServiceCard from "./ServiceCard";
 
 export default function OurServices() {
-  const serviceInfo = useFetch("http://localhost:5000/packages");
+  const serviceInfo = useFetch("https://create-eve-server.onrender.com/packages");
 
   const NextArrow = ({ onClick }) => {
     return (

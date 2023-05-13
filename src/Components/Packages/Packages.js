@@ -19,12 +19,12 @@ const Packages = () => {
   const [sort, setSort] = useState(true);
   const { pathname } = useLocation();
 
-  // const { data: selectedCategory, refetch } = useRefetch(`http://localhost:5000/packages/${category}`,{});
-  const { data: selectedCategory, loading, refetch } = useQueryFetch('selected-category', `http://localhost:5000/packages/${category}`);
+  // const { data: selectedCategory, refetch } = useRefetch(`https://create-eve-server.onrender.com/packages/${category}`,{});
+  const { data: selectedCategory, loading, refetch } = useQueryFetch('selected-category', `https://create-eve-server.onrender.com/packages/${category}`);
 
 
-  // const { data: allPackages, loading:ldng, refetch: packageRefetch } = useRefetch(`http://localhost:5000/all-packages/${category}?range=${range}&sort=${sort ? 1 : -1}`,[]);
-  const { data: allPackages, loading: ldng, refetch: packageRefetch } = useQueryFetch('all-package', `http://localhost:5000/all-packages/${category}?range=${range}&sort=${sort ? 1 : -1}`);
+  // const { data: allPackages, loading:ldng, refetch: packageRefetch } = useRefetch(`https://create-eve-server.onrender.com/all-packages/${category}?range=${range}&sort=${sort ? 1 : -1}`,[]);
+  const { data: allPackages, loading: ldng, refetch: packageRefetch } = useQueryFetch('all-package', `https://create-eve-server.onrender.com/all-packages/${category}?range=${range}&sort=${sort ? 1 : -1}`);
 
 
   useEffect(() => {

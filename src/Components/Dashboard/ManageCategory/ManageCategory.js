@@ -8,8 +8,8 @@ import CategoryEditModal from './CategoryEditModal';
 import { useQueryFetch } from '../../Hooks/useQueryFetch';
 
 const ManageCategory = () => {
-    // const { data: categories, loading: categoryLoading, refetch: categoryRefetch } = useRefetch('http://localhost:5000/packages', []);
-    const { data: categories, loading: categoryLoading, refetch: categoryRefetch } = useQueryFetch('categories', 'http://localhost:5000/packages');
+    // const { data: categories, loading: categoryLoading, refetch: categoryRefetch } = useRefetch('https://create-eve-server.onrender.com/packages', []);
+    const { data: categories, loading: categoryLoading, refetch: categoryRefetch } = useQueryFetch('categories', 'https://create-eve-server.onrender.com/packages');
     const childRef = useRef();
 
     return (

@@ -21,8 +21,8 @@ function MyBooking() {
 
   const paymentInfo = usePayment(uid);
 
-  // const {data: bookings,loading,refetch} = useRefetch(`http://localhost:5000/bookings/${user?.uid}`, []);
-  const { data: bookings, loading, refetch } = useQueryFetch('booking', `http://localhost:5000/bookings/${user?.uid}`);
+  // const {data: bookings,loading,refetch} = useRefetch(`https://create-eve-server.onrender.com/bookings/${user?.uid}`, []);
+  const { data: bookings, loading, refetch } = useQueryFetch('booking', `https://create-eve-server.onrender.com/bookings/${user?.uid}`);
 
   return (
     <div className="p-3">

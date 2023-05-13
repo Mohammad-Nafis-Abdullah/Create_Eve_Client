@@ -26,9 +26,9 @@ const AddPackage = () => {
   const [items, setStorage, clearStorage] = useLocalStorage("package", []);
   const [caterings, setCateringsStorage, clearCateringsStorage] =
     useLocalStorage("pkgCatering", []);
-  // const {data: pkgs,loading: pkgLoading,refetch: pkgRefetch} = useRefetch(`http://localhost:5000/packages`, []);
+  // const {data: pkgs,loading: pkgLoading,refetch: pkgRefetch} = useRefetch(`https://create-eve-server.onrender.com/packages`, []);
 
-  const { data: pkgs, loading: pkgLoading, refetch: pkgRefetch } = useQueryFetch('package', `http://localhost:5000/packages`);
+  const { data: pkgs, loading: pkgLoading, refetch: pkgRefetch } = useQueryFetch('package', `https://create-eve-server.onrender.com/packages`);
 
   useEffect(() => {
     clearStorage();
@@ -76,7 +76,7 @@ const AddPackage = () => {
       try {
         const coverImg = e.target.cover.files[0];
         const { name: coverImgName } = await uploadImage(coverImg);
-        const categoryData = await axios.put(`http://localhost:5000/packages/${category}`, { ...categoryObj, coverPhoto: coverImgName });
+        const categoryData = await axios.put(`https://create-eve-server.onrender.com/packages/${category}`, { ...categoryObj, coverPhoto: coverImgName });
 
       } catch (err) {
         // console.log(err);
@@ -86,7 +86,7 @@ const AddPackage = () => {
     try {
       const { name } = await uploadImage(pkgImg);
       console.log(name);
-      const { data } = await axios.post(`http://localhost:5000/package/${category}`, { ...createdPackage, coverPhoto: name, });
+      const { data } = await axios.post(`https://create-eve-server.onrender.com/package/${category}`, { ...createdPackage, coverPhoto: name, });
       console.log(data);
       data.acknowledged ?
         toast.success("Package added successfully", { theme: "colored", })

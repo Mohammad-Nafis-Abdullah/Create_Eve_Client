@@ -8,7 +8,7 @@ const Venues = () => {
   const [select, setSelect] = useState({});
   const [venues, setVenues] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/venues`).then((res) => {
+    axios.get(`https://create-eve-server.onrender.com/venues`).then((res) => {
       setVenues(res?.data);
       setSelect(res?.data[0]);
     });

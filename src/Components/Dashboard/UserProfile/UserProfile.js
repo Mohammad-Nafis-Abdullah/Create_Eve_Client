@@ -38,7 +38,7 @@ const UserProfile = () => {
     data: currentUser,
     loading: userLoading,
     refetch,
-  } = useRefetch(`http://localhost:5000/single-user/${user?.uid}`, {}); */
+  } = useRefetch(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, {}); */
 
 
   // upload photo drag in drop
@@ -63,13 +63,13 @@ const UserProfile = () => {
     try {
       await deleteImage(currentUser?.userImg);
       const { name } = await uploadImage(file);
-      await axios.put(`http://localhost:5000/user-update/${user?.uid}`, {
+      await axios.put(`https://create-eve-server.onrender.com/user-update/${user?.uid}`, {
         userImg: name,
       })
       queryClient.invalidateQueries({ queryKey: ['current-user'] });
       dispatch({
-        type:'user',
-        value:{...state.user,userImg:name}
+        type: 'user',
+        value: { ...state.user, userImg: name }
       });
       toast.success("Profile Picture Updated Successfully");
       navigate("/manage-profile");
@@ -141,7 +141,7 @@ const UserProfile = () => {
                               className={`text-sm font-medium text-slate-700 mt-8`}
                             >{`Image Name: ${file?.name}`}</p>
                           )}
-                          <img src={file?URL.createObjectURL(file):''} alt={file?.name} />
+                          <img src={file ? URL.createObjectURL(file) : ''} alt={file?.name} />
                           {!file && (
                             <p
                               className={`pt-4 text-sm text-red-600 font-medium`}

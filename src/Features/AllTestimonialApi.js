@@ -4,7 +4,7 @@
 // Define a service using a base URL and expected endpoints
 export const allTestimonialApi = createApi({
   reducerPath: 'allTestimonialApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://create-eve-server.onrender.com/' }),
   endpoints: (builder) => ({
     getTestimonial: builder.query({
       query: () => `allTestimonial`,

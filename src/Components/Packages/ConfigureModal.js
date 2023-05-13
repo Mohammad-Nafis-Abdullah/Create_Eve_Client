@@ -75,7 +75,7 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
                 if (img) {
                     await deleteImage(coverPhoto);
                     const { name } = await uploadImage(img);
-                    const { data } = await axios.put(`http://localhost:5000/package/${configItem?.category}/${configItem?._id}`, { ...pkg, coverPhoto: name }, {
+                    const { data } = await axios.put(`https://create-eve-server.onrender.com/package/${configItem?.category}/${configItem?._id}`, { ...pkg, coverPhoto: name }, {
                         headers: {
                             uid: currentUser?.uid
                         }
@@ -92,7 +92,7 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
                     }
 
                 } else {
-                    const { data } = await axios.put(`http://localhost:5000/package/${configItem?.category}/${configItem?._id}`, { ...pkg, coverPhoto: coverPhoto }, {
+                    const { data } = await axios.put(`https://create-eve-server.onrender.com/package/${configItem?.category}/${configItem?._id}`, { ...pkg, coverPhoto: coverPhoto }, {
                         headers: {
                             uid: currentUser?.uid
                         }
@@ -128,7 +128,7 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
 
             if (isConfirmed) {
                 await deleteImage(coverPhoto);
-                const { data } = await axios.delete(`http://localhost:5000/package/${configItem?.category}/${id}`, {
+                const { data } = await axios.delete(`https://create-eve-server.onrender.com/package/${configItem?.category}/${id}`, {
                     headers: {
                         uid: currentUser?.uid
                     }

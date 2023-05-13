@@ -30,7 +30,7 @@ const Navbar = ({ location }) => {
   const navigate = useNavigate();
   const [admin, loading] = useAdmin();
 
-  const { data: pkgs, loading: pkgLoading, refetch: pkgRefetch } = useQueryFetch('package', `http://localhost:5000/packages`);
+  const { data: pkgs, loading: pkgLoading, refetch: pkgRefetch } = useQueryFetch('package', `https://create-eve-server.onrender.com/packages`);
 
   const [navbarBg, setNavbar] = useState(false);
   const changeBg = () => {
@@ -42,27 +42,27 @@ const Navbar = ({ location }) => {
   };
   window.addEventListener("scroll", changeBg);
 
-  useEffect(()=> {
+  useEffect(() => {
     if (user) {
-      axios.get(`http://localhost:5000/single-user/${user?.uid}`,{withCredentials:true})
-      .then(({data})=> {
+      axios.get(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, { withCredentials: true })
+        .then(({ data }) => {
           dispatch({
-            type:'user',
-            value:data,
+            type: 'user',
+            value: data,
           })
-      })
+        })
     } else {
       dispatch({
-        type:'user',
-        value:null,
+        type: 'user',
+        value: null,
       })
     }
-  },[user]);
+  }, [user]);
 
   const handleSignOut = async () => {
     setShow(false);
     await signOut(auth);
-    await axios.get(`http://localhost:5000/sign-out`,{withCredentials:true});
+    await axios.get(`https://create-eve-server.onrender.com/sign-out`, { withCredentials: true });
     dispatch({
       type: 'user',
       value: '',

@@ -25,7 +25,7 @@ const BookingCard = ({ booking, refetch }) => {
 
     useEffect(() => {
         if (confirmState) {
-            axios.delete(`http://localhost:5000/bookings/${booking?._id}`)
+            axios.delete(`https://create-eve-server.onrender.com/bookings/${booking?._id}`)
                 .then(({ data }) => {
                     if (data?.acknowledged) {
                         toast.success('Booking deleted successfully', { theme: 'dark' });

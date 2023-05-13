@@ -6,7 +6,7 @@ import Comment from "./Comment";
 import { useQueryFetch } from "../../../../Hooks/useQueryFetch";
 
 const BlogComments = ({ blogId }) => {
-  const { data: comments, loading, refetch } = useQueryFetch('comments', `http://localhost:5000/comment/${blogId}`);
+  const { data: comments, loading, refetch } = useQueryFetch('comments', `https://create-eve-server.onrender.com/comment/${blogId}`);
 
   return (
     <section className="max-w-7xl mx-auto px-5  ">

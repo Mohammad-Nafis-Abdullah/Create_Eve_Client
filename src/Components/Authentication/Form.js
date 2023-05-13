@@ -38,8 +38,8 @@ const Form = () => {
       };
 
       axios
-        .put(`http://localhost:5000/user/${user?.uid}`, currentUser, {
-          withCredentials:true,
+        .put(`https://create-eve-server.onrender.com/user/${user?.uid}`, currentUser, {
+          withCredentials: true,
         })
         .then(({ data }) => {
           if (data) {
@@ -88,7 +88,7 @@ const Form = () => {
     };
 
     await axios
-      .put(`http://localhost:5000/user/${newUser.user.uid}`, currentUser)
+      .put(`https://create-eve-server.onrender.com/user/${newUser.user.uid}`, currentUser)
       .then(({ data }) => {
         if (data?.acknowledged) {
           toast.success("Successfully Sign In");

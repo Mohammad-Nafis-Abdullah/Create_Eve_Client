@@ -12,11 +12,11 @@ import { useQueryFetch } from "../../Hooks/useQueryFetch";
 const AllUsers = () => {
   const [currentUser] = useAuthState(auth);
 
-  // const { data: allUsers, loading, refetch } = useRefetch("http://localhost:5000/allusers");
-  const { data: allUsers, loading, refetch } = useQueryFetch('all-user', "http://localhost:5000/allusers");
+  // const { data: allUsers, loading, refetch } = useRefetch("https://create-eve-server.onrender.com/allusers");
+  const { data: allUsers, loading, refetch } = useQueryFetch('all-user', "https://create-eve-server.onrender.com/allusers");
 
-  // const { data: user, loading: userLoading, refetch: userRefetch } = useRefetch(`http://localhost:5000/user/${currentUser?.uid}`, {});
-  const { data: user, loading: userLoading, refetch: userRefetch } = useQueryFetch('current-user', `http://localhost:5000/user/${currentUser?.uid}`);
+  // const { data: user, loading: userLoading, refetch: userRefetch } = useRefetch(`https://create-eve-server.onrender.com/user/${currentUser?.uid}`, {});
+  const { data: user, loading: userLoading, refetch: userRefetch } = useQueryFetch('current-user', `https://create-eve-server.onrender.com/user/${currentUser?.uid}`);
 
   const makeAdmin = {
     title: 'Are you sure?',
@@ -44,7 +44,7 @@ const AllUsers = () => {
 
     Swal.fire(makeAdmin).then(({ isConfirmed }) => {
       if (isConfirmed) {
-        axios.put(`http://localhost:5000/make-admin/${uid}`, {}, {
+        axios.put(`https://create-eve-server.onrender.com/make-admin/${uid}`, {}, {
           headers: {
             uid: currentUser?.uid
           }
@@ -73,7 +73,7 @@ const AllUsers = () => {
 
     Swal.fire(removeAdmin).then(({ isConfirmed }) => {
       if (isConfirmed) {
-        axios.put(`http://localhost:5000/remove-admin/${uid}`, {}, {
+        axios.put(`https://create-eve-server.onrender.com/remove-admin/${uid}`, {}, {
           headers: {
             uid: currentUser?.uid
           }

@@ -15,9 +15,9 @@ import { useQueryFetch } from "../../Hooks/useQueryFetch";
 const Banner = () => {
   const [admin, adminLoading] = useAdmin();
   const navigate = useNavigate();
-  // const {data: bannerPhotos,loading,refetch} = useRefetch("http://localhost:5000/home-banner");
+  // const {data: bannerPhotos,loading,refetch} = useRefetch("https://create-eve-server.onrender.com/home-banner");
 
-  const { data: bannerPhotos, loading, refetch } = useQueryFetch('banner', "http://localhost:5000/home-banner");
+  const { data: bannerPhotos, loading, refetch } = useQueryFetch('banner', "https://create-eve-server.onrender.com/home-banner");
 
   const configBanner = () => {
     instantModal(<ConfigBannerModal bannerPhotos={bannerPhotos} refetch={refetch} />);

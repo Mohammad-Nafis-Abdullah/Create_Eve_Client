@@ -24,7 +24,7 @@ const WriteAComment = ({ refetch, blogId }) => {
 
   const [user] = useAuthState(auth);
 
-  const [userComment, , userCommentRefetch] = useRefetch(`http://localhost:5000/my-comment/${user?.uid + ':' + blogId}`)
+  const [userComment, , userCommentRefetch] = useRefetch(`https://create-eve-server.onrender.com/my-comment/${user?.uid + ':' + blogId}`)
 
   const handleAdddetail = (data) => {
     const inputdetail = {
@@ -40,7 +40,7 @@ const WriteAComment = ({ refetch, blogId }) => {
 
 
 
-    fetch("http://localhost:5000/comment", {
+    fetch("https://create-eve-server.onrender.com/comment", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
