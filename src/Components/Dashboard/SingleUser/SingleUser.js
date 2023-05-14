@@ -13,8 +13,8 @@ const SingleUser = ({ user, handleRemoveAdmin, handleMakeAdmin, ownerState }) =>
   const { _id, uid, email, displayName, userImg, role } = user;
 
   return (
-    <tr className={`border-b-2 border-gray-200 bg-white ${role==='admin' && 'bg-highlight text-black'} ${role==='owner' && 'bg-purple-500 text-white'}`}>
-      <td className="px-16 py-2 flex flex-row items-center">
+    <tr className={`border-b-2 border-gray-200 bg-white text-black ${role==='admin' && 'bg-highlight'} ${role==='owner' && 'bg-green-500'}`}>
+      <td className="px-16 py-2 flex flex-col items-center">
         {userImg ? (
           <img
             className="h-8 w-8 rounded-full object-cover "
@@ -24,6 +24,7 @@ const SingleUser = ({ user, handleRemoveAdmin, handleMakeAdmin, ownerState }) =>
         ) : (
           <BiUserCircle className="text-4xl"></BiUserCircle>
         )}
+        <small className="font-bold">{role}</small>
       </td>
       <td>
         <span className="text-start block ml-2 font-medium capitalize">

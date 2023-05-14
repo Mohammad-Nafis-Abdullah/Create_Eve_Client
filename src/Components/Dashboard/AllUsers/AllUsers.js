@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Swal from "sweetalert2";
 import auth from "../../../Firebase/firebase.init";
@@ -8,9 +8,12 @@ import useRefetch from "../../Hooks/useRefetch";
 import Loading from "../../Share/Loading/Loading";
 import SingleUser from "../SingleUser/SingleUser";
 import { useQueryFetch } from "../../Hooks/useQueryFetch";
+import CurrentUserInfo from "./CurrentUserInfo";
+import { StateContext } from "../../../App";
 
 const AllUsers = () => {
   const [currentUser] = useAuthState(auth);
+  const [state] = useContext(StateContext);
 
   // const { data: allUsers, loading, refetch } = useRefetch("https://create-eve-server.onrender.com/allusers");
   const { data: allUsers, loading, refetch } = useQueryFetch('all-user', "https://create-eve-server.onrender.com/allusers");
@@ -124,6 +127,14 @@ const AllUsers = () => {
             </tr>
           </thead>
           <tbody className="bg-gray-200">
+            <tr><br /></tr>
+            <CurrentUserInfo
+              user={state.user}
+              ownerState={user?.role === 'owner'}
+              handleRemoveAdmin={handleRemoveAdmin}
+              handleMakeAdmin={handleMakeAdmin}
+            ></CurrentUserInfo>
+            <tr><br /></tr>
             {allUsers.map((u) => (
               <SingleUser
                 user={u}
