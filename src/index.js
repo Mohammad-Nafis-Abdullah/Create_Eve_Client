@@ -11,7 +11,13 @@ import {
 } from "@tanstack/react-query";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions:{
+    queries:{
+      refetchOnWindowFocus: false,
+    }
+  }
+});
 
 
 root.render(

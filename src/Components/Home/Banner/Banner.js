@@ -38,7 +38,7 @@ const Banner = () => {
 
   return (
     <div className="relative h-screen">
-      {loading && <Loading />}
+      {/* {loading && <Loading />} */}
       {(state.user?.role==='owner' || state.user?.role==='admin') && (
         <div
           onClick={configBanner}
