@@ -10,6 +10,7 @@ import { imgUrl } from "../../Hooks/useMyStorage";
 import Slider from "react-slick";
 import { useQueryFetch } from "../../Hooks/useQueryFetch";
 import { StateContext } from "../../../App";
+import staticImg from "../../../asset/Banner/slider-bg2.jpg"
 
 const Banner = () => {
   const [state] = useContext(StateContext);
@@ -36,7 +37,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative h-screen">
       {loading && <Loading />}
       {(state.user?.role==='owner' || state.user?.role==='admin') && (
         <div
@@ -48,17 +49,23 @@ const Banner = () => {
         </div>
       )}
 
-      <Slider {...settings}>
-        {
-          bannerPhotos?.map(banner => {
-            return (
-              <div key={banner._id} className="h-screen">
-                <img className='h-full object-cover w-full' key={banner._id} src={imgUrl(banner?.img)} alt='' />
-              </div>
-            )
-          })
-        }
-      </Slider>
+      {
+        [...bannerPhotos]?.length ?
+          <Slider {...settings}>
+            {
+              bannerPhotos?.map(banner => {
+                return (
+                  <div key={banner._id} className="h-screen">
+                    <img className='h-full object-cover w-full' key={banner._id} src={imgUrl(banner?.img)} alt='' />
+                  </div>
+                )
+              })
+            }
+          </Slider> :
+          <div className="h-screen">
+            <img className='h-full object-cover w-full' src={staticImg} alt='' />
+          </div>
+      }
 
 
       <article className="absolute top-0 right-0 bottom-0 left-0 bg-black/60 pt-[108px] flex flex-col justify-center items-center gap-y-6 openSans">
