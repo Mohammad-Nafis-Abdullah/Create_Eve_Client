@@ -1,17 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import useAdmin from "../Hooks/useAdmin";
 import useLocalStorage from "../Hooks/useLocalStorage";
 import { imgUrl } from "../Hooks/useMyStorage";
 import { instantModal, closeModal } from "../Prebuild/Modal";
-import Loading from "../Share/Loading/Loading";
 import ConfigureModal from "./ConfigureModal";
+import { StateContext } from "../../App";
 
 const PackageCard = ({ eventPackage, category, refetchAllPackage }) => {
-  const [admin,adminLoading] = useAdmin();
+  const [state] = useContext(StateContext);
   const { coverPhoto, name, price, services, catering } = eventPackage;
   const [storage, setStorage] = useLocalStorage("event", {});
   const navigate = useNavigate();
@@ -33,11 +32,10 @@ const PackageCard = ({ eventPackage, category, refetchAllPackage }) => {
 
   return (
     <div className="slided-card max-w-7xl mx-auto rounded-lg">
-      {adminLoading && <Loading/>}
       <img className="h-full w-full object-cover" src={imgUrl(coverPhoto)} alt="" />
       <div className="btn-div bg-black/50">
         {
-          admin ?
+          state.admin ?
             <button className={'btn btn-error flex justify-center items-center'} onClick={()=> {
                 setConfigItem({...eventPackage,category})
               }}>

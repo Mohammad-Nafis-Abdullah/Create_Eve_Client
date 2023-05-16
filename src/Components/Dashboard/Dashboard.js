@@ -3,33 +3,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AiOutlineUser } from "react-icons/ai";
 import { TiThSmall } from "react-icons/ti";
 import { IoTicket } from "react-icons/io5";
-import { IoMdPersonAdd } from "react-icons/io";
 import { FaUsers } from "react-icons/fa";
-import { TbUsers } from "react-icons/tb";
 import { HiViewGridAdd, HiOutlineViewGridAdd } from "react-icons/hi";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import "./Dashboard.css";
 import { Outlet } from "react-router-dom";
-// import "./Dashboard.css"
 import CustomLink from "../Share/CustomLink/CustomLink";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../Firebase/firebase.init";
-import useAdmin from "../Hooks/useAdmin";
-import Loading from "../Share/Loading/Loading";
-import useRefetch from "../Hooks/useRefetch";
-import { GoSettings } from "react-icons/go";
 import { imgUrl } from "../Hooks/useMyStorage";
 import { StateContext } from "../../App";
 import { useContext } from "react";
+import { GoSettings } from "react-icons/go";
 
 const Dashboard = () => {
-  const [user, loading] = useAuthState(auth);
-  const [admin, adminLoading] = useAdmin(user);
-  const [state,dispatch] = useContext(StateContext);
+  const [state] = useContext(StateContext);
 
   return (
     <div className="mx-auto px-2 lg:px-0 route">
-      {loading && adminLoading && <Loading/>}
       <div className="drawer drawer-mobile pt-0">
         <input
           id="open-dashboard-menu"
@@ -92,7 +81,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            {admin && (
+            {state.admin&& (
               <li className="text-base hover:bg-[#0f172a] rounded px-2">
                 <CustomLink
                   className="flex justify-center items-center gap-2"
@@ -104,8 +93,8 @@ const Dashboard = () => {
               </li>
             )}
 
-            {/* booking info for admin */}
-            {admin && (
+            {/* booking info for state.admin*/}
+            {state.admin&& (
               <li className="text-base hover:bg-[#0f172a] rounded px-2">
                 <CustomLink
                   className="flex justify-center items-center gap-2"
@@ -117,7 +106,7 @@ const Dashboard = () => {
               </li>
             )}
             {/* booking info for user */}
-            {!admin && (
+            {!state.admin&& (
               <li className="text-base hover:bg-[#0f172a] rounded px-2">
                 <CustomLink
                   className="flex justify-center items-center gap-2 "
@@ -128,7 +117,7 @@ const Dashboard = () => {
                 </CustomLink>
               </li>
             )}
-            {admin && (
+            {state.admin&& (
               <li className="text-base hover:bg-[#0f172a] rounded px-2">
                 <CustomLink
                   className="flex justify-center items-center gap-2 "
@@ -139,7 +128,7 @@ const Dashboard = () => {
                 </CustomLink>
               </li>
             )}
-            {admin && (
+            {state.admin&& (
               <li className="text-base hover:bg-[#0f172a] rounded px-2">
                 <CustomLink
                   className="flex justify-center items-center gap-2 "
@@ -150,7 +139,7 @@ const Dashboard = () => {
                 </CustomLink>
               </li>
             )}
-            {admin && (
+            {state.admin&& (
               <li className="text-base hover:bg-[#0f172a] rounded px-2">
                 <CustomLink
                   className="flex justify-center items-center gap-2 "

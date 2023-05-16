@@ -8,9 +8,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import TopnavBar from "../TopBar/TopnavBar";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/firebase.init";
-import { reload, signOut } from "firebase/auth";
-import useRefetch from "../../Hooks/useRefetch";
-import useAdmin from "../../Hooks/useAdmin";
+import { signOut } from "firebase/auth";
 import { StateContext } from "../../../App";
 import { imgUrl } from "../../Hooks/useMyStorage";
 import { GoChevronDown } from 'react-icons/go';
@@ -28,7 +26,6 @@ const Navbar = ({ location }) => {
   const { pathname } = location;
   const routeName = pathname.slice("1");
   const navigate = useNavigate();
-  const [admin, loading] = useAdmin();
 
   const { data: pkgs, loading: pkgLoading, refetch: pkgRefetch } = useQueryFetch('package', `https://create-eve-server.onrender.com/packages`);
 
@@ -51,6 +48,10 @@ const Navbar = ({ location }) => {
             value: data,
           })
         })
+      axios.get(`https://create-eve-server.onrender.com/admin/${user?.uid}`).then(({ data }) => dispatch({
+        type: 'admin',
+        value: data.admin,
+      }));
     } else {
       dispatch({
         type: 'user',
@@ -90,7 +91,7 @@ const Navbar = ({ location }) => {
     <section
       className={`${routeName ? anotherRoute : homeRoute} bg-white z-50`}
     >
-      {(loading || pkgLoading) && <Loading />}
+      {pkgLoading && <Loading />}
       {routeName && <TopnavBar />}
       <div
         className={` ${routeName ? "bg-white text-black" : "bg-black/50 text-white"} flex justify-between items-center max-w-8xl w-full mx-auto p-3`}
@@ -188,7 +189,7 @@ const Navbar = ({ location }) => {
                 </ul>
               </li>
 
-              {!admin && (
+              {!state.admin && (
                 <li>
                   <Link className="uppercase" to="/event-booking">
                     Event Booking
@@ -294,7 +295,7 @@ const Navbar = ({ location }) => {
               </ul>
             </li>
 
-            {!admin && (
+            {!state.admin && (
               <li>
                 <NavLink className={navStyle} to="/event-booking">
                   Event Booking

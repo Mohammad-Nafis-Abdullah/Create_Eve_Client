@@ -31,8 +31,6 @@ import AllBookings from "./Components/Dashboard/AllBookings/AllBookings";
 import Payment from "./Components/Dashboard/MyBooking/Payment/Payment";
 import Packages from "./Components/Packages/Packages";
 import Modal from "./Components/Prebuild/Modal";
-import useAdmin from "./Components/Hooks/useAdmin";
-import Loading from "./Components/Share/Loading/Loading";
 import AddPackage from "./Components/Dashboard/AddPackage/AddPackage";
 import ManageCategory from "./Components/Dashboard/ManageCategory/ManageCategory";
 import AddService from "./Components/Dashboard/AddService/AddService";
@@ -46,7 +44,6 @@ AOS.init({ duration: 200 });
 
 function App() {
   const location = useLocation();
-  const [admin, loading] = useAdmin();
   const [state, dispatch] = useStateReducer();
   const { pathname } = location;
 
@@ -57,7 +54,6 @@ function App() {
   return (
     <StateContext.Provider value={[state, dispatch]}>
       <div className="overflow-x-hidden">
-        {loading && <Loading />}
         <Navbar location={location} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -85,7 +81,7 @@ function App() {
               path="/dashboard"
               element={
                 <Navigate
-                  to={admin ? "/dashboard/allusers" : "/dashboard/my-booking"}
+                  to={state.admin ? "/dashboard/allusers" : "/dashboard/my-booking"}
                 />
               }
             />
