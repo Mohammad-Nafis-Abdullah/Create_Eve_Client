@@ -39,7 +39,7 @@ const Venues = () => {
             <div
               className={`h-[424px] max-w-[500px] overflow-y-scroll mt-10 ${styles.section} ml-auto`}
             >
-              {venues.map((venue) => {
+              {venues?.map((venue) => {
                 return (
                   <div
                     className={`h-[141px] max-w-[424.4px] mr-[30px] p-[30px] flex items-center gap-[10%] text-white whitespace-pre cursor-pointer ${venue._id === select._id && styles.selected

@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -9,7 +8,9 @@ const Staffs = () => {
   const [staffs, setStaffs] = useState([]);
 
   useEffect(() => {
-    axios.get("staffs.json").then((res) => setStaffs(res.data));
+    fetch("staffs.json").then(res => res.json()).then((data) => {
+      setStaffs(data);
+    })
   }, []);
 
   const settings = {
@@ -30,7 +31,7 @@ const Staffs = () => {
       <div className={`${styles.bgLayer} pt-5`}>
         <div className={`mx-auto`}>
           <Slider {...settings} className="mx-auto">
-            {staffs.map((staff, i) => (
+            {staffs?.map((staff, i) => (
               <div
                 className={`px-3 ${styles.slide} flex-col lg:flex-row`}
                 key={i}

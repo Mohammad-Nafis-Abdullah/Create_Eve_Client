@@ -25,7 +25,7 @@ const BlogComments = ({ blogId }) => {
       <div className="max-w-3xl">
         {comments?.reverse()
           .slice(0, 4)
-          .map((comment) => (
+          ?.map((comment) => (
             <Comment comment={comment}></Comment>
           ))}
       </div>

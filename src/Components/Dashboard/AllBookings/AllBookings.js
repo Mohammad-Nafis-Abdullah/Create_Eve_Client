@@ -28,7 +28,7 @@ function AllBookings() {
                 onChange={(e) => setLimit(parseInt(e.target.value))}
                 className="w-20 py-1 text-center text-lg font-bold rounded-lg border-2 border-highlight outline-none cursor-pointer"
               >
-                {limits.map((p, i) => (
+                {limits?.map((p, i) => (
                   <option
                     key={i}
                     value={p}

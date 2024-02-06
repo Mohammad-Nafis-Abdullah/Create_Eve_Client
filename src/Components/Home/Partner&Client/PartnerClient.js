@@ -47,10 +47,10 @@ const PartnerClient = () => {
             Review
           </span>
           <Slider {...settings}>
-            {sponserCount.map((sc, index) => (
+            {sponserCount?.map((sc, index) => (
               <div key={index} className="grid grid-cols-1">
                 <div className="grid grid-cols-1 sm:grid-cols-2">
-                  {singleSponser.map((h, index) => (
+                  {singleSponser?.map((h, index) => (
                     <div
                       key={index}
                       className="px-8  py-10  border backgroundSet"

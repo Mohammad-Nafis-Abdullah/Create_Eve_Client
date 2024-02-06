@@ -96,7 +96,7 @@ function Logistics() {
         </div>
 
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-y-20 lg:py-20 py-6 lg:mx-40">
-          {logisticServices.data.map((service, index) => (
+          {logisticServices.data?.map((service, index) => (
             <div key={index} className="flex justify-center relative hvr">
               <div className="w-72 max-w-full bg-white cursor-pointer">
                 <div className="w-full h-48">
@@ -161,7 +161,7 @@ function Logistics() {
 
       <div>
         <div className="grid lg:grid-cols-4 grid-cols-1 gap-y-20 lg:py-10 py-6 lg:mx-40">
-          {promotionServices.data.map((service, index) => (
+          {promotionServices.data?.map((service, index) => (
             <div
               key={index}
               className="flex justify-center items-center relative hvr"

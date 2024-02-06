@@ -36,7 +36,7 @@ const VenueSlider = () => {
             <div
               className={`h-[424px] max-w-[500px] overflow-y-scroll mt-10 ${styles.section} ml-auto`}
             >
-              {venues.map((venue, index) => {
+              {venues?.map((venue, index) => {
                 return (
                   <div
                     key={index}

@@ -51,7 +51,7 @@ const Pagination = ({ page, setPage, totalPages }) => {
             }
 
             {
-                pages.slice(startIndex(page), endIndex(page)).map((p, i) =>
+                pages.slice(startIndex(page), endIndex(page))?.map((p, i) =>
                     <button
                         key={i}
                         onClick={() => setPage(p)}
@@ -61,7 +61,7 @@ const Pagination = ({ page, setPage, totalPages }) => {
             }
 
             {
-                page < totalPages-3 &&
+                page < totalPages - 3 &&
                 <button className="btn btn-sm btn-disabled bg-slate-900 text-white">...</button>
             }
 

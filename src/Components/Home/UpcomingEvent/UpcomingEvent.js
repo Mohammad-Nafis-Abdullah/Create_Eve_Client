@@ -70,7 +70,7 @@ const UpcommingEvent = () => {
           </div>
           <div>
             <Slider {...upComingSettings} className="px-5 overflow-visible">
-              {data.map((event, idx) => (
+              {data?.map((event, idx) => (
                 <Event
                   key={event._id}
                   event={event}

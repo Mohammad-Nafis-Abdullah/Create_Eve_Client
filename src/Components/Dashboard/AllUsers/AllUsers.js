@@ -135,7 +135,7 @@ const AllUsers = () => {
               handleMakeAdmin={handleMakeAdmin}
             ></CurrentUserInfo>
             <tr><br /></tr>
-            {allUsers.map((u) => (
+            {allUsers?.map((u) => (
               <SingleUser
                 user={u}
                 ownerState={user?.role === 'owner'}

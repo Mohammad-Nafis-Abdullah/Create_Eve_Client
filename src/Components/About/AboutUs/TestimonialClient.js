@@ -32,7 +32,7 @@ function TestimonialClient() {
       </div>
       <div className="mb-40 flex justify-center">
         <Slider {...settings1} className="w-[1200px] py-10 px-20">
-          {testimonial.map((t, index) => (
+          {testimonial?.map((t, index) => (
             <div key={index} className="mt-16 ">
               <div className="flex justify-center pb-12 ">
                 <p className="text-6xl ">

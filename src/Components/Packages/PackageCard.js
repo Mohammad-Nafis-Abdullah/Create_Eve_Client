@@ -14,14 +14,14 @@ const PackageCard = ({ eventPackage, category, refetchAllPackage }) => {
   const { coverPhoto, name, price, services, catering } = eventPackage;
   const [storage, setStorage] = useLocalStorage("event", {});
   const navigate = useNavigate();
-  const [configItem, setConfigItem, clearConfigItem] = useLocalStorage('configItem',null);
-  const {pathname} = useLocation();
+  const [configItem, setConfigItem, clearConfigItem] = useLocalStorage('configItem', null);
+  const { pathname } = useLocation();
 
-  useEffect(()=> {
-      clearConfigItem();
-      closeModal();
-    },[pathname])
-    
+  useEffect(() => {
+    clearConfigItem();
+    closeModal();
+  }, [pathname])
+
   useEffect(() => {
     if (!!configItem) {
       instantModal(<ConfigureModal configItem={configItem} clearConfigItem={clearConfigItem} refetchAllPackage={refetchAllPackage} />);
@@ -36,11 +36,11 @@ const PackageCard = ({ eventPackage, category, refetchAllPackage }) => {
       <div className="btn-div bg-black/50">
         {
           state.admin ?
-            <button className={'btn btn-error flex justify-center items-center'} onClick={()=> {
-                setConfigItem({...eventPackage,category})
-              }}>
+            <button className={'btn btn-error flex justify-center items-center'} onClick={() => {
+              setConfigItem({ ...eventPackage, category })
+            }}>
               Configure
-            </button>:
+            </button> :
             <button
               onClick={() => {
                 setStorage({ ...eventPackage, category });

@@ -16,7 +16,7 @@ const ConfigBannerModal = ({ refetch, bannerPhotos }) => {
     // console.log(bannerPhotos);
 
     const promiseArray = (arr = [], callback = () => 0) => {
-        return arr.map(e => {
+        return arr?.map(e => {
             return callback(e);
         })
     };
@@ -36,7 +36,7 @@ const ConfigBannerModal = ({ refetch, bannerPhotos }) => {
             if (imgs.length <= 5) {
                 await Promise.all(promiseArray([...bannerPhotos], (b) => deleteImage(b.img)));
                 const imgInfo = await Promise.all(promiseArray([...imgs], (img) => uploadImage(img)));
-                const names = imgInfo.map(img => { return { img: img.name } });
+                const names = imgInfo?.map(img => { return { img: img.name } });
 
                 // console.log(names);
 
