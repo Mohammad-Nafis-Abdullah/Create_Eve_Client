@@ -1,31 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { queryClient } from "../../index";
-import { StateContext } from "../../App";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
 
-export const useQueryFetch = (key, url, initialValue = [], callBack = ()=>{}) => {
+export const useQueryFetch = (key, url, initialValue = [], callBack = () => { }) => {
+    const [currentUser] = useAuthState(auth);
     const [fetchUrl, setFetchUrl] = useState(url);
-    const [state] = useContext(StateContext);
     // console.log(state);
 
     const { isLoading, data, isFetching } = useQuery({
         queryKey: [key],
         queryFn: () => axios
-            .get(fetchUrl,{
-                headers:{
-                    uid:state.user?.uid,
+            .get(fetchUrl, {
+                headers: {
+                    uid: currentUser.uid,
                 },
-                withCredentials:true
+                withCredentials: true
             })
-            .then((res) =>  res.data),
+            .then((res) => res.data),
         initialData: initialValue,
     });
 
-    useEffect(()=> {
+    useEffect(() => {
         callBack(data);
-    },[data]);
+    }, [data]);
 
     const refetch = (newUrl = url) => {
         setFetchUrl(newUrl);
