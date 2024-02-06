@@ -20,9 +20,9 @@ const SingleOrder = ({ booking, refetch, i, page, limit }) => {
     paid,
   } = booking;
 
-  const timeFormatter = (timeString) => {
-    const [date, time] = timeString.split(",");
-    const [month, day, year] = date.split("/");
+  const timeFormatter = (timeString = "") => {
+    const [date, time] = timeString?.split(",");
+    const [month, day, year] = date?.split("/");
     return {
       date: `${day}/${month}/${year}`,
       time: `${time}`,
@@ -63,7 +63,7 @@ const SingleOrder = ({ booking, refetch, i, page, limit }) => {
           showInModal={<ServiceModal service={pkg} />}
           className={"underline underline-offset-2"}
         >
-          {pkg.name}
+          {pkg?.name}
         </ShowModalBtn>
         {catering && (
           <>
@@ -107,9 +107,8 @@ const SingleOrder = ({ booking, refetch, i, page, limit }) => {
       <td className="p-2 text-center">
         <div className="flex item-center justify-center">
           <div
-            className={`w-6 h-6 rounded-full ${
-              paid ? "bg-green-600" : "bg-red-600"
-            }`}
+            className={`w-6 h-6 rounded-full ${paid ? "bg-green-600" : "bg-red-600"
+              }`}
           />
         </div>
       </td>
