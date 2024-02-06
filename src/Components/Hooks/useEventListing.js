@@ -4,7 +4,7 @@ const useEventListing = (type) => {
   // console.log(type);
   const [eventLists, setEventLists] = useState([]);
   useEffect(() => {
-    const url = `https://create-eve-server.onrender.com/eventlisting/?catagory=${type}`;
+    const url = `/eventlisting/?catagory=${type}`;
     if (type) {
       fetch(url)
         .then((res) => res.json())

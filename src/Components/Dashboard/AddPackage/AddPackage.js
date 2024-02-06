@@ -26,9 +26,9 @@ const AddPackage = () => {
   const [items, setStorage, clearStorage] = useLocalStorage("package", []);
   const [caterings, setCateringsStorage, clearCateringsStorage] =
     useLocalStorage("pkgCatering", []);
-  // const {data: pkgs,loading: pkgLoading,refetch: pkgRefetch} = useRefetch(`https://create-eve-server.onrender.com/packages`, []);
+  // const {data: {data:pkgs},loading: pkgLoading,refetch: pkgRefetch} = useRefetch(`/packages`, []);
 
-  const { data: pkgs, loading: pkgLoading, refetch: pkgRefetch } = useQueryFetch('package', `https://create-eve-server.onrender.com/packages`);
+  const { data: { data: pkgs }, loading: pkgLoading, refetch: pkgRefetch } = useQueryFetch('package', `/packages`);
 
   useEffect(() => {
     clearStorage();
@@ -76,7 +76,7 @@ const AddPackage = () => {
       try {
         const coverImg = e.target.cover.files[0];
         const { name: coverImgName } = await uploadImage(coverImg);
-        const categoryData = await axios.put(`https://create-eve-server.onrender.com/packages/${category}`, { ...categoryObj, coverPhoto: coverImgName });
+        const { data: { data: categoryData } } = await axios.put(`/packages/category/${category}`, { ...categoryObj, coverPhoto: coverImgName });
 
       } catch (err) {
         // console.log(err);
@@ -86,9 +86,9 @@ const AddPackage = () => {
     try {
       const { name } = await uploadImage(pkgImg);
       console.log(name);
-      const { data } = await axios.post(`https://create-eve-server.onrender.com/package/${category}`, { ...createdPackage, coverPhoto: name, });
+      const { data } = await axios.post(`/packages/${category}/collection`, { ...createdPackage, coverPhoto: name, });
       console.log(data);
-      data.acknowledged ?
+      data.data.acknowledged ?
         toast.success("Package added successfully", { theme: "colored", })
         :
         toast.error("Package not added", { theme: "colored" });
@@ -134,7 +134,7 @@ const AddPackage = () => {
                       className="p-1 border-2 border-highlight rounded uppercase"
                     >
                       <option value={""}>others</option>
-                      {[...pkgs].map((pkg) => (
+                      {pkgs?.map((pkg) => (
                         <option
                           key={pkg._id}
                           className="text-orange-600 font-bold"

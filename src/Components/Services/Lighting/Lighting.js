@@ -8,8 +8,8 @@ import { useQueryFetch } from "../../Hooks/useQueryFetch";
 
 function Lighting() {
   const [lighting, setLighting, clearLighting] = useLocalStorage("lighting", {});
-  // const { data: lightings, loading, refetch } = useRefetch(`https://create-eve-server.onrender.com/services/lighting`, []);
-  const { data: lightings, loading, refetch } = useQueryFetch('lightings', `https://create-eve-server.onrender.com/services/lighting`);
+  // const { data: lightings, loading, refetch } = useRefetch(`/services/lighting`, []);
+  const { data: { data: lightings }, loading, refetch } = useQueryFetch('lightings', `/services/type/lighting`);
 
 
   return (

@@ -22,8 +22,8 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { Id } = useParams();
 
-  // const {data: booking,loading,refetch} = useRefetch(`https://create-eve-server.onrender.com/payment/${Id}`, {});
-  const { data: booking, loading, refetch } = useQueryFetch('single-booking', `https://create-eve-server.onrender.com/payment/${Id}`);
+  // const {data: {data:booking},loading,refetch} = useRefetch(`/bookings/${Id}`, {});
+  const { data: { data: booking }, loading, refetch } = useQueryFetch('single-booking', `/bookings/${Id}`);
 
   let total = parseInt(booking.package?.price);
 

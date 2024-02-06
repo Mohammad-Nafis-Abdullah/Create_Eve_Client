@@ -45,11 +45,11 @@ const CheckoutForm = ({ booking }) => {
 
   useEffect(() => {
     axios
-      .post("https://create-eve-server.onrender.com/create-payment-intent", {
+      .post("/payments", {
         totalPrice: total() || 100,
       })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         if (data?.clientSecret) {
           setClientSecret(data.clientSecret);
         }
@@ -120,7 +120,7 @@ const CheckoutForm = ({ booking }) => {
         paid: true,
       };
       await axios
-        .put(`https://create-eve-server.onrender.com/payment-info/${_id}`, payment)
+        .put(`/bookings/${_id}`, payment)
         .then(({ data }) => {
           console.log(data);
         });

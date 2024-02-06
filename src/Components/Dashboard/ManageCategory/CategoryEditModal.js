@@ -72,12 +72,12 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch }, ref) => {
             if (img) {
                 await deleteImage(cover);
                 const { name } = await uploadImage(img);
-                const { data } = await axios.put(`https://create-eve-server.onrender.com/packages/${categoryObj?.category}`, { ...categoryObj, coverPhoto: name }, {
+                const { data } = await axios.put(`/packages/category/${categoryObj?.category}`, { ...categoryObj, coverPhoto: name }, {
                     headers: {
                         uid: currentUser?.uid
                     }
                 });
-                if (data.acknowledged && data.modifiedCount) {
+                if (data.data.acknowledged && data.data.modifiedCount) {
                     categoryRefetch();
                     closeModal();
                     toast.success('Successfully Completed', { theme: 'dark' });
@@ -86,12 +86,12 @@ const CategoryEditModal = forwardRef(({ category, categoryRefetch }, ref) => {
                 }
 
             } else {
-                const { data } = await axios.put(`https://create-eve-server.onrender.com/packages/${categoryObj?.category}`, { ...categoryObj, coverPhoto: cover }, {
+                const { data } = await axios.put(`/packages/category/${categoryObj?.category}`, { ...categoryObj, coverPhoto: cover }, {
                     headers: {
                         uid: currentUser?.uid
                     }
                 });
-                if (data.acknowledged && data.modifiedCount) {
+                if (data.data.acknowledged && data.data.modifiedCount) {
                     categoryRefetch();
                     closeModal();
                     toast.success('Successfully Completed', { theme: 'dark' })

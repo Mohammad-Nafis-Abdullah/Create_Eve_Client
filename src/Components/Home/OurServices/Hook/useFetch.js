@@ -11,7 +11,7 @@ const useFetch = (url, initialValue = []) => {
                 const { data } = res
                 setData(data)
             })
-    }, [])
+    }, [url])
 
     return data
 }

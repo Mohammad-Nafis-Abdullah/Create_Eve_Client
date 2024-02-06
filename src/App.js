@@ -35,12 +35,17 @@ import AddPackage from "./Components/Dashboard/AddPackage/AddPackage";
 import ManageCategory from "./Components/Dashboard/ManageCategory/ManageCategory";
 import AddService from "./Components/Dashboard/AddService/AddService";
 import useStateReducer from "./Components/Hooks/useStateReducer";
+import axios from "axios";
 
 // global state handling context api
 const StateContext = React.createContext();
 export { StateContext };
 
 AOS.init({ duration: 200 });
+
+axios.defaults.baseURL = `https://create-eve-server-v2.onrender.com/`;
+// axios.defaults.baseURL = `http://localhost:5000/`;
+axios.defaults.withCredentials = true;
 
 function App() {
   const location = useLocation();

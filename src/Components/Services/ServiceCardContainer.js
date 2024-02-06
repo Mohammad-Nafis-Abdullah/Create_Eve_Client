@@ -8,14 +8,14 @@ import { instantModal } from '../Prebuild/Modal';
 import ServiceConfigModal from './ServiceConfigModal';
 import { StateContext } from '../../App';
 
-const ServiceCardContainer = ({services, setServiceStore, refetch}) => {
+const ServiceCardContainer = ({ services, setServiceStore, refetch }) => {
     const childRef = useRef();
     const navigate = useNavigate();
     const [state] = useContext(StateContext);
-    
+
     return (
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-7xl mx-auto py-10 px-3">
-            {[...services]?.map((s) => (
+            {services?.map((s) => (
                 <div title={s.name} key={s._id} className="slided-card max-w-7xl mx-auto rounded-lg">
                     <img className="h-full w-full object-cover" src={imgUrl(s.img)} alt="" />
 
@@ -25,7 +25,7 @@ const ServiceCardContainer = ({services, setServiceStore, refetch}) => {
                                 <button onClick={() => {
                                     childRef.current?.reset();
                                     childRef.current?.moveTop();
-                                    instantModal(<ServiceConfigModal ref={childRef} service={s} refetch={refetch}/>);
+                                    instantModal(<ServiceConfigModal ref={childRef} service={s} refetch={refetch} />);
                                     return;
                                 }} className="btn btn-error">
                                     Configure
@@ -62,7 +62,7 @@ const ServiceCardContainer = ({services, setServiceStore, refetch}) => {
                                     </ul>
                                 </article>
                             }
-                            
+
                             {
                                 s?.items &&
                                 <article>

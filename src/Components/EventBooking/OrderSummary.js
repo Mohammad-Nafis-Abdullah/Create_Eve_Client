@@ -78,8 +78,8 @@ const OrderSummary = () => {
       audio: audio,
       lighting: lighting,
     };
-    axios.post("https://create-eve-server.onrender.com/bookings", booking).then(({ data }) => {
-      if (data.acknowledged) {
+    axios.post("/bookings", booking).then(({ data }) => {
+      if (data.data.acknowledged) {
         reset();
         clearStorage();
         clearCatering();
@@ -111,7 +111,7 @@ const OrderSummary = () => {
               <tr className="">
                 <td className="border-2">{eventDetails?.name}</td>
                 <td className="border-2 text-left">
-                  {[...eventDetails?.services].map((service, index) => (
+                  {eventDetails?.services?.map((service, index) => (
                     <Fragment key={index}>
                       <small className="whitespace-pre">
                         {index + 1}. {service}

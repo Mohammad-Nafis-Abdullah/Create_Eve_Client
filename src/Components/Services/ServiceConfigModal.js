@@ -93,12 +93,12 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
                 if (img) {
                     await deleteImage(service?.img);
                     const { name } = await uploadImage(img);
-                    const { data } = await axios.put(`https://create-eve-server.onrender.com/service/${service?.type}/${service?._id}`, { ...serviceObj, img: name }, {
+                    const { data } = await axios.put(`/services/type/${service?.type}/${service?._id}`, { ...serviceObj, img: name }, {
                         headers: {
                             uid: currentUser?.uid
                         }
                     });
-                    if (data.acknowledged && data.modifiedCount) {
+                    if (data.data.acknowledged && data.data.modifiedCount) {
                         Swal.fire(
                             'Successfull!',
                             'Service Updated Successfully.',
@@ -109,12 +109,12 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
                     }
 
                 } else {
-                    const { data } = await axios.put(`https://create-eve-server.onrender.com/service/${service?.type}/${service?._id}`, { ...serviceObj, img: service?.img }, {
+                    const { data } = await axios.put(`/services/type/${service?.type}/${service?._id}`, { ...serviceObj, img: service?.img }, {
                         headers: {
                             uid: currentUser?.uid
                         }
                     });
-                    if (data.acknowledged && data.modifiedCount) {
+                    if (data.data.acknowledged && data.data.modifiedCount) {
                         Swal.fire(
                             'Successfull!',
                             'Service Updated Successfully.',
@@ -147,12 +147,12 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
             const { isConfirmed } = await Swal.fire({ ...swalObj, text: "to Delete the service" });
             if (isConfirmed) {
                 await deleteImage(service?.img);
-                const { data } = await axios.delete(`https://create-eve-server.onrender.com/service/${service?.type}/${service?._id}`, {
+                const { data } = await axios.delete(`/services/type/${service?.type}/${service?._id}`, {
                     headers: {
                         uid: currentUser?.uid
                     }
                 })
-                if (data.acknowledged && data.deletedCount) {
+                if (data.data.acknowledged && data.data.deletedCount) {
                     Swal.fire(
                         'Successfull!',
                         'Service Deleted Successfully.',

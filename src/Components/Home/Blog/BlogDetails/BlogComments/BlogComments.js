@@ -6,7 +6,7 @@ import Comment from "./Comment";
 import { useQueryFetch } from "../../../../Hooks/useQueryFetch";
 
 const BlogComments = ({ blogId }) => {
-  const { data: comments, loading, refetch } = useQueryFetch('comments', `https://create-eve-server.onrender.com/comment/${blogId}`);
+  const { data: comments, loading, refetch } = useQueryFetch('comments', `/comment/${blogId}`);
 
   return (
     <section className="max-w-7xl mx-auto px-5  ">
@@ -23,8 +23,7 @@ const BlogComments = ({ blogId }) => {
         loading && <Loading />
       }
       <div className="max-w-3xl">
-        {[...comments]
-          .reverse()
+        {comments?.reverse()
           .slice(0, 4)
           .map((comment) => (
             <Comment comment={comment}></Comment>

@@ -21,10 +21,12 @@ const UpdateUser = () => {
   } = useForm();
 
   useEffect(() => {
-    axios
-      .get(`https://create-eve-server.onrender.com/single-user/${email}`)
-      .then(({ data }) => setUserData(data));
-  }, [email]);
+    if (user) {
+      axios
+        .get(`/users/${user?.uid}`, { withCredentials: true })
+        .then(({ data }) => setUserData(data.data));
+    }
+  }, [user]);
 
   const onSubmit = (userData) => {
     const userInfo = {
@@ -38,9 +40,9 @@ const UpdateUser = () => {
     };
 
     axios
-      .put(`https://create-eve-server.onrender.com/user-update/${user?.uid}`, userInfo)
+      .put(`/users/${user?.uid}`, userInfo)
       .then(({ data }) => {
-        if (data) {
+        if (data.data) {
           toast.success("Information updated successfully");
           navigate("/manage-profile");
           reset();

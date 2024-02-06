@@ -75,12 +75,12 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
                 if (img) {
                     await deleteImage(coverPhoto);
                     const { name } = await uploadImage(img);
-                    const { data } = await axios.put(`https://create-eve-server.onrender.com/package/${configItem?.category}/${configItem?._id}`, { ...pkg, coverPhoto: name }, {
+                    const { data } = await axios.put(`/packages/update/${configItem?.category}/${configItem?._id}`, { ...pkg, coverPhoto: name }, {
                         headers: {
                             uid: currentUser?.uid
                         }
                     });
-                    if (data.acknowledged && data.modifiedCount) {
+                    if (data.data.acknowledged && data.data.modifiedCount) {
                         Swal.fire(
                             'Successfull!',
                             'Package Updated Successfully.',
@@ -92,12 +92,12 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
                     }
 
                 } else {
-                    const { data } = await axios.put(`https://create-eve-server.onrender.com/package/${configItem?.category}/${configItem?._id}`, { ...pkg, coverPhoto: coverPhoto }, {
+                    const { data } = await axios.put(`/packages/update/${configItem?.category}/${configItem?._id}`, { ...pkg, coverPhoto: coverPhoto }, {
                         headers: {
                             uid: currentUser?.uid
                         }
                     });
-                    if (data.acknowledged && data.modifiedCount) {
+                    if (data.data.acknowledged && data.data.modifiedCount) {
                         Swal.fire(
                             'Successfull!',
                             'Package Updated Successfully.',
@@ -128,12 +128,12 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
 
             if (isConfirmed) {
                 await deleteImage(coverPhoto);
-                const { data } = await axios.delete(`https://create-eve-server.onrender.com/package/${configItem?.category}/${id}`, {
+                const { data } = await axios.delete(`/packages/delete/${configItem?.category}/${id}`, {
                     headers: {
                         uid: currentUser?.uid
                     }
                 });
-                if (data.acknowledged && data.deletedCount) {
+                if (data.data.acknowledged && data.data.deletedCount) {
                     Swal.fire(
                         'Successfull!',
                         'Package Deleted Successfully.',

@@ -40,12 +40,12 @@ const ConfigBannerModal = ({ refetch, bannerPhotos }) => {
 
                 // console.log(names);
 
-                const { data } = await axios.post('https://create-eve-server.onrender.com/home-banner', names, {
+                const { data } = await axios.post('/home-banners', names, {
                     headers: {
                         uid: user?.uid
                     }
                 })
-                if (data.upload) {
+                if (data.data.upload) {
                     toast.success('Image uploaded successfully', { theme: 'dark' })
                     e.target.reset();
                     refetch();

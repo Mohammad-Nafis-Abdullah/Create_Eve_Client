@@ -15,8 +15,8 @@ import { useQueryFetch } from "../../Hooks/useQueryFetch";
 function Catering() {
   const navigate = useNavigate();
   const [catering, setCatering, clearCatering] = useLocalStorage("catering", {});
-  // const { data: caterings, loading, refetch } = useRefetch(`https://create-eve-server.onrender.com/services/catering`, []);
-  const { data: caterings, loading, refetch } = useQueryFetch('caterings', `https://create-eve-server.onrender.com/services/catering`);
+  // const { data: caterings, loading, refetch } = useRefetch(`/services/catering`, []);
+  const { data: { data: caterings }, loading, refetch } = useQueryFetch('caterings', `/services/type/catering`);
 
   return (
     <div className="route">

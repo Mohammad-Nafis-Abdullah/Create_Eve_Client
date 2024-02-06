@@ -27,7 +27,7 @@ const Navbar = ({ location }) => {
   const routeName = pathname.slice("1");
   const navigate = useNavigate();
 
-  const { data: pkgs, loading: pkgLoading, refetch: pkgRefetch } = useQueryFetch('package', `https://create-eve-server.onrender.com/packages`);
+  const { data: { data: pkgs }, loading: pkgLoading, refetch: pkgRefetch } = useQueryFetch('package', `/packages`);
 
   const [navbarBg, setNavbar] = useState(false);
   const changeBg = () => {
@@ -41,14 +41,14 @@ const Navbar = ({ location }) => {
 
   useEffect(() => {
     if (user) {
-      axios.get(`https://create-eve-server.onrender.com/single-user/${user?.uid}`, { withCredentials: true })
+      axios.get(`/users/${user?.uid}`, { withCredentials: true })
         .then(({ data }) => {
           dispatch({
             type: 'user',
-            value: data,
+            value: data.data,
           })
         })
-      axios.get(`https://create-eve-server.onrender.com/admin/${user?.uid}`).then(({ data }) => dispatch({
+      axios.get(`/users/is-admin/${user?.uid}`).then(({ data }) => dispatch({
         type: 'admin',
         value: data.admin,
       }));
@@ -63,7 +63,7 @@ const Navbar = ({ location }) => {
   const handleSignOut = async () => {
     setShow(false);
     await signOut(auth);
-    await axios.get(`https://create-eve-server.onrender.com/sign-out`, { withCredentials: true });
+    await axios.get(`/users/sign-out`, { withCredentials: true });
     dispatch({
       type: 'user',
       value: '',
@@ -140,7 +140,7 @@ const Navbar = ({ location }) => {
                   </svg>
                 </Link>
                 <ul className="p-2" id="megaMenu" style={{ zIndex: "11111" }}>
-                  {[...pkgs].map((pkg) => (
+                  {pkgs?.map((pkg) => (
                     <li key={pkg._id}>
                       <Link
                         className="uppercase"

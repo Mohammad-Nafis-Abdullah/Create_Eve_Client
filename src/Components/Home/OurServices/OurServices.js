@@ -9,7 +9,7 @@ import useFetch from "./Hook/useFetch";
 import ServiceCard from "./ServiceCard";
 
 export default function OurServices() {
-  const serviceInfo = useFetch("https://create-eve-server.onrender.com/packages");
+  const serviceInfo = useFetch("/packages");
 
   const NextArrow = ({ onClick }) => {
     return (
@@ -69,7 +69,7 @@ export default function OurServices() {
 
       <div>
         <Slider {...settings}>
-          {serviceInfo?.map((service, index) => (
+          {serviceInfo.data?.map((service, index) => (
             <ServiceCard key={service?._id} service={service} />
           ))}
         </Slider>

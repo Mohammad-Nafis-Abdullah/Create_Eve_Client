@@ -16,7 +16,7 @@ const Banner = () => {
   const [state] = useContext(StateContext);
   const navigate = useNavigate();
 
-  const { data: bannerPhotos, loading, refetch } = useQueryFetch('banner', "https://create-eve-server.onrender.com/home-banner");
+  const { data: { data: bannerPhotos }, loading, refetch } = useQueryFetch('banner', "/home-banners");
 
   const configBanner = () => {
     instantModal(<ConfigBannerModal bannerPhotos={bannerPhotos} refetch={refetch} />);
@@ -39,7 +39,7 @@ const Banner = () => {
   return (
     <div className="relative h-screen">
       {/* {loading && <Loading />} */}
-      {(state.user?.role==='owner' || state.user?.role==='admin') && (
+      {(state.user?.role === 'owner' || state.user?.role === 'admin') && (
         <div
           onClick={configBanner}
           className="absolute left-0 top-[30vh] z-20 w-10 h-10 bg-highlight p-1 cursor-pointer select-none active:scale-95"
@@ -50,7 +50,7 @@ const Banner = () => {
       )}
 
       {
-        [...bannerPhotos]?.length ?
+        bannerPhotos?.length ?
           <Slider {...settings}>
             {
               bannerPhotos?.map(banner => {

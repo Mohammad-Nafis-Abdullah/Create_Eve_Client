@@ -54,7 +54,7 @@ const UserProfile = () => {
     try {
       await deleteImage(currentUser?.userImg);
       const { name } = await uploadImage(file);
-      await axios.put(`https://create-eve-server.onrender.com/user-update/${user?.uid}`, {
+      await axios.put(`/users/${user?.uid}`, {
         userImg: name,
       })
       queryClient.invalidateQueries({ queryKey: ['current-user'] });

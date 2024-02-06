@@ -13,8 +13,8 @@ const DisplayMyTickets = ({ ticket, refetch }) => {
     const navigate = useNavigate()
     const { _id, enterprise, eventId, professional, standard, total, userId, bookingId } = ticket;
 
-    // const [event] = useRefetch(`https://create-eve-server.onrender.com/event-details/${ticket?.eventId}`, {});
-    const { data: event } = useQueryFetch('event', `https://create-eve-server.onrender.com/event-details/${ticket?.eventId}`);
+    // const [event] = useRefetch(`/event-details/${ticket?.eventId}`, {});
+    const { data: event } = useQueryFetch('event', `/event-details/${ticket?.eventId}`);
     // cancle order
     const handleBookingCancle = id => {
         console.log(id);
@@ -22,7 +22,7 @@ const DisplayMyTickets = ({ ticket, refetch }) => {
         const proceed = window.confirm("Are you sure?");
 
         if (proceed) {
-            axios.delete(`https://create-eve-server.onrender.com/delete-booked-ticket/${id}`)
+            axios.delete(`/delete-booked-ticket/${id}`)
                 .then(({ data }) => data?.acknowledged && refetch())
         }
     }

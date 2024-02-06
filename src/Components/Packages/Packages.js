@@ -19,12 +19,12 @@ const Packages = () => {
   const [sort, setSort] = useState(true);
   const { pathname } = useLocation();
 
-  // const { data: selectedCategory, refetch } = useRefetch(`https://create-eve-server.onrender.com/packages/${category}`,{});
-  const { data: selectedCategory, loading, refetch } = useQueryFetch('selected-category', `https://create-eve-server.onrender.com/packages/${category}`);
+  // const { data: selectedCategory, refetch } = useRefetch(`/packages/${category}`,{});
+  const { data: { data: selectedCategory }, loading, refetch } = useQueryFetch('selected-category', `/packages/category/${category}`);
 
 
-  // const { data: allPackages, loading:ldng, refetch: packageRefetch } = useRefetch(`https://create-eve-server.onrender.com/all-packages/${category}?range=${range}&sort=${sort ? 1 : -1}`,[]);
-  const { data: allPackages, loading: ldng, refetch: packageRefetch } = useQueryFetch('all-package', `https://create-eve-server.onrender.com/all-packages/${category}?range=${range}&sort=${sort ? 1 : -1}`);
+  // const { data: allPackages, loading:ldng, refetch: packageRefetch } = useRefetch(`/packages/${category}/collection?range=${range}&sort=${sort ? 1 : 0}`,[]);
+  const { data: { data: allPackages }, loading: ldng, refetch: packageRefetch } = useQueryFetch('all-package', `/packages/${category}/collection?range=${range}&sort=${sort ? 1 : 0}`);
 
 
   useEffect(() => {
@@ -153,7 +153,7 @@ const Packages = () => {
 
 
       <section className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-7xl mx-auto py-10 px-3">
-        {[...allPackages].map((eventPackage) => (
+        {allPackages?.map((eventPackage) => (
           <PackageCard
             key={eventPackage?._id}
             eventPackage={eventPackage}

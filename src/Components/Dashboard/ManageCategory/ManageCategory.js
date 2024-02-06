@@ -8,8 +8,8 @@ import CategoryEditModal from './CategoryEditModal';
 import { useQueryFetch } from '../../Hooks/useQueryFetch';
 
 const ManageCategory = () => {
-    // const { data: categories, loading: categoryLoading, refetch: categoryRefetch } = useRefetch('https://create-eve-server.onrender.com/packages', []);
-    const { data: categories, loading: categoryLoading, refetch: categoryRefetch } = useQueryFetch('categories', 'https://create-eve-server.onrender.com/packages');
+    // const { data: categories, loading: categoryLoading, refetch: categoryRefetch } = useRefetch('/packages', []);
+    const { data: { data: categories }, loading: categoryLoading, refetch: categoryRefetch } = useQueryFetch('categories', '/packages');
     const childRef = useRef();
 
     return (
@@ -24,7 +24,7 @@ const ManageCategory = () => {
                         instantModal(<CategoryEditModal ref={childRef} category={null} categoryRefetch={categoryRefetch} />);
                     }} className='btn btn-sm px-0 w-full sm:w-auto sm:px-2 absolute top-0 right-0'>Create new category</button>
                     {
-                        [...categories].map(category => <CategoryCard key={category._id} category={category} categoryRefetch={categoryRefetch} />)
+                        categories?.map(category => <CategoryCard key={category._id} category={category} categoryRefetch={categoryRefetch} />)
                     }
                 </section>
             </div>

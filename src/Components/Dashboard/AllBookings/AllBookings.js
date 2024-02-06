@@ -11,9 +11,9 @@ function AllBookings() {
   const [limit, setLimit] = useState(limits[0]);
   const [page, setPage] = useState(1);
 
-  // const {data,loading: bookingLoading,refetch: refetchBooking,} = useRefetch(`https://create-eve-server.onrender.com/get-all-booking-info?limit=${limit}&page=${page}`,{});
+  // const {data:{data},loading: bookingLoading,refetch: refetchBooking,} = useRefetch(`/bookings?limit=${limit}&page=${page}`,{});
 
-  const { data, loading: bookingLoading, refetch: refetchBooking, } = useQueryFetch('all-booking', `https://create-eve-server.onrender.com/get-all-booking-info?limit=${limit}&page=${page}`);
+  const { data: { data }, loading: bookingLoading, refetch: refetchBooking, } = useQueryFetch('all-booking', `/bookings?limit=${limit}&page=${page}`);
 
   return (
     <div className="overflow-x-auto">

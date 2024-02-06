@@ -38,11 +38,11 @@ const Form = () => {
       };
 
       axios
-        .put(`https://create-eve-server.onrender.com/user/${user?.uid}`, currentUser, {
+        .put(`/users/${user?.uid}`, currentUser, {
           withCredentials: true,
         })
         .then(({ data }) => {
-          if (data) {
+          if (data.data) {
             toast.success("Successfully Signed In");
           }
         });
@@ -88,9 +88,9 @@ const Form = () => {
     };
 
     await axios
-      .put(`https://create-eve-server.onrender.com/user/${newUser.user.uid}`, currentUser)
+      .put(`/users/${newUser.user.uid}`, currentUser)
       .then(({ data }) => {
-        if (data?.acknowledged) {
+        if (data.data?.acknowledged) {
           toast.success("Successfully Sign In");
         }
       });

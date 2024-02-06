@@ -13,8 +13,8 @@ import { useQueryFetch } from "../../Hooks/useQueryFetch";
 function Audiovisual() {
   const navigate = useNavigate();
   const [audio, setAudio, clearAudio] = useLocalStorage("audio", {});
-  // const { data: audios, loading, refetch } = useRefetch(`https://create-eve-server.onrender.com/services/audiovisual`, []);
-  const { data: audios, loading, refetch } = useQueryFetch('audios', `https://create-eve-server.onrender.com/services/audiovisual`);
+  // const { data: audios, loading, refetch } = useRefetch(`/services/audiovisual`, []);
+  const { data: { data: audios }, loading, refetch } = useQueryFetch('audios', `/services/type/audiovisual`);
 
   return (
     <div className="route">

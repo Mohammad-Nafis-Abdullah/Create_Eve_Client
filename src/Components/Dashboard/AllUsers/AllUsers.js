@@ -15,11 +15,11 @@ const AllUsers = () => {
   const [currentUser] = useAuthState(auth);
   const [state] = useContext(StateContext);
 
-  // const { data: allUsers, loading, refetch } = useRefetch("https://create-eve-server.onrender.com/allusers");
-  const { data: allUsers, loading, refetch } = useQueryFetch('all-user', "https://create-eve-server.onrender.com/allusers");
+  // const { data: {data:allUsers}, loading, refetch } = useRefetch("/users");
+  const { data: { data: allUsers }, loading, refetch } = useQueryFetch('all-user', "/users");
 
-  // const { data: user, loading: userLoading, refetch: userRefetch } = useRefetch(`https://create-eve-server.onrender.com/user/${currentUser?.uid}`, {});
-  const { data: user, loading: userLoading, refetch: userRefetch } = useQueryFetch('current-user', `https://create-eve-server.onrender.com/user/${currentUser?.uid}`);
+  // const { data: {data:user}, loading: userLoading, refetch: userRefetch } = useRefetch(`/users/${currentUser?.uid}`, {});
+  const { data: { data: user }, loading: userLoading, refetch: userRefetch } = useQueryFetch('current-user', `/users/${currentUser?.uid}`);
 
   const makeAdmin = {
     title: 'Are you sure?',
@@ -47,13 +47,13 @@ const AllUsers = () => {
 
     Swal.fire(makeAdmin).then(({ isConfirmed }) => {
       if (isConfirmed) {
-        axios.put(`https://create-eve-server.onrender.com/make-admin/${uid}`, {}, {
+        axios.put(`/users/make-admin/${uid}`, {}, {
           headers: {
             uid: currentUser?.uid
           }
         })
           .then(({ data }) => {
-            if (data.acknowledged && data.matchedCount === 1 && data.modifiedCount === 1) {
+            if (data.data.acknowledged && data.data.matchedCount === 1 && data.data.modifiedCount === 1) {
               refetch();
               Swal.fire(
                 'Successfull!',
@@ -76,13 +76,13 @@ const AllUsers = () => {
 
     Swal.fire(removeAdmin).then(({ isConfirmed }) => {
       if (isConfirmed) {
-        axios.put(`https://create-eve-server.onrender.com/remove-admin/${uid}`, {}, {
+        axios.put(`/users/remove-admin/${uid}`, {}, {
           headers: {
             uid: currentUser?.uid
           }
         })
           .then(({ data }) => {
-            if (data.acknowledged && data.matchedCount === 1 && data.modifiedCount === 1) {
+            if (data.data.acknowledged && data.data.matchedCount === 1 && data.data.modifiedCount === 1) {
               refetch();
               Swal.fire(
                 'Successfull!',
