@@ -9,11 +9,11 @@ import auth from '../../../Firebase/firebase.init';
 
 const CurrentUserInfo = ({ user, handleRemoveAdmin, handleMakeAdmin, ownerState }) => {
     const [currentUser] = useAuthState(auth);
-    const { _id, uid, email, displayName, userImg, role } = user;
+    const { _id, uid, email, displayName, userImg, role } = user || { _id: "", uid: "", email: "", displayName: "", userImg: "", role: "" };
 
     return (
         <tr className={`border-4 border-black rounded-2xl bg-white text-black ${role === 'admin' && 'bg-highlight'} ${role === 'owner' && 'bg-green-500'} relative`}>
-            <div className='w-5 h-5 bg-gray-800 rounded-full absolute top-[calc(50%-0.625rem)] left-5'/>
+            <div className='w-5 h-5 bg-gray-800 rounded-full absolute top-[calc(50%-0.625rem)] left-5' />
             <td className="px-16 py-2 flex flex-col items-center">
                 {userImg ? (
                     <img
