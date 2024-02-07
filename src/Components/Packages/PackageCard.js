@@ -11,7 +11,7 @@ import { StateContext } from "../../App";
 
 const PackageCard = ({ eventPackage, category, refetchAllPackage }) => {
   const [state] = useContext(StateContext);
-  const { coverPhoto, name, price, services, catering } = eventPackage;
+  const { coverPhoto, name, price, services, catering } = eventPackage || { coverPhoto: "", name: "", price: "", services: "", catering: "" };
   const [storage, setStorage] = useLocalStorage("event", {});
   const navigate = useNavigate();
   const [configItem, setConfigItem, clearConfigItem] = useLocalStorage('configItem', null);

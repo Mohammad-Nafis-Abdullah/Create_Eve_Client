@@ -48,10 +48,10 @@ const OrderSummary = () => {
   const total = () => {
     if (eventDetails) {
       return (
-        parseInt(eventDetails?.price) +
-        parseInt(catering?.price || 0) * orderCount +
-        parseInt(audio?.price || 0) * audioCount +
-        parseInt(lighting?.price || 0) * lightingCount
+        Number(eventDetails?.price) +
+        Number(catering?.price || 0) * Number(orderCount) +
+        Number(audio?.price || 0) * Number(audioCount) +
+        Number(lighting?.price || 0) * Number(lightingCount)
       );
     } else {
       return 0;

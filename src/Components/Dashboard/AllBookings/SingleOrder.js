@@ -31,10 +31,10 @@ const SingleOrder = ({ booking, refetch, i, page, limit }) => {
 
   const total = () => {
     return (
-      pkg?.price +
-      (catering?.price * catering?.orderCount || 0) +
-      (audio?.price || 0) +
-      (lighting?.price || 0)
+      Number(pkg?.price) +
+      (Number(catering?.price) * Number(catering?.orderCount) || 0) +
+      (Number(audio?.price) || 0) +
+      (Number(lighting?.price) || 0)
     );
   };
 

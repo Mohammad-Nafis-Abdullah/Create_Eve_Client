@@ -53,7 +53,7 @@ const AddPackage = () => {
 
     const createdPackage = {
       name: e.target.title.value,
-      price: e.target.price.value,
+      price: Number(e.target.price.value),
       services: items,
     };
 

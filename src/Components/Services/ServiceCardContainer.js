@@ -47,8 +47,8 @@ const ServiceCardContainer = ({ services, setServiceStore, refetch }) => {
 
                     <div className="card-child bg-black/50">
                         <div className="title px-2">
-                            <h2 className="text-xl text-highlight text-center whitespace-nowrap text-ellipsis overflow-hidden">{s.name}</h2>
-                            <p className="font-bold text-white text-center">{s.price}/-</p>
+                            <h2 className="text-xl text-highlight text-center whitespace-nowrap text-ellipsis overflow-hidden">{s?.name}</h2>
+                            <p className="font-bold text-white text-center">{s?.price}/-</p>
                         </div>
                         <div className="body p-3 space-y-2">
                             {

@@ -11,7 +11,7 @@ function DisplayMyBooking({ booking, handleBookingCancle }) {
     const [user] = useAuthState(auth);
     const { email, uid } = user;
 
-    const { _id, date, code, eventName, eventPrice, image, img, venueName, seats, price, location, totalPrice } = booking
+    const { _id, date, code, eventName, eventPrice, image, img, venueName, seats, price, location, totalPrice } = booking || { _id: "", date: "", code: "", eventName: "", eventPrice: "", image: "", img: "", venueName: "", seats: "", price: "", location: "", totalPrice: "" }
 
     const navigate = useNavigate()
 

@@ -25,21 +25,20 @@ const Payment = () => {
   // const {data: {data:booking},loading,refetch} = useRefetch(`/bookings/${Id}`, {});
   const { data: { data: booking }, loading, refetch } = useQueryFetch('single-booking', `/bookings/${Id}`);
 
-  let total = parseInt(booking.package?.price);
+  let total = Number(booking.package?.price);
 
   if (booking?.catering) {
     total =
       total +
-      parseInt(booking?.catering?.price * booking?.catering?.orderCount);
+      (Number(booking?.catering?.price) * Number(booking?.catering?.orderCount));
   }
   if (booking?.audio) {
     total =
-      total + parseInt(booking?.audio?.price * booking?.audio?.orderCount);
+      total + (Number(booking?.audio?.price) * Number(booking?.audio?.orderCount));
   }
   if (booking?.lighting) {
     total =
-      total +
-      parseInt(booking?.lighting?.price * booking?.lighting?.orderCount);
+      total + (Number(booking?.lighting?.price) * Number(booking?.lighting?.orderCount));
   }
 
   return (
@@ -99,8 +98,8 @@ const Payment = () => {
                         {booking?.catering?.orderCount}
                       </td>
                       <td className="text-right">
-                        {booking?.catering?.price *
-                          booking?.catering?.orderCount}
+                        {Number(booking?.catering?.price) *
+                          Number(booking?.catering?.orderCount)}
                         ৳
                       </td>
                     </tr>
@@ -113,7 +112,7 @@ const Payment = () => {
                         {booking?.audio?.orderCount}
                       </td>
                       <td className="text-right">
-                        {booking?.audio?.price * booking?.audio?.orderCount}৳
+                        {Number(booking?.audio?.price) * Number(booking?.audio?.orderCount)}৳
                       </td>
                     </tr>
                   )}
@@ -125,8 +124,8 @@ const Payment = () => {
                         {booking?.lighting?.orderCount}
                       </td>
                       <td className="text-right">
-                        {booking?.lighting?.price *
-                          booking?.lighting?.orderCount}
+                        {Number(booking?.lighting?.price) *
+                          Number(booking?.lighting?.orderCount)}
                         ৳
                       </td>
                     </tr>

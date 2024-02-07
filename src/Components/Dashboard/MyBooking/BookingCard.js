@@ -17,10 +17,10 @@ const BookingCard = ({ booking, refetch }) => {
     const navigate = useNavigate();
 
     const total = () => {
-        return (booking?.package?.price +
-            ((booking?.catering?.price * booking?.catering?.orderCount) || 0) +
-            ((booking?.audio?.price * booking?.audio?.orderCount) || 0) +
-            ((booking?.lighting?.price * booking?.lighting?.orderCount) || 0));
+        return (Number(booking?.package?.price) +
+            ((Number(booking?.catering?.price) * Number(booking?.catering?.orderCount)) || 0) +
+            ((Number(booking?.audio?.price) * Number(booking?.audio?.orderCount)) || 0) +
+            ((Number(booking?.lighting?.price) * Number(booking?.lighting?.orderCount)) || 0));
     }
 
     useEffect(() => {

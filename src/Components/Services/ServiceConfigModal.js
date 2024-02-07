@@ -71,7 +71,7 @@ const ServiceConfigModal = forwardRef(({ service, refetch }, ref) => {
         const serviceObj = {
             name: name,
             type: service?.type,
-            price: price,
+            price: Number(price),
             min_order: min_order,
         }
 

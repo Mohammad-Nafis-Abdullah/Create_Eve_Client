@@ -63,8 +63,8 @@ const Packages = () => {
       </section>
 
       {/* filter options */}
-      <section className="mt-10 mx-auto max-w-7xl px-5 flex justify-between items-center flex-wrap gap-y-10 gap-x-5">
-        <div className="max-w-sm grow px-12">
+      {/* <section className="mt-10 mx-auto max-w-7xl px-5 flex justify-between items-center flex-wrap gap-y-10 gap-x-5"> */}
+      {/* <div className="max-w-sm grow px-12">
           <h3 className="text-lg">Price :</h3>
           <input
             onChange={(e) => setRange(e.target.value)}
@@ -134,10 +134,10 @@ const Packages = () => {
               </small>
             </span>
           </div>
-        </div>
+        </div> */}
 
-        {/* sort state */}
-        <div onClick={() => setSort(prev => !prev)} className="p-2 rounded-md inline-flex gap-2 items-center bg-highlight text-gray-900 cursor-pointer select-none border-2">
+      {/* sort state */}
+      {/* <div onClick={() => setSort(prev => !prev)} className="p-2 rounded-md inline-flex gap-2 items-center bg-highlight text-gray-900 cursor-pointer select-none border-2">
           {
             sort ?
               <TbArrowsDownUp className="h-5 w-5" /> :
@@ -148,8 +148,8 @@ const Packages = () => {
               <span className="font-bold">Price Low to High</span> :
               <span className="font-bold">Price High to Low</span>
           }
-        </div>
-      </section>
+        </div> */}
+      {/* </section> */}
 
 
       <section className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-7xl mx-auto py-10 px-3">

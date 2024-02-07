@@ -28,10 +28,10 @@ const CheckoutForm = ({ booking }) => {
 
   const total = () => {
     return (
-      pkg?.price +
-      (catering?.price * catering?.orderCount || 0) +
-      (audio?.price * audio?.orderCount || 0) +
-      (lighting?.price * lighting?.orderCount || 0)
+      Number(pkg?.price) +
+      (Number(catering?.price) * Number(catering?.orderCount) || 0) +
+      (Number(audio?.price) * Number(audio?.orderCount) || 0) +
+      (Number(lighting?.price) * Number(lighting?.orderCount) || 0)
     );
   };
 

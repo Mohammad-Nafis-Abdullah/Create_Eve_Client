@@ -59,7 +59,7 @@ const ConfigureModal = ({ configItem, clearConfigItem, refetchAllPackage }) => {
 
         const pkg = {
             name: name,
-            price: price,
+            price: Number(price),
             services: services,
         }
 

@@ -46,7 +46,7 @@ const AddService = () => {
     const service = {
       name: e.target.name.value,
       type: type,
-      price: parseFloat(e.target.price.value),
+      price: Number(e.target.price.value),
       min_order: parseFloat(e.target.min_order.value),
     };
 
